@@ -1,10 +1,11 @@
 {
   "name": "sos1819-12",
   "version": "1.0.0",
-  "description": "Sincornizado con repositorio grupal",
+  "description": "Sincronizado con repositorio grupal",
   "main": "index.js",
   "dependencies": {
-    "express": "^3.2.6"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
   },
   "devDependencies": {},
   "scripts": {
