@@ -1,15 +1,16 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-<<<<<<< HEAD
 
 var app = express();
 
+app.use("/", express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;
 
 
-//////// ANTONIO //////////
+
+//////// ANTONIO ESCOBAR NÚÑEZ//////////
 
 var pollutionStats = [{
     
@@ -133,15 +134,45 @@ var pollutionStats = [{
     
 }];
 
-/// GET ///
 
-app.get("/pollutionStats",(req,res)=>{
+//GET /api/v1/pollutionStats/loadInitialData
+app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
+        
+    pollutionStats.push({
+        country: "italia",
+        year: "2015",
+        pollution_tco2: "361.193",
+        pollution_kg1000: "0.14",
+        pollution_perca: "6.08"
+    });
+    pollutionStats.push({
+        country: "spain",
+        year: "2015",
+        pollution_tco2: "455.555",
+        pollution_kg1000: "0.15",
+        pollution_perca: "6.08"
+    });
+   pollutionStats.push({
+        country: "alemania",
+        year: "2015",
+        pollution_tco2: "800.800",
+        pollution_kg1000: "0.19",
+        pollution_perca: "6.08"
+    });
+        
+    res.sendStatus(201);
+});
+
+
+/// GET /api/v1/pollutionStats ///
+
+app.get("/api/v1/pollutionStats",(req,res)=>{
     res.send(pollutionStats);
 });
 
-/// POST recurso ///
+/// POST /api/v1/pollutionStats ///
 
-app.post("/pollutionStats", (req,res)=>{
+app.post("/api/v1/pollutionStats", (req,res)=>{
     var newPollutionStats = req.body;
     
     pollutionStats.push(newPollutionStats)
@@ -150,16 +181,30 @@ app.post("/pollutionStats", (req,res)=>{
     
 });
 
-/// DELETE todo ////
+// GET /api/v1/pollutionStats/country
+app.get("/api/v1/pollutionStats/:country", (req,res) => {
+    var country = req.params.country;
+    var filteredStat = pollutionStats.filter((c) => {
+       return c.country == country; 
+    });
+    if(filteredStat.length >= 1){
+        res.send(filteredStat);
+    }else{
+        res.sendStatus(404);
+    }
+});
 
-app.delete("/pollutionStats",(req,res) =>{
+/// DELETE /api/v1/pollutionStats ////
+
+app.delete("/api/v1/pollutionStats",(req,res) =>{
     pollutionStats = []
     res.sendStatus(200);
 })
 
-/// GET concreto ///
 
-app.get("/pollutionStats/:country/:year",(req,res)=>{
+/// GET /api/v1/pollutionStats/:country/:year ///
+
+app.get("/api/v1/pollutionStats/:country/:year",(req,res)=>{
     
     var country = req.params.country;
     var year = req.params.year;
@@ -181,7 +226,7 @@ app.get("/pollutionStats/:country/:year",(req,res)=>{
 /// PUT ///
 
 
-app.put("/pollutionStats/:country/:year",(req,res)=>{
+app.put("/api/v1/pollutionStats/:country/:year",(req,res)=>{
     
     var country = req.params.country;
     var year = req.params.year;
@@ -208,9 +253,24 @@ app.put("/pollutionStats/:country/:year",(req,res)=>{
    
     res.sendStatus(200);
 });
+
+//POST /api/v1/pollutionStats/country/year (ERROR METODO NO PERMITIDO)
+app.post("/api/v1/pollutionStats/:country/:year", (req, res) => {
+        res.sendStatus(405);
+});
+
+//POST api/v1/pollutionStats/country (ERROR METODO NO PERMITIDO)
+app.post("/api/v1/pollutionStats/:country", (req, res) => {
+        res.sendStatus(405);
+});
+// PUT /api/v1/pollutionStats (ERROR METODO NO PERMITIDO)
+app.put("/api/v1/pollutionStats", (req, res) => {
+        res.sendStatus(405);
+});
+
 /// DELETE  concreto///
 
-app.delete("/pollutionStats/:country/:year",(req,res)=>{
+app.delete("/api/v1/pollutionStats/:country/:year",(req,res)=>{
     
     var country = req.params.country;
     var year = req.params.year;
@@ -242,19 +302,13 @@ app.delete("/pollutionStats/:country/:year",(req,res)=>{
     res.sendStatus(200);
 });
 
-
 ///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
 
-=======
-var app = express();
-
->>>>>>> 9ff6fb99192a5b5a871b99130eda5c0a07cfd0ab
-app.use("/", express.static(__dirname + "/public"));
-app.use(bodyParser.json());
-
-var port = process.env.PORT || 8080;
-
-//                                      API REST life_expectancy_stats
+//API REST life_expectancy_stats
 
 var life_expectancy_stats2 = [{
     country: "spain",
