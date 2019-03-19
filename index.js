@@ -9,7 +9,7 @@ var port = process.env.PORT || 8080;
 
 //                                      API REST life_expectancy_stats
 
-var life_expectancy_stats = [{
+var life_expectancy_stats2 = [{
     country: "spain",
     year: "2015",
     expectancy_woman: "85.7",
@@ -28,6 +28,36 @@ var life_expectancy_stats = [{
     expectancy_man: "80.6",
     expectancy: "83.4"
 }];
+
+var life_expectancy_stats = [];
+
+//GET /api/v1/life-expectancy-stats/loadInitialData
+app.get("/api/v1/life-expectancy-stats/loadInitialData", (req, res) => {
+        
+    life_expectancy_stats.push({
+        country: "spain",
+        year: "2015",
+        expectancy_woman: "85.7",
+        expectancy_man: "80.1",
+        expectancy: "83"
+    });
+    life_expectancy_stats.push({
+        country: "spain",
+        year: "2016",
+        expectancy_woman: "86.3",
+        expectancy_man: "80.5",
+        expectancy: "83.5"
+    });
+    life_expectancy_stats.push({
+        country: "spain",
+        year: "2017",
+        expectancy_woman: "86.1",
+        expectancy_man: "80.6",
+        expectancy: "83.4"
+    });
+        
+    res.sendStatus(201);
+});
 
 // GET /api/v1/life-expectancy-stats
 app.get("/api/v1/life-expectancy-stats", (req,res) => {
