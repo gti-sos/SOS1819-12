@@ -1,6 +1,8 @@
 {
   "name": "sos1819-12",
   "version": "1.0.0",
+<<<<<<< HEAD
+
   "description": "Sincronizado con repositorio grupal",
   "main": "index.js",
   "dependencies": {
