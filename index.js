@@ -10,122 +10,133 @@ var port = process.env.PORT || 8080;
 
 //////// ANTONIO ESCOBAR NÚÑEZ//////////
 
-var pollutionStats = [{
+var pollutionStats = []
+
+//GET /api/v1/pollutionStats/loadInitialData
+app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
+    
+    pollutionStats.push({
     country: "spain",
     year: "2017",
     pollution_tco2: "282.364",
     pollution_kg1000: "0.18",
     pollution_perca: "6.09"
-},{
+    });
+    
+    pollutionStats.push({
     country: "spain",
     year: "2016",
     pollution_tco2: "263.908",
     pollution_kg1000: "0.17",
     pollution_perca: "5.69"
-},{
+    });
+    
+    pollutionStats.push({
     country: "spain",
     year: "2015",
     pollution_tco2: "271.171",
     pollution_kg1000: "0.18",
     pollution_perca: "5.84"
-},{
+    });
+
+    pollutionStats.push({
     country: "alemania",
     year: "2017",
     pollution_tco2: "796.0529",
     pollution_kg1000: "0.21",
     pollution_perca: "9.71"
+    });
     
-},{
+    pollutionStats.push({
     country: "alemania",
     year: "2016",
     pollution_tco2: "798.582",
     pollution_kg1000: "0.22",
     pollution_perca: "9.75"  
-},{
+    });
+
+
+    pollutionStats.push({
     country: "alemania",
     year: "2015",
     pollution_tco2: "789.898",
     pollution_kg1000: "0.22",
     pollution_perca: "9.67" 
-},{
+    });
+    
+    pollutionStats.push({
     country: "reino unido",
     year: "2017",
     pollution_tco2: "379.15",
     pollution_kg1000: "0.22",
     pollution_perca: "9.67" 
-},{
+    });
+    
+    pollutionStats.push({
     country: "reino unido",
     year: "2016",
     pollution_tco2: "391.472",
     pollution_kg1000: "0.15",
     pollution_perca: "5.95" 
-},{
+    });
+
+    pollutionStats.push({
     country: "reino unido",
     year: "2015",
     pollution_tco2: "416.749",
     pollution_kg1000: "0.16",
     pollution_perca: "6.37" 
-},{
+    });
+
+    pollutionStats.push({
     country: "francia",
     year: "2017",
     pollution_tco2: "338.193",
     pollution_kg1000: "0.13",
     pollution_perca: "5.2" 
-},{
+    });
+    
+    
+    pollutionStats.push({
     country: "francia",
     year: "2016",
     pollution_tco2: "332.034",
     pollution_kg1000: "0.13",
-    pollution_perca: "5.13" 
-},{
+    pollution_perca: "5.13"
+    });
+    
+    pollutionStats.push({
     country: "francia",
     year: "2015",
     pollution_tco2: "327.725",
     pollution_kg1000: "0.13",
     pollution_perca: "5.08" 
-},{
+    });
+    
+    pollutionStats.push({
     country: "italia",
     year: "2017",
     pollution_tco2: "361.193",
     pollution_kg1000: "0.17",
     pollution_perca: "6.08" 
-},{
+    });
+    
+    pollutionStats.push({
     country: "italia",
     year: "2016",
     pollution_tco2: "356.461",
     pollution_kg1000: "0.17",
     pollution_perca: "6" 
-},{
+    });
+    
+    pollutionStats.push({
     country: "italia",
     year: "2015",
     pollution_tco2: "354.355",
     pollution_kg1000: "0.17",
     pollution_perca: "5.96" 
-}];
+    });
 
-//GET /api/v1/pollutionStats/loadInitialData
-app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
-    pollutionStats.push({
-        country: "italia",
-        year: "2015",
-        pollution_tco2: "361.193",
-        pollution_kg1000: "0.14",
-        pollution_perca: "6.08"
-    });
-    pollutionStats.push({
-        country: "spain",
-        year: "2015",
-        pollution_tco2: "455.555",
-        pollution_kg1000: "0.15",
-        pollution_perca: "6.08"
-    });
-   pollutionStats.push({
-        country: "alemania",
-        year: "2015",
-        pollution_tco2: "800.800",
-        pollution_kg1000: "0.19",
-        pollution_perca: "6.08"
-    });
     res.sendStatus(201);
 });
 
