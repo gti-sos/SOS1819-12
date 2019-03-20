@@ -279,6 +279,7 @@ app.get("/api/v1/life-expectancy-stats/loadInitialData", (req, res) => {
 // GET /api/v1/life-expectancy-stats
 app.get("/api/v1/life-expectancy-stats", (req,res) => {
     res.send(life_expectancy_stats);
+    res.sendStatus(200);
 });
 // GET /api/v1/life-expectancy-stats/spain
 app.get("/api/v1/life-expectancy-stats/:country", (req,res) => {
@@ -301,6 +302,7 @@ app.get("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
     });
     if(filteredStat.length >= 1){
         res.send(filteredStat[0]);
+        res.sendStatus(200);
     }else{
         res.sendStatus(404);
     }
