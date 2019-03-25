@@ -271,6 +271,20 @@ app.get("/api/v1/life-expectancy-stats/loadInitialData", (req, res) => {
         expectancy: "83"
     });
     life_expectancy_stats.push({
+        country: "germany",
+        year: "2015",
+        expectancy_woman: "83.1",
+        expectancy_man: "78.3",
+        expectancy: "80.7"
+    });
+    life_expectancy_stats.push({
+        country: "uk",
+        year: "2015",
+        expectancy_woman: "82.8",
+        expectancy_man: "79.2",
+        expectancy: "81"
+    });
+    life_expectancy_stats.push({
         country: "spain",
         year: "2016",
         expectancy_woman: "86.3",
@@ -278,11 +292,39 @@ app.get("/api/v1/life-expectancy-stats/loadInitialData", (req, res) => {
         expectancy: "83.5"
     });
     life_expectancy_stats.push({
+        country: "germany",
+        year: "2016",
+        expectancy_woman: "83.5",
+        expectancy_man: "78.6",
+        expectancy: "81"
+    });
+    life_expectancy_stats.push({
+        country: "uk",
+        year: "2016",
+        expectancy_woman: "83",
+        expectancy_man: "79.4",
+        expectancy: "81.2"
+    });
+    life_expectancy_stats.push({
         country: "spain",
         year: "2017",
         expectancy_woman: "86.1",
         expectancy_man: "80.6",
         expectancy: "83.4"
+    });
+    life_expectancy_stats.push({
+        country: "germany",
+        year: "2017",
+        expectancy_woman: "83.4",
+        expectancy_man: "78.7",
+        expectancy: "81.1"
+    });
+    life_expectancy_stats.push({
+        country: "uk",
+        year: "2017",
+        expectancy_woman: "83.1",
+        expectancy_man: "79.5",
+        expectancy: "81.3"
     });
     res.sendStatus(201);
 });
