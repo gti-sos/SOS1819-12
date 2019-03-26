@@ -559,18 +559,15 @@ app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
     //}
 });
 
-<<<<<<< HEAD
 // GET /api/v1/life-expectancy-stats/docs //
-app.get("/api/v1/life-expectancy-stats/docs",(req,res)=>{
-    res.redirect("https://documenter.getpostman.com/view/6998737/S17tS8JC");
-=======
+//app.get("/api/v1/life-expectancy-stats/docs",(req,res)=>{
+//    res.redirect("https://documenter.getpostman.com/view/6998737/S17tS8JC");
+//});
+
 /// GET /api/v1/life-expectancy-stats/docs ///
-
-const pe = "https://documenter.getpostman.com/view/6998737/S17qRok3";
-
+const pe = "https://documenter.getpostman.com/view/6998737/S17tS8JC";
 app.get("/api/v1/life-expectancy-stats/docs",(req,res)=>{
     res.redirect(pe);
->>>>>>> e047b58e5958790435f0ae3c6e3bbd175badaf1b
     res.sendStatus(301);
 });
 
