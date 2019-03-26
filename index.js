@@ -429,6 +429,12 @@ app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
     }
 });
 
+/// GET /api/v1/life-expectancy-stats/docs ///
+app.get("/api/v1/life-expectancy-stats/docs",(req,res)=>{
+    res.writeHead(301, {Location: "https://documenter.getpostman.com/view/6998737/S17qRok3"});
+    res.end();
+});
+
 app.listen(port, () => {
    console.log("PORT " + port + " OK");
 });
