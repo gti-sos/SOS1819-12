@@ -559,9 +559,9 @@ app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
     //}
 });
 
-/// GET /api/v1/life-expectancy-stats/docs ///
+// GET /api/v1/life-expectancy-stats/docs //
 app.get("/api/v1/life-expectancy-stats/docs",(req,res)=>{
-    res.redirect("https://documenter.getpostman.com/view/6998737/S17qRok3");
+    res.redirect("https://documenter.getpostman.com/view/6998737/S17tS8JC");
     res.sendStatus(301);
 });
 
