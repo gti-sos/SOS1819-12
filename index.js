@@ -560,8 +560,11 @@ app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
 });
 
 /// GET /api/v1/life-expectancy-stats/docs ///
+
+const pe = "https://documenter.getpostman.com/view/6998737/S17qRok3";
+
 app.get("/api/v1/life-expectancy-stats/docs",(req,res)=>{
-    res.redirect("https://documenter.getpostman.com/view/6998737/S17qRok3");
+    res.redirect(pe);
     res.sendStatus(301);
 });
 
