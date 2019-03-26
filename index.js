@@ -254,6 +254,12 @@ app.delete("/api/v1/pollutionStats/:country/:year",(req,res)=>{
     res.sendStatus(200);
 });
 
+/// GET /api/v1/pollutionStats/docs ///
+app.get("/api/v1/pollutionStats/docs",(req,res)=>{
+    res.writeHead(301, {Location: "https://documenter.getpostman.com/view/6902825/S17ozAgF"});
+    res.end();
+});
+
 ///////////////////////////////////////
 ///////////////////////////////////////
 
