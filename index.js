@@ -255,10 +255,13 @@ app.delete("/api/v1/pollutionStats/:country/:year",(req,res)=>{
 });
 
 /// GET /api/v1/pollutionStats/docs ///
-app.get("/api/v1/pollutionStats/docs",(req,res)=>{
-    res.writeHead(301, {Location: "https://documenter.getpostman.com/view/6902825/S17ozAgF"});
-    res.end();
-});
+
+
+app.get("/api/v1/pollutionStats/docs", (req, res) => {
+
+    res.status(301).redirect("https://documenter.getpostman.com/view/6902825/S17ozAgF")
+
+})
 
 ///////////////////////////////////////
 ///////////////////////////////////////
