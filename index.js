@@ -256,10 +256,11 @@ app.delete("/api/v1/pollutionStats/:country/:year",(req,res)=>{
 
 /// GET /api/v1/pollutionStats/docs ///
 
+const ps = "https://documenter.getpostman.com/view/6902825/S17ozAgF";
 
 app.get("/api/v1/pollutionStats/docs", (req, res) => {
 
-    res.status(301).redirect("https://documenter.getpostman.com/view/6902825/S17ozAgF")
+    res.status(301).redirect(ps);
 
 })
 
