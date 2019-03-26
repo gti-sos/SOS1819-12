@@ -1,7 +1,20 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
+const MongoClient = require("mongodb").MongoClient;
+const uri = "mongodb+srv://test:test@Cluster0-fm5c9.mongodb.net/Cluster0?retryWrites=true";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+
+var pollutionStats ;
+
+client.connect(err => {
+  pollutionStats = client.db("SOS1819-12").collection("sos");
+  console.log("funciona mongo");
+  //client.close();
+});
+
 var app = express();
+
 
 app.use("/", express.static(__dirname + "/public"));
 app.use(bodyParser.json());
@@ -10,12 +23,18 @@ var port = process.env.PORT || 8080;
 
 //////// ANTONIO ESCOBAR NÚÑEZ//////////
 
-var pollutionStats = []
+//var pollutionStats = []
 
 //GET /api/v1/pollutionStats/loadInitialData
 app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     
-    pollutionStats.push({
+    pollutionStats.find({}).toArray( (err, pollutionStats_a) => {
+                
+    if (err) console.log("FATAL ERROR !!: ", err);
+    
+    if (pollutionStats_a.length == 0) {
+    
+    pollutionStats.insert({
     country: "spain",
     year: "2017",
     pollution_tco2: "282.364",
@@ -23,7 +42,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "6.09"
     });
     
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "spain",
     year: "2016",
     pollution_tco2: "263.908",
@@ -31,7 +50,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "5.69"
     });
     
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "spain",
     year: "2015",
     pollution_tco2: "271.171",
@@ -39,7 +58,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "5.84"
     });
 
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "alemania",
     year: "2017",
     pollution_tco2: "796.0529",
@@ -47,7 +66,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "9.71"
     });
     
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "alemania",
     year: "2016",
     pollution_tco2: "798.582",
@@ -56,7 +75,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     });
 
 
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "alemania",
     year: "2015",
     pollution_tco2: "789.898",
@@ -64,7 +83,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "9.67" 
     });
     
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "reino unido",
     year: "2017",
     pollution_tco2: "379.15",
@@ -72,7 +91,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "9.67" 
     });
     
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "reino unido",
     year: "2016",
     pollution_tco2: "391.472",
@@ -80,7 +99,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "5.95" 
     });
 
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "reino unido",
     year: "2015",
     pollution_tco2: "416.749",
@@ -88,7 +107,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "6.37" 
     });
 
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "francia",
     year: "2017",
     pollution_tco2: "338.193",
@@ -97,7 +116,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     });
     
     
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "francia",
     year: "2016",
     pollution_tco2: "332.034",
@@ -105,7 +124,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "5.13"
     });
     
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "francia",
     year: "2015",
     pollution_tco2: "327.725",
@@ -113,7 +132,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "5.08" 
     });
     
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "italia",
     year: "2017",
     pollution_tco2: "361.193",
@@ -121,7 +140,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "6.08" 
     });
     
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "italia",
     year: "2016",
     pollution_tco2: "356.461",
@@ -129,102 +148,181 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
     pollution_perca: "6" 
     });
     
-    pollutionStats.push({
+    pollutionStats.insert({
     country: "italia",
     year: "2015",
     pollution_tco2: "354.355",
     pollution_kg1000: "0.17",
     pollution_perca: "5.96" 
     });
-
-    res.sendStatus(201);
-});
+        console.log("Request accepted, creating new resources in database.");
+        res.sendStatus(201);   
+        
+    }
+    else{
+    console.log("FATAL ERROR !!: Data Base is not empty.");
+    res.sendStatus(409);}
+});});
 
 /// GET /api/v1/pollutionStats ///
 
 app.get("/api/v1/pollutionStats",(req,res)=>{
-    res.send(pollutionStats);
+    pollutionStats.find({}).toArray((err,pollutionStatsArray) =>{
+     if(err)
+        console.log("Error: " +err)
+     res.send(pollutionStatsArray);   
+    });
+    
 });
 
 /// POST /api/v1/pollutionStats ///
 
-app.post("/api/v1/pollutionStats", (req,res)=>{
-    var newPollutionStats = req.body;
-    pollutionStats.push(newPollutionStats)
-    res.sendStatus(201);
-});
+app.post("/api/v1/pollutionStats", (req, res) => {
+        
+        var newPs = req.body;
+        
+        pollutionStats.find(newPs).toArray( (err, pollutionStats_a) => {
+            
+                if(err) console.log("FATAL ERROR !!: ", err);
+                
+                if(pollutionStats_a == 0){
+                    
+                    pollutionStats.insert(newPs);
+                    console.log("Request accepted, creating new resource in database.");
+                    res.sendStatus(201);
+                    
+                } else {
+                    
+                    console.log("FATAL ERROR !!: Resource already exists in the database.");
+                    res.sendStatus(409);
+                    
+                }
+            
+            }
+        );
 
-// GET /api/v1/pollutionStats/country
-app.get("/api/v1/pollutionStats/:country", (req,res) => {
-    var country = req.params.country;
-    var filteredStat = pollutionStats.filter((c) => {
-       return c.country == country; 
-    });
-    if(filteredStat.length >= 1){
-        res.send(filteredStat);
-    }else{
-        res.sendStatus(404);
+        
     }
-});
+);
+
+// GET /api/v1/pollutionStats/:country/:year
+app.get("/api/v1/pollutionStats/:country/:year", (req, res) => {
+        
+        var country = req.params.country;
+        var year = req.params.year;
+        
+        pollutionStats.find( {"country": country, "year": year} ).toArray( (err, pollutionStats_a) => {
+            
+                if(err) console.log("FATAL ERROR !!: ", err);
+                
+                if(pollutionStats_a.length  > 0){
+                    
+                    console.log("Request accepted, sending resource from database.");
+                    res.send(pollutionStats_a);
+                    
+                    
+                } else {
+                    
+                    console.log("Request accepted, removing resource of database.");
+                    res.sendStatus(404);
+                    
+                }
+            
+            }
+        );
+        
+    }
+);
 
 /// DELETE /api/v1/pollutionStats ////
 
-app.delete("/api/v1/pollutionStats",(req,res) =>{
-    pollutionStats = []
-    res.sendStatus(200);
-})
+//DELETE /api/v1/pollutionStats (BORRA TODOS LOS RECURSOS)
+app.delete("/api/v1/pollutionStats", (req, res) => {
+        
+        pollutionStats.remove({});
+        console.log("Request accepted, removing all resources of database.");
+        res.sendStatus(200);
 
-
-/// GET /api/v1/pollutionStats/:country/:year ///
-
-app.get("/api/v1/pollutionStats/:country/:year",(req,res)=>{
-    var country = req.params.country;
-    var year = req.params.year;
-    var filteredPollutionStats = pollutionStats.filter((c)=>{
-        return c.country == country && c.year == year ;
-    })
-    if(filteredPollutionStats.length >=1){
-        res.send(filteredPollutionStats[0]);
-    } else{
-        res.sendStatus(404);
+        
     }
-    res.sendStatus(200);
-}); 
+);
+
+
+/// DELETE /api/v1/pollutionStats/:country/:year ///
+
+app.delete("/api/v1/pollutionStats/:country/:year", (req, res) => {
+        
+        var country = req.params.country;
+        var year = req.params.year;
+        var found = false;
+        
+        pollutionStats.find( {"country": country,"year": year} ).toArray( (err, pollutionStats_a) =>{
+            
+                if(err) console.log("FATAL ERROR: ", err);
+                
+                if(pollutionStats_a.length > 0){
+                    
+                    pollutionStats.remove(pollutionStats_a[0]);
+                    console.log("Request accepted, removing resource of database.");
+                    res.sendStatus(200);
+                    
+                } else {
+                    
+                    console.log("FATAL ERROR !!: Resource not found in database.");
+                    res.sendStatus(404);
+                    
+                }
+            
+            }
+        );
+ 
+    }
+);
 
 /// PUT ///
 
-app.put("/api/v1/pollutionStats/:country/:year",(req,res)=>{
-    var country = req.params.country;
-    var year = req.params.year;
-    var updatePollutionStats = req.body;
-    var found = false;
-    var updatePollutionStats = pollutionStats.map((c)=>{
-        if(c.country == country && c.year == year){
-            found = true;
-            return updatePollutionStats;
-        }else{
-            return c; 
-        }
-    })
-    if(found == false){
-        res.sendStatus(404);
-    }else{
-        pollutionStats = updatePollutionStats;
+app.put("/api/v1/pollutionStats/:country/:year", (req, res) => {
+        
+        var country = req.params.country;
+        var year = req.params.year;
+        var updatedStat = req.body;
+        
+        pollutionStats.find( {"country": country, "year": year} ).toArray( (err, pollutionStats_a) => {
+                
+                if(err) console.log("FATAL ERROR: ", err);
+                
+                if(pollutionStats_a.length > 0){
+                    
+                    pollutionStats.update( {"country": country, "year": year}, updatedStat );
+                    console.log("Request accepted, updating resource of database.");
+                    res.sendStatus(200);
+                } else {
+                    
+                    console.log("FATAL ERROR : Resource not found in database.");
+                    res.sendStatus(404);
+                    
+                }
+            
+            }
+        );
+        
     }
-    res.sendStatus(200);
-});
+);
 
 //POST /api/v1/pollutionStats/country/year (ERROR METODO NO PERMITIDO)
 app.post("/api/v1/pollutionStats/:country/:year", (req, res) => {
+    console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
 });
 
 //POST api/v1/pollutionStats/country (ERROR METODO NO PERMITIDO)
 app.post("/api/v1/pollutionStats/:country", (req, res) => {
+    console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
 });
 // PUT /api/v1/pollutionStats (ERROR METODO NO PERMITIDO)
 app.put("/api/v1/pollutionStats", (req, res) => {
+    console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
 });
 
