@@ -259,7 +259,7 @@ app.delete("/api/v1/pollutionStats/:country/:year",(req,res)=>{
 const ps = "https://documenter.getpostman.com/view/6902825/S17ozAgF";
 
 app.get("/api/v1/pollutionStats/docs", (req, res) => {
-
+    res.sendStatus(301)
     res.redirect(ps);
     
 });
