@@ -437,7 +437,8 @@ app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
 
 /// GET /api/v1/life-expectancy-stats/docs ///
 app.get("/api/v1/life-expectancy-stats/docs",(req,res)=>{
-    res.status(301).redirect("https://documenter.getpostman.com/view/6998737/S17qRok3");
+    res.redirect("https://documenter.getpostman.com/view/6998737/S17qRok3");
+    res.sendStatus(301);
 });
 
 app.listen(port, () => {
