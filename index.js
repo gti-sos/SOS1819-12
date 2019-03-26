@@ -350,7 +350,6 @@ app.get("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
             console.log("Error: "+err);
         if(life_expectancy_stats_array.length>0){
             res.send(life_expectancy_stats_array);
-            res.sendStatus(200);
         }else{
             res.sendStatus(404);
         }
@@ -380,7 +379,6 @@ app.post("/api/v1/life-expectancy-stats", (req,res) => {
             res.sendStatus(409);
         }
     });
-    
 });
 //POST /api/v1/life-expectancy-stats/spain (ERROR METODO NO PERMITIDO)
 app.post("/api/v1/life-expectancy-stats/:country", (req, res) => {
