@@ -457,6 +457,255 @@ app.get("/api/v1/life-expectancy-stats/docs", (req, res) => {
     res.redirect(life_expectancy_stats_URL);
 });
 
+//////// ANDRES FERNANDEZ GOMEZ//////////
+
+var youthUnemploymentStats = []
+
+//GET /api/v1/youthUnemploymentStats/loadInitialData
+app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
+    
+    youthUnemploymentStats.push({
+    country: "spain",
+    year: "2017",
+    youth_unemployment: "36.8",
+    youth_unemployment_man: "37.8",
+    youth_unemployment_woman: "35.7"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "spain",
+    year: "2016",
+    youth_unemployment: "42.1",
+    youth_unemployment_man: "42.5",
+    youth_unemployment_woman: "41.7"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "spain",
+    year: "2015",
+    youth_unemployment: "45.8",
+    youth_unemployment_man: "45",
+    youth_unemployment_woman: "46.7"
+    });
+
+    youthUnemploymentStats.push({
+    country: "alemania",
+    year: "2017",
+    youth_unemployment: "6.5",
+    youth_unemployment_man: "7.2",
+    youth_unemployment_woman: "5.6"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "alemania",
+    year: "2016",
+    youth_unemployment: "6.7",
+    youth_unemployment_man: "7.5",
+    youth_unemployment_woman: "5.8"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "alemania",
+    year: "2015",
+    youth_unemployment: "7.1",
+    youth_unemployment_man: "7.7",
+    youth_unemployment_woman: "6.4"
+    });
+    
+   youthUnemploymentStats.push({
+    country: "reino unido",
+    year: "2017",
+    youth_unemployment: "12.5",
+    youth_unemployment_man: "13.5",
+    youth_unemployment_woman: "11.4"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "reino unido",
+    year: "2016",
+    youth_unemployment: "12.6",
+    youth_unemployment_man: "14.8",
+    youth_unemployment_woman: "10.1"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "reino unido",
+    year: "2015",
+    youth_unemployment: "13.6",
+    youth_unemployment_man: "14.8",
+    youth_unemployment_woman: "12.3"
+    });
+
+    youthUnemploymentStats.push({
+    country: "francia",
+    year: "2017",
+    youth_unemployment: "21.6",
+    youth_unemployment_man: "22.3",
+    youth_unemployment_woman: "20.8"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "francia",
+    year: "2016",
+    youth_unemployment: "23.3",
+    youth_unemployment_man: "24.3",
+    youth_unemployment_woman: "22.1"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "francia",
+    year: "2015",
+    youth_unemployment: "24.5",
+    youth_unemployment_man: "25.8",
+    youth_unemployment_woman: "22.9"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "italia",
+    year: "2017",
+    youth_unemployment: "32.4",
+    youth_unemployment_man: "31.2",
+    youth_unemployment_woman: "36.2"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "italia",
+    year: "2016",
+    youth_unemployment: "38.2",
+    youth_unemployment_man: "36.5",
+    youth_unemployment_woman: "40.6"
+    });
+    
+    youthUnemploymentStats.push({
+    country: "italia",
+    year: "2015",
+    youth_unemployment: "38.3",
+    youth_unemployment_man: "37.9",
+    youth_unemployment_woman: "39.5"
+    });
+
+    res.sendStatus(201);
+});
+
+/// GET /api/v1/youthUnemploymentStats ///
+
+app.get("/api/v1/youthUnemploymentStats",(req,res)=>{
+    res.send(youthUnemploymentStats);
+});
+
+/// POST /api/v1/youthUnemploymentStats ///
+
+app.post("/api/v1/youthUnemploymentStats", (req,res)=>{
+    var newYouthUnemploymentStats = req.body;
+    youthUnemploymentStats.push(newYouthUnemploymentStats)
+    res.sendStatus(201);
+});
+
+// GET /api/v1/youthUnemploymentStats/country //
+
+app.get("/api/v1/youthUnemploymentStats/:country", (req,res) => {
+    var country = req.params.country;
+    var filteredStat = youthUnemploymentStats.filter((c) => {
+       return c.country == country; 
+    });
+    if(filteredStat.length >= 1){
+        res.send(filteredStat);
+    }else{
+        res.sendStatus(404);
+    }
+});
+
+/// DELETE /api/v1/youthUnemploymentStats ////
+
+app.delete("/api/v1/youthUnemploymentStats",(req,res) =>{
+    youthUnemploymentStats = []
+    res.sendStatus(200);
+})
+
+
+/// GET /api/v1/youthUnemploymentStats/:country/:year ///
+
+app.get("/api/v1/youthUnemploymentStats/:country/:year",(req,res)=>{
+    var country = req.params.country;
+    var year = req.params.year;
+    var filteredYouthUnemploymentStats= youthUnemploymentStats.filter((c)=>{
+        return c.country == country && c.year == year ;
+    })
+    if(filteredYouthUnemploymentStats.length >=1){
+        res.send(filteredYouthUnemploymentStats[0]);
+    } else{
+        res.sendStatus(404);
+    }
+    res.sendStatus(200);
+}); 
+
+/// PUT ///
+
+app.put("/api/v1/youthUnemploymentStats/:country/:year",(req,res)=>{
+    var country = req.params.country;
+    var year = req.params.year;
+    var updateYouthUnemploymentStats = req.body;
+    var found = false;
+    var updateYouthUnemploymentStats = youthUnemploymentStats.map((c)=>{
+        if(c.country == country && c.year == year){
+            found = true;
+            return updateYouthUnemploymentStats;
+        }else{
+            return c; 
+        }
+    })
+    if(found == false){
+        res.sendStatus(404);
+    }else{
+        youthUnemploymentStats = updateYouthUnemploymentStats;
+    }
+    res.sendStatus(200);
+});
+
+//POST /api/v1/youthUnemploymentStats/country/year (ERROR METODO NO PERMITIDO)// 
+
+app.post("/api/v1/youthUnemploymentStats/:country/:year", (req, res) => {
+        res.sendStatus(405);
+});
+
+//POST api/v1/youthUnemploymentStats/country (ERROR METODO NO PERMITIDO)//
+
+app.post("/api/v1/youthUnemploymentStats/:country", (req, res) => {
+        res.sendStatus(405);
+});
+
+// PUT /api/v1/youthUnemploymentStats (ERROR METODO NO PERMITIDO)//
+
+app.put("/api/v1/youthUnemploymentStats", (req, res) => {
+        res.sendStatus(405);
+});
+
+/// DELETE  concreto///
+
+app.delete("/api/v1/youthUnemploymentStats/:country/:year",(req,res)=>{
+    var country = req.params.country;
+    var year = req.params.year;
+    var found = false;
+    var updateYouthUnemploymentStats = youthUnemploymentStats.filter((c)=>{
+        if(c.country != country && c.year != year){
+            found = true;
+        }
+        return c.country != country && c.year != year;
+    });
+    if(found == false){
+        res.sendStatus(404);
+    }else{
+        youthUnemploymentStats = updateYouthUnemploymentStats;
+        res.sendStatus(200); 
+    }
+    if(found == false){
+        res.sendStatus(404);
+    }else{
+        youthUnemploymentStats = updateYouthUnemploymentStats;
+    }
+    res.sendStatus(200);
+});
+
 app.listen(port, () => {
    console.log("PORT " + port + " OK");
 });
