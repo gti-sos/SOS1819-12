@@ -230,9 +230,26 @@ app.delete("/api/v1/pollution-stats/:country/:year", (req, res) => {
 app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
         var country = req.params.country;
         var year = req.params.year;
-        var updatedStat = req.body;
-        pollutionStats.find( {"country": country, "year": year} ).toArray( (err, pollutionStats_a) => {
-                if(err) console.log("FATAL ERROR: ", err);
+        var updatedStat = pollutionStats.find( {"country": country, "year": year});
+        
+            
+                
+                if(updatedStat.totalSize == undefined){
+                    res.sendStatus(400);
+                } else if(req.body.country == country){
+                updatedStat.update({"country": country, "year": year},req.body);
+                   res.sendStatus(200); 
+                }else
+                   res.sendStatus(400);
+                    
+                });
+            
+            
+            
+            
+            
+            
+                /*if(err) console.log("FATAL ERROR: ", err);
                 if(pollutionStats_a.length > 0){
                     pollutionStats.update( {"country": country, "year": year}, updatedStat );
                     console.log("Request accepted, updating resource of database.");
@@ -240,11 +257,11 @@ app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
                 } else {
                     console.log("FATAL ERROR : Resource not found in database.");
                     res.sendStatus(400);
-                }
-            }
-        );
-    }
-);
+                }*/
+            
+        
+    
+
 
 //POST /api/v1/pollutionStats/country/year (ERROR METODO NO PERMITIDO)
 app.post("/api/v1/pollution-stats/:country/:year", (req, res) => {
