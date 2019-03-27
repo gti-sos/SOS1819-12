@@ -241,7 +241,7 @@ app.delete("/api/v1/pollution-stats/:country/:year", (req, res) => {
 );
 
 /// PUT ///
-app.put("/api/v1/biofuels-production/:country/:year", (req, res) => {
+app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
 
     var year = req.params.year;
     var country = req.params.country;
