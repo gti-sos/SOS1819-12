@@ -413,8 +413,11 @@ app.post("/api/v1/life-expectancy-stats/:country/:year", (req, res) => {
 app.put("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
     var country = req.params.country;
     var year = req.params.year;
+    console.log("country %s and year %s",country,year)
+        console.log("req.body.country %s and req.body.year %s",req.body.country,req.body.year)
     var updateStat = life_expectancy_stats.find({"country": country, "year": year});
-    if(updateStat.totalSize==undefined){
+    console.log(updateStat)
+    if(updateStat.size==undefined){
         res.sendStatus(400);
     } else if(req.body.country==country && req.body.year==year){
         updateStat.update({"country": country, "year": year}, req.body);
