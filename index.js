@@ -430,13 +430,13 @@ app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
 });
 
 // GET /api/v1/life-expectancy-stats/docs //
-app.get("/api/v1/life-expectancy-stats/docs", (req,res) => {
-    res.writeHead(301, {Location: 'https://documenter.getpostman.com/view/6998737/S17tS8JC'});
-    res.end();
-});
+//app.get("/api/v1/life-expectancy-stats/docs", (req,res) => {
+//    res.writeHead(301, {Location: 'https://documenter.getpostman.com/view/6998737/S17tS8JC'});
+//    res.end();
+//});
 const life_expectancy_stats_URL = "https://documenter.getpostman.com/view/6998737/S17tS8JC";
 app.get("/api/v1/life-expectancy-stats/docs", (req, res) => {
-    res.sendStatus(301)
+    //res.sendStatus(301)
     res.redirect(life_expectancy_stats_URL);
 });
 
