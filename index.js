@@ -243,8 +243,12 @@ app.delete("/api/v1/pollution-stats/:country/:year", (req, res) => {
 /// PUT ///
 app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
 
+    
+    var country = req.params.country
     var year = req.params.year;
-    var country = req.params.country;
+    var pollution_tco2 = req.params.pollution_tco2
+    var pollution_kg1000 = req.params.pollution_kg1000
+    var pollution_perca = req.params.pollution_perca
     var upt = req.body;
 
     if (!upt.country || !upt.year || !upt.pollution_tco2 || !upt.pollution_kg1000 || !upt.pollution_perca ) {
