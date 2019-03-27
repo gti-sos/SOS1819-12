@@ -251,6 +251,7 @@ app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
     var i = 0;
     var updatedpi = [];
     var aut = true;
+    console.log(req.params);
     
     pollutionStats({}).toArray((error,pollutionStats_a)=>{
             for(i=0;i<pollutionStats_a.length;i++)
@@ -288,7 +289,7 @@ app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
 });
 
 
-//POST /api/v1/pollutionStats/country/year (ERROR METODO NO PERMITIDO)
+//POST /api/v1/pollution-stats/country/year (ERROR METODO NO PERMITIDO)
 app.post("/api/v1/pollution-stats/:country/:year", (req, res) => {
     console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
