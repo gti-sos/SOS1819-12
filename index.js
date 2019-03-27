@@ -25,6 +25,20 @@ clientA.connect(err => {
   //client.close();
 });
 
+const MongoClientC = require("mongodb").MongoClient;
+const uriC = "mongodb+srv://andfergom:SE120US784@sos-zgrhq.mongodb.net/test?retryWrites=true";
+const clientC= new MongoClientC(uriC, { useNewUrlParser: true });
+
+
+var youthUnemploymentStats;
+
+clientC.connect(err => {
+  youthUnemploymentStats = clientA.db("sos").collection("countries");
+  // perform actions on the collection object
+  console.log("Conneted");
+  //client.close();
+});
+
 var app = express();
 
 app.use("/", express.static(__dirname + "/public"));
