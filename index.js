@@ -239,7 +239,7 @@ app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
                     res.sendStatus(200);
                 } else {
                     console.log("FATAL ERROR : Resource not found in database.");
-                    res.sendStatus(404);
+                    res.sendStatus(400);
                 }
             }
         );
