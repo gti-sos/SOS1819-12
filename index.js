@@ -641,25 +641,18 @@ app.get("/api/v1/youthUnemploymentStats/:country/:year",(req,res)=>{
 
 /// PUT ///
 
-app.put("/api/v1/youthUnemploymentStats/:country/:year",(req,res)=>{
+app.put("/api/v1/youthUnemploymentStats/:country/:year", (req,res) => {
     var country = req.params.country;
     var year = req.params.year;
-    var updateYouthUnemploymentStats = req.body;
-    var found = false;
-    var updateYouthUnemploymentStats = youthUnemploymentStats.map((c)=>{
-        if(c.country == country && c.year == year){
-            found = true;
-            return updateYouthUnemploymentStats;
-        }else{
-            return c; 
-        }
-    })
-    if(found == false){
-        res.sendStatus(404);
-    }else{
-        youthUnemploymentStats = updateYouthUnemploymentStats;
+    var updateStat = youthUnemploymentStats.find({"country": country, "year": year});
+    if(updateStat.totalSize==undefined){
+        res.sendStatus(400);
+    } else if(req.body.country==country && req.body.year==year){
+        updateStat.update({"country": country, "year": year}, req.body);
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(400);
     }
-    res.sendStatus(200);
 });
 
 //POST /api/v1/youthUnemploymentStats/country/year (ERROR METODO NO PERMITIDO)// 
