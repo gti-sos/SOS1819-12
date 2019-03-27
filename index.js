@@ -287,12 +287,6 @@ app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
     });
 });
 
-app.put("/api/v1/gas-increases", (req, res) => {
-    res.sendStatus(405);
-});
-        
-    
-
 
 //POST /api/v1/pollutionStats/country/year (ERROR METODO NO PERMITIDO)
 app.post("/api/v1/pollution-stats/:country/:year", (req, res) => {
