@@ -36,7 +36,7 @@ var port = process.env.PORT || 8080;
 
 //var pollutionStats = []
 //GET /api/v1/pollutionStats/loadInitialData
-app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
+app.get("/api/v1/pollution-stats/loadInitialData", (req, res) => {
     pollutionStats.find({}).toArray( (err, pollutionStats_a) => {
     if (err) console.log("FATAL ERROR !!: ", err);
     if (pollutionStats_a.length == 0) {
@@ -154,7 +154,7 @@ app.get("/api/v1/pollutionStats/loadInitialData", (req, res) => {
 });});
 
 /// GET /api/v1/pollutionStats ///
-app.get("/api/v1/pollutionStats",(req,res)=>{
+app.get("/api/v1/pollution-stats",(req,res)=>{
     pollutionStats.find({}).toArray((err,pollutionStatsArray) =>{
      if(err)
         console.log("Error: " +err)
@@ -162,8 +162,8 @@ app.get("/api/v1/pollutionStats",(req,res)=>{
     });
 });
 
-/// POST /api/v1/pollutionStats ///
-app.post("/api/v1/pollutionStats", (req, res) => {
+/// POST /api/v1/pollution-stats ///
+app.post("/api/v1/pollution-stats", (req, res) => {
         var newPs = req.body;
         pollutionStats.find(newPs).toArray( (err, pollutionStats_a) => {
                 if(err) console.log("FATAL ERROR !!: ", err);
@@ -198,8 +198,8 @@ app.get("/api/v1/pollutionStats/:country/:year", (req, res) => {
     }
 );
 
-/// DELETE /api/v1/pollutionStats ////
-//DELETE /api/v1/pollutionStats (BORRA TODOS LOS RECURSOS)
+/// DELETE /api/v1/pollution-stats ////
+//DELETE /api/v1/pollution-stats (BORRA TODOS LOS RECURSOS)
 app.delete("/api/v1/pollutionStats", (req, res) => {
         pollutionStats.remove({});
         console.log("Request accepted, removing all resources of database.");
@@ -207,7 +207,7 @@ app.delete("/api/v1/pollutionStats", (req, res) => {
     }
 );
 /// DELETE /api/v1/pollutionStats/:country/:year ///
-app.delete("/api/v1/pollutionStats/:country/:year", (req, res) => {
+app.delete("/api/v1/pollution-stats/:country/:year", (req, res) => {
         var country = req.params.country;
         var year = req.params.year;
         var found = false;
@@ -227,7 +227,7 @@ app.delete("/api/v1/pollutionStats/:country/:year", (req, res) => {
 );
 
 /// PUT ///
-app.put("/api/v1/pollutionStats/:country/:year", (req, res) => {
+app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
         var country = req.params.country;
         var year = req.params.year;
         var updatedStat = req.body;
@@ -247,24 +247,24 @@ app.put("/api/v1/pollutionStats/:country/:year", (req, res) => {
 );
 
 //POST /api/v1/pollutionStats/country/year (ERROR METODO NO PERMITIDO)
-app.post("/api/v1/pollutionStats/:country/:year", (req, res) => {
+app.post("/api/v1/pollution-stats/:country/:year", (req, res) => {
     console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
 });
 
 //POST api/v1/pollutionStats/country (ERROR METODO NO PERMITIDO)
-app.post("/api/v1/pollutionStats/:country", (req, res) => {
+app.post("/api/v1/pollution-stats/:country", (req, res) => {
     console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
 });
-// PUT /api/v1/pollutionStats (ERROR METODO NO PERMITIDO)
-app.put("/api/v1/pollutionStats", (req, res) => {
+// PUT /api/v1/pollution-stats (ERROR METODO NO PERMITIDO)
+app.put("/api/v1/pollution-stats", (req, res) => {
     console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
 });
 
 /// DELETE  concreto///
-app.delete("/api/v1/pollutionStats/:country/:year",(req,res)=>{
+app.delete("/api/v1/pollution-stats/:country/:year",(req,res)=>{
     var country = req.params.country;
     var year = req.params.year;
     var found = false;
@@ -289,13 +289,13 @@ app.delete("/api/v1/pollutionStats/:country/:year",(req,res)=>{
 });
 
 /// GET /api/v1/pollutionStats/docs ///
-app.get("/api/v1/pollutionStats/docs",(req,res)=>{
+app.get("/api/v1/pollution-stats/docs",(req,res)=>{
     res.writeHead(301, {Location: 'https://documenter.getpostman.com/view/6902825/S17ozAgF'});
     res.end();
 });
 
 const ps = "https://documenter.getpostman.com/view/6902825/S17ozAgF";
-app.get("/api/v1/pollutionStats/docs", (req, res) => {
+app.get("/api/v1/pollution-stats/docs", (req, res) => {
     res.sendStatus(301)
     res.redirect(ps);
 });
