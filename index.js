@@ -322,6 +322,12 @@ app.get("/api/v1/pollution-stats/docs", (req, res) => {
 
 //                                              API REST life_expectancy_stats
 
+const life_expectancy_stats_URL = "https://documenter.getpostman.com/view/6998737/S17tS8JC";
+app.get("/api/v1/life-expectancy-stats/docs", (req, res) => {
+    //res.sendStatus(301)
+    res.redirect(life_expectancy_stats_URL);
+});
+
 //GET /api/v1/life-expectancy-stats/loadInitialData
 app.get("/api/v1/life-expectancy-stats/loadInitialData", (req, res) => {
     life_expectancy_stats.find({}).toArray((err, life_expectancy_stats_array)=>{
@@ -373,7 +379,7 @@ app.get("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
         if(err)
             console.log("Error: "+err);
         if(life_expectancy_stats_array.length>0){
-            res.send(life_expectancy_stats_array);
+            res.send(life_expectancy_stats_array[0]);
         }else{
             res.sendStatus(404);
         }
@@ -407,17 +413,15 @@ app.post("/api/v1/life-expectancy-stats/:country/:year", (req, res) => {
 app.put("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
     var country = req.params.country;
     var year = req.params.year;
-    var updateStat = req.body;
-    life_expectancy_stats.find({"country": country, "year": year}).toArray((err, life_expectancy_stats_array)=>{
-        if(err)
-            console.log("Error: "+err);
-        if(life_expectancy_stats_array.length>0){
-            life_expectancy_stats.update({"country": country, "year": year}, updateStat);
-            res.sendStatus(200);
-        }else{
-            res.sendStatus(404);
-        }
-    });
+    var updateStat = life_expectancy_stats.find({"country": country, "year": year});
+    if(updateStat.totalSize==undefined){
+        res.sendStatus(400);
+    } else if(req.body.country==country && req.body.year==year){
+        updateStat.update({"country": country, "year": year}, req.body);
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(400);
+    }
 });
 // PUT /api/v1/life-expectancy-stats (ERROR METODO NO PERMITIDO)
 app.put("/api/v1/life-expectancy-stats", (req, res) => {
@@ -451,11 +455,7 @@ app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
 //    res.writeHead(301, {Location: 'https://documenter.getpostman.com/view/6998737/S17tS8JC'});
 //    res.end();
 //});
-const life_expectancy_stats_URL = "https://documenter.getpostman.com/view/6998737/S17tS8JC";
-app.get("/api/v1/life-expectancy-stats/docs", (req, res) => {
-    //res.sendStatus(301)
-    res.redirect(life_expectancy_stats_URL);
-});
+
 
 //////// ANDRES FERNANDEZ GOMEZ//////////
 
