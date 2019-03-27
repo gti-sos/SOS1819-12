@@ -181,7 +181,7 @@ app.post("/api/v1/pollution-stats", (req, res) => {
 );
 
 // GET /api/v1/pollutionStats/:country/:year
-app.get("/api/v1/pollutionStats/:country/:year", (req, res) => {
+app.get("/api/v1/pollution-stats/:country/:year", (req, res) => {
         var country = req.params.country;
         var year = req.params.year;
         pollutionStats.find( {"country": country, "year": year} ).toArray( (err, pollutionStats_a) => {
@@ -200,7 +200,7 @@ app.get("/api/v1/pollutionStats/:country/:year", (req, res) => {
 
 /// DELETE /api/v1/pollution-stats ////
 //DELETE /api/v1/pollution-stats (BORRA TODOS LOS RECURSOS)
-app.delete("/api/v1/pollutionStats", (req, res) => {
+app.delete("/api/v1/pollution-stats", (req, res) => {
         pollutionStats.remove({});
         console.log("Request accepted, removing all resources of database.");
         res.sendStatus(200);
