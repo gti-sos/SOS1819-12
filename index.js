@@ -247,7 +247,7 @@ app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
     var country = req.params.country;
     var upt = req.body;
 
-    if (!upt.country || !upt.year || !upt.ethanolFuel || !upt.dryNaturalGas || !upt.biodiesel ) {
+    if (!upt.country || !upt.year || !upt.pollution_tco2 || !upt.pollution_kg1000 || !upt.pollution_perca ) {
 
             res.sendStatus(400);
             
