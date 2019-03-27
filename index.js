@@ -188,7 +188,7 @@ app.get("/api/v1/pollution-stats/:country/:year", (req, res) => {
                 if(err) console.log("FATAL ERROR !!: ", err);
                 if(pollutionStats_a.length  > 0){
                     console.log("Request accepted, sending resource from database.");
-                    res.send(pollutionStats_a);
+                    res.send(pollutionStats_a[0]);
                 } else {
                     console.log("Request accepted, removing resource of database.");
                     res.sendStatus(404);
