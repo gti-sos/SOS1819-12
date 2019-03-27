@@ -227,7 +227,49 @@ app.delete("/api/v1/pollution-stats/:country/:year", (req, res) => {
 );
 
 /// PUT ///
-app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
+app.put("/api/v1/biofuels-production/:country/:year", (req, res) => {
+
+    var year = req.params.year;
+    var country = req.params.country;
+    var upt = req.body;
+
+    if (!upt.country || !upt.year || !upt.ethanolFuel || !upt.dryNaturalGas || !upt.biodiesel ) {
+
+            res.sendStatus(400);
+            
+    }else{
+      
+
+    upt.find({ "country": country, "year": year }).toArray((err, upt_a) => {
+
+        if (upt_a.length == 0) {
+            console.log("No existe el recurso del pais: " + country);
+
+            res.sendStatus(404);
+        }
+        else {
+
+
+            if (upt.length == 0) {
+                res.sendStatus(400);
+
+            }
+            else {
+                upt.replaceOne({ "country": country, "year": year }, upt);
+                res.sendStatus(200);
+            }
+
+
+        }});}
+
+});
+
+
+
+
+
+
+/*app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
         var country = req.params.country;
         var year = req.params.year;
         var updatedStat = pollutionStats.find( {"country": country, "year": year});
@@ -242,7 +284,7 @@ app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
                 }else
                    res.sendStatus(400);
                     
-                });
+                });*/
             
             
             
