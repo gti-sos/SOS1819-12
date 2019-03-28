@@ -469,19 +469,17 @@ app.post("/api/v1/life-expectancy-stats/:country/:year", (req, res) => {
 app.put("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
     var country = req.params.country;
     var year = req.params.year;
-    console.log("country %s and year %s",country,year)
-        console.log("req.body.country %s and req.body.year %s",req.body.country,req.body.year)
-    var updateStat = life_expectancy_stats.find({"country": country, "year": year});
-    console.log(updateStat)
-    if(updateStat.size==undefined){
-        res.sendStatus(400);
-    } else if(req.body.country==country && req.body.year==year){
-        updateStat.update({"country": country, "year": year}, req.body);
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(400);
-    }
-});
+    var updateStats = life_expectancy_stats.find({"country": country, "year": year}.toArray((err, life_expectancy_stats_array) => {
+        if(req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined){
+            res.sendStatus(400);
+        } else if(req.body.country==country && req.body.year==year){
+            updateStats.update({"country": country, "year": year}, req.body);
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(404);
+        }
+    })
+);
 // PUT /api/v1/life-expectancy-stats (ERROR METODO NO PERMITIDO)
 app.put("/api/v1/life-expectancy-stats", (req, res) => {
         res.sendStatus(405);
@@ -508,13 +506,6 @@ app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
         }
     });
 });
-
-// GET /api/v1/life-expectancy-stats/docs //
-//app.get("/api/v1/life-expectancy-stats/docs", (req,res) => {
-//    res.writeHead(301, {Location: 'https://documenter.getpostman.com/view/6998737/S17tS8JC'});
-//    res.end();
-//});
-
 
 //////// ANDRES FERNANDEZ GOMEZ//////////
 
