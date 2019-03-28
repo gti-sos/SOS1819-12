@@ -640,7 +640,7 @@ app.get("/api/v1/youthUnemploymentStats/:country", (req,res) => {
 app.delete("/api/v1/youthUnemploymentStats",(req,res) =>{
     youthUnemploymentStats = []
     res.sendStatus(200);
-})
+});
 
 
 /// GET /api/v1/youthUnemploymentStats/:country/:year ///
@@ -717,8 +717,8 @@ app.delete("/api/v1/youthUnemploymentStats/:country/:year",(req,res)=>{
         youthUnemploymentStats = updateYouthUnemploymentStats;
     }
     res.sendStatus(200);
+    });
 });
-
 app.listen(port, () => {
    console.log("PORT " + port + " OK");
 });
