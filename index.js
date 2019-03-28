@@ -243,83 +243,53 @@ app.delete("/api/v1/pollution-stats/:country/:year", (req, res) => {
 /// PUT ///
 app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
 
-    var year = req.params.year;
     var country = req.params.country;
-    var upt = req.body;
-
-    if (!upt.country || !upt.year || !upt.pollution_tco2 || !upt.pollution_kg1000 || !upt.pollution_perca ) {
-
-            res.sendStatus(400);
-            
+    var year = req.params.year;
+    var updatedData = req.body;
+    var found = false;
+    var coincide = true;
+    var i = 0;
+    var updatedpi = [];
+    var aut = true;
+    console.log(req.params);
+    
+    pollutionStats({}).toArray((error,pollutionStats_a)=>{
+            for(i=0;i<pollutionStats_a.length;i++)
+                if (pollutionStats_a[i].year==year && pollutionStats_a[i].country==country){
+                    if (pollutionStats_a[i].year==updatedData.year && pollutionStats_a[i].province==updatedData.country){
+                        if(updatedData._id != null) {
+                            if(pollutionStats_a[i]._id != updatedData._id)
+                                aut = false;
+                                found = true;
+                        } else {
+                        found = true;
+                        updatedpi.push(updatedData);
+                        }    
+                    }else{
+                        coincide = false;
+                    }
+                } else {
+                    updatedpi.push(pollutionStats_a[i]);
+                }
+        
+     if (coincide==false){
+        res.sendStatus(400);
+    }else if (found==false){
+        res.sendStatus(404);
+    } else if (aut == false){
+        res.sendStatus(401);
     }else{
-      
-
-    upt.find({ "country": country, "year": year }).toArray((err, upt_a) => {
-
-        if (upt_a.length == 0) {
-            console.log("No existe el recurso del pais: " + country);
-
-            res.sendStatus(404);
-        }
-        else {
-
-
-            if (upt.length == 0) {
-                res.sendStatus(400);
-
-            }
-            else {
-                upt.replaceOne({ "country": country, "year": year }, upt);
-                res.sendStatus(200);
-            }
-
-
-        }});}
-
+        pollutionStats.remove();
+        updatedpi.filter((d) =>{
+                pollutionStats.insert(d);
+            });
+            res.sendStatus(200);
+    }
+    });
 });
 
 
-
-
-
-
-/*app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
-        var country = req.params.country;
-        var year = req.params.year;
-        var updatedStat = pollutionStats.find( {"country": country, "year": year});
-        
-            
-                
-                if(updatedStat.totalSize == undefined){
-                    res.sendStatus(400);
-                } else if(req.body.country == country){
-                updatedStat.update({"country": country, "year": year},req.body);
-                   res.sendStatus(200); 
-                }else
-                   res.sendStatus(400);
-                    
-                });*/
-            
-            
-            
-            
-            
-            
-                /*if(err) console.log("FATAL ERROR: ", err);
-                if(pollutionStats_a.length > 0){
-                    pollutionStats.update( {"country": country, "year": year}, updatedStat );
-                    console.log("Request accepted, updating resource of database.");
-                    res.sendStatus(200);
-                } else {
-                    console.log("FATAL ERROR : Resource not found in database.");
-                    res.sendStatus(400);
-                }*/
-            
-        
-    
-
-
-//POST /api/v1/pollutionStats/country/year (ERROR METODO NO PERMITIDO)
+//POST /api/v1/pollution-stats/country/year (ERROR METODO NO PERMITIDO)
 app.post("/api/v1/pollution-stats/:country/:year", (req, res) => {
     console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
