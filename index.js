@@ -33,7 +33,7 @@ const clientC= new MongoClientC(uriC, { useNewUrlParser: true });
 var youthUnemploymentStats;
 
 clientC.connect(err => {
-  youthUnemploymentStats = clientA.db("sos").collection("countries");
+  youthUnemploymentStats = clientC.db("sos").collection("countries");
   // perform actions on the collection object
   console.log("Conneted");
   //client.close();
@@ -473,12 +473,18 @@ app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
 
 //////// ANDRES FERNANDEZ GOMEZ//////////
 
-var youthUnemploymentStats = []
+const youth_unemployment_stats_URL = "https://documenter.getpostman.com/view/7067069/S17usSLN";
+app.get("/api/v1/youth-unemployment-stats/docs", (req, res) => {
+    //res.sendStatus(301)
+    res.redirect(youth_unemployment_stats_URL);
+});
 
 //GET /api/v1/youthUnemploymentStats/loadInitialData
-app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
-    
-    youthUnemploymentStats.push({
+app.get("/api/v1/youth-unemployment-stats/loadInitialData", (req, res) => {
+    youthUnemploymentStats.find({}).toArray( (err, youthUnemploymentStats_a) => {
+    if (err) console.log("FATAL ERROR !!: ", err);
+    if (youthUnemploymentStats_a.length == 0) {
+   youthUnemploymentStats.insert({
     country: "spain",
     year: "2017",
     youth_unemployment: "36.8",
@@ -486,7 +492,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "35.7"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "spain",
     year: "2016",
     youth_unemployment: "42.1",
@@ -494,7 +500,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "41.7"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "spain",
     year: "2015",
     youth_unemployment: "45.8",
@@ -502,7 +508,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "46.7"
     });
 
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "alemania",
     year: "2017",
     youth_unemployment: "6.5",
@@ -510,7 +516,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "5.6"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "alemania",
     year: "2016",
     youth_unemployment: "6.7",
@@ -518,7 +524,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "5.8"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "alemania",
     year: "2015",
     youth_unemployment: "7.1",
@@ -526,7 +532,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "6.4"
     });
     
-   youthUnemploymentStats.push({
+   youthUnemploymentStats.insert({
     country: "reino unido",
     year: "2017",
     youth_unemployment: "12.5",
@@ -534,7 +540,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "11.4"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "reino unido",
     year: "2016",
     youth_unemployment: "12.6",
@@ -542,7 +548,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "10.1"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "reino unido",
     year: "2015",
     youth_unemployment: "13.6",
@@ -550,7 +556,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "12.3"
     });
 
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "francia",
     year: "2017",
     youth_unemployment: "21.6",
@@ -558,7 +564,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "20.8"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "francia",
     year: "2016",
     youth_unemployment: "23.3",
@@ -566,7 +572,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "22.1"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "francia",
     year: "2015",
     youth_unemployment: "24.5",
@@ -574,7 +580,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "22.9"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "italia",
     year: "2017",
     youth_unemployment: "32.4",
@@ -582,7 +588,7 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "36.2"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "italia",
     year: "2016",
     youth_unemployment: "38.2",
@@ -590,110 +596,137 @@ app.get("/api/v1/youthUnemploymentStats/loadInitialData", (req, res) => {
     youth_unemployment_woman: "40.6"
     });
     
-    youthUnemploymentStats.push({
+    youthUnemploymentStats.insert({
     country: "italia",
     year: "2015",
     youth_unemployment: "38.3",
     youth_unemployment_man: "37.9",
     youth_unemployment_woman: "39.5"
     });
-
-    res.sendStatus(201);
-});
+        console.log("Request accepted, creating new resources in database.");
+        res.sendStatus(201);   
+    }
+    else{
+    console.log("FATAL ERROR !!: Data Base is not empty.");
+    res.sendStatus(409);}
+});});
 
 /// GET /api/v1/youthUnemploymentStats ///
-
-app.get("/api/v1/youthUnemploymentStats",(req,res)=>{
-    res.send(youthUnemploymentStats);
-});
-
-/// POST /api/v1/youthUnemploymentStats ///
-
-app.post("/api/v1/youthUnemploymentStats", (req,res)=>{
-    var newYouthUnemploymentStats = req.body;
-    youthUnemploymentStats.push(newYouthUnemploymentStats)
-    res.sendStatus(201);
-});
-
-// GET /api/v1/youthUnemploymentStats/country //
-
-app.get("/api/v1/youthUnemploymentStats/:country", (req,res) => {
-    var country = req.params.country;
-    var filteredStat = youthUnemploymentStats.filter((c) => {
-       return c.country == country; 
+app.get("/api/v1/youth-unemployment-stats",(req,res)=>{
+    youthUnemploymentStats.find({}).toArray((err,youthUnemploymentStatsArray) =>{
+     if(err)
+        console.log("Error: " +err)
+     res.send(youthUnemploymentStatsArray);   
     });
-    if(filteredStat.length >= 1){
-        res.send(filteredStat);
-    }else{
-        res.sendStatus(404);
-    }
 });
 
-/// DELETE /api/v1/youthUnemploymentStats ////
-
-app.delete("/api/v1/youthUnemploymentStats",(req,res) =>{
-    youthUnemploymentStats = []
-    res.sendStatus(200);
-})
-
-
-/// GET /api/v1/youthUnemploymentStats/:country/:year ///
-
-app.get("/api/v1/youthUnemploymentStats/:country/:year",(req,res)=>{
-    var country = req.params.country;
-    var year = req.params.year;
-    var filteredYouthUnemploymentStats= youthUnemploymentStats.filter((c)=>{
-        return c.country == country && c.year == year ;
-    })
-    if(filteredYouthUnemploymentStats.length >=1){
-        res.send(filteredYouthUnemploymentStats[0]);
-    } else{
-        res.sendStatus(404);
+/// POST /api/v1/youth-unemployment-stats ///
+app.post("/api/v1/youth-unemployment-stats", (req, res) => {
+        var newPs = req.body;
+        youthUnemploymentStats.find(newPs).toArray( (err, youthUnemploymentStats_a) => {
+                if(err) console.log("FATAL ERROR !!: ", err);
+                if(youthUnemploymentStats_a == 0){
+                    youthUnemploymentStats.insert(newPs);
+                    console.log("Request accepted, creating new resource in database.");
+                    res.sendStatus(201);
+                } else {
+                    console.log("FATAL ERROR !!: Resource already exists in the database.");
+                    res.sendStatus(409);
+                }
+            }
+        );
     }
-    res.sendStatus(200);
-}); 
+);
+
+// GET /api/v1/youthUnemploymentStats/:country/:year
+app.get("/api/v1/youth-unemployment-stats/:country/:year", (req, res) => {
+        var country = req.params.country;
+        var year = req.params.year;
+        youthUnemploymentStats.find( {"country": country, "year": year} ).toArray( (err, youthUnemploymentStats_a) => {
+                if(err) console.log("FATAL ERROR !!: ", err);
+                if(youthUnemploymentStats_a.length  > 0){
+                    console.log("Request accepted, sending resource from database.");
+                    res.send(youthUnemploymentStats_a[0]);
+                } else {
+                    console.log("Request accepted, removing resource of database.");
+                    res.sendStatus(404);
+                }
+            }
+        );
+    }
+);
+
+//DELETE /api/v1/youth-unemployment-stats (BORRA TODOS LOS RECURSOS)
+app.delete("/api/v1/youth-unemployment-stats", (req, res) => {
+        youthUnemploymentStats.remove({});
+        console.log("Request accepted, removing all resources of database.");
+        res.sendStatus(200);
+    }
+);
+
+/// DELETE /api/v1/youthUnemploymentStats/:country/:year ///
+app.delete("/api/v1/youth-unemployment-stats/:country/:year", (req, res) => {
+        var country = req.params.country;
+        var year = req.params.year;
+        var found = false;
+        youthUnemploymentStats.find( {"country": country,"year": year} ).toArray( (err, youthUnemploymentStats_a) =>{
+                if(err) console.log("FATAL ERROR: ", err);
+                if(youthUnemploymentStats_a.length > 0){
+                    youthUnemploymentStats.remove(youthUnemploymentStats_a[0]);
+                    console.log("Request accepted, removing resource of database.");
+                    res.sendStatus(200);
+                } else {
+                    console.log("FATAL ERROR !!: Resource not found in database.");
+                    res.sendStatus(404);
+                }
+            }
+        );
+    }
+);
 
 /// PUT ///
+app.put("/api/v1/youth-unemployment-stats/:country/:year", (req, res) => {
+        var country = req.params.country;
+        var year = req.params.year;
+        var updatedYouth = youthUnemploymentStats.find( {"country": country, "year": year});
+        
+            
+                
+                if(updatedYouth.totalSize == undefined){
+                    res.sendStatus(400);
+                } else if(req.body.country == country){
+                updatedYouth.update({"country": country, "year": year},req.body);
+                   res.sendStatus(200); 
+                }else
+                   res.sendStatus(400);
+                    
+                });
+            
 
-app.put("/api/v1/youthUnemploymentStats/:country/:year", (req,res) => {
-    var country = req.params.country;
-    var year = req.params.year;
-    var updateStat = youthUnemploymentStats.find({"country": country, "year": year});
-    if(updateStat.totalSize==undefined){
-        res.sendStatus(400);
-    } else if(req.body.country==country && req.body.year==year){
-        updateStat.update({"country": country, "year": year}, req.body);
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(400);
-    }
-});
 
-//POST /api/v1/youthUnemploymentStats/country/year (ERROR METODO NO PERMITIDO)// 
-
-app.post("/api/v1/youthUnemploymentStats/:country/:year", (req, res) => {
+//POST /api/v1/youthUnemploymentStats/country/year (ERROR METODO NO PERMITIDO)
+app.post("/api/v1/youth-unemployment-stats/:country/:year", (req, res) => {
+    console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
 });
 
-//POST api/v1/youthUnemploymentStats/country (ERROR METODO NO PERMITIDO)//
-
-app.post("/api/v1/youthUnemploymentStats/:country", (req, res) => {
+//POST api/v1/youthUnemploymentStats/country (ERROR METODO NO PERMITIDO)
+app.post("/api/v1/youth-unemployment-stats/:country", (req, res) => {
+    console.log("FATAL ERROR !!: Method not Allowed.");
+        res.sendStatus(405);
+});
+// PUT /api/v1/youth-unemployment-stats (ERROR METODO NO PERMITIDO)
+app.put("/api/v1/youth-unemployment-stats", (req, res) => {
+    console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
 });
 
-// PUT /api/v1/youthUnemploymentStats (ERROR METODO NO PERMITIDO)//
-
-app.put("/api/v1/youthUnemploymentStats", (req, res) => {
-        res.sendStatus(405);
-});
-
-/// DELETE  concreto///
-
-app.delete("/api/v1/youthUnemploymentStats/:country/:year",(req,res)=>{
+/*/// DELETE  concreto///
+app.delete("/api/v1/youth-unemployment-stats/:country/:year",(req,res)=>{
     var country = req.params.country;
     var year = req.params.year;
     var found = false;
-    var updateYouthUnemploymentStats = youthUnemploymentStats.filter((c)=>{
+    var updateUnemployment = youthUnemploymentStats.filter((c)=>{
         if(c.country != country && c.year != year){
             found = true;
         }
@@ -702,16 +735,19 @@ app.delete("/api/v1/youthUnemploymentStats/:country/:year",(req,res)=>{
     if(found == false){
         res.sendStatus(404);
     }else{
-        youthUnemploymentStats = updateYouthUnemploymentStats;
+        youthUnemploymentStats = updateUnemployment;
         res.sendStatus(200); 
     }
     if(found == false){
         res.sendStatus(404);
     }else{
-        youthUnemploymentStats = updateYouthUnemploymentStats;
+        youthUnemploymentStats = updateUnemployment;
     }
     res.sendStatus(200);
 });
+*/
+
+
 
 app.listen(port, () => {
    console.log("PORT " + port + " OK");
