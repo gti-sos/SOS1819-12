@@ -25,19 +25,19 @@ clientA.connect(err => {
   //client.close();
 });
 
-/*const MongoClientC = require("mongodb").MongoClient;
-const uriC = "mongodb+srv://andfergom:SE120US784@sos-zgrhq.mongodb.net/test?retryWrites=true";
+const MongoClientC = require("mongodb").MongoClient;
+const uriC = "mongodb+srv://andfergom:SE120US784@sos-zgrhq.mongodb.net/sos?retryWrites=true";
 const clientC= new MongoClientC(uriC, { useNewUrlParser: true });
 
 
 var youthUnemploymentStats;
 
 clientC.connect(err => {
-  youthUnemploymentStats = clientC.db("sos").collection("countries");
+  youthUnemploymentStats = clientC.db("sos1819").collection("countries");
   // perform actions on the collection object
   console.log("Conneted");
   //client.close();
-});*/
+});
 
 var app = express();
 
