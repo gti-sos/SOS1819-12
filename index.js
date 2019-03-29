@@ -626,32 +626,7 @@ app.get("/api/v1/youth-unemployment-stats",(req,res)=>{
     });
 });
 
-<<<<<<< HEAD
-/// POST /api/v1/youth-unemployment-stats ///
-app.post("/api/v1/youth-unemployment-stats", (req, res) => {
-        var newPs = req.body;
-        youthUnemploymentStats.find(newPs).toArray( (err, youthUnemploymentStats_a) => {
-                if(err) console.log("FATAL ERROR !!: ", err);
-                if(youthUnemploymentStats_a == 0){
-                    youthUnemploymentStats.insert(newPs);
-                    console.log("Request accepted, creating new resource in database.");
-                    res.sendStatus(201);
-                } else {
-                    console.log("FATAL ERROR !!: Resource already exists in the database.");
-                    res.sendStatus(409);
-                }
-            }
-        );
-    }
-);
-=======
-/// DELETE /api/v1/youthUnemploymentStats ////
 
-app.delete("/api/v1/youthUnemploymentStats",(req,res) =>{
-    youthUnemploymentStats = []
-    res.sendStatus(200);
-});
->>>>>>> 1b272fec87ea17827430f6207dd20c9de25226eb
 
 // GET /api/v1/youthUnemploymentStats/:country/:year
 app.get("/api/v1/youth-unemployment-stats/:country/:year", (req, res) => {
@@ -761,13 +736,12 @@ app.delete("/api/v1/youth-unemployment-stats/:country/:year",(req,res)=>{
     res.sendStatus(200);
     });
 });
-<<<<<<< HEAD
 */
 
 
 
-=======
->>>>>>> 1b272fec87ea17827430f6207dd20c9de25226eb
 app.listen(port, () => {
    console.log("PORT " + port + " OK");
+});
+    
 });
