@@ -25,7 +25,7 @@ clientA.connect(err => {
   //client.close();
 });
 
-const MongoClientC = require("mongodb").MongoClient;
+/*const MongoClientC = require("mongodb").MongoClient;
 const uriC = "mongodb+srv://andfergom:SE120US784@sos-zgrhq.mongodb.net/test?retryWrites=true";
 const clientC= new MongoClientC(uriC, { useNewUrlParser: true });
 
@@ -37,7 +37,7 @@ clientC.connect(err => {
   // perform actions on the collection object
   console.log("Conneted");
   //client.close();
-});
+});*/
 
 var app = express();
 
@@ -242,42 +242,54 @@ app.delete("/api/v1/pollution-stats/:country/:year", (req, res) => {
 
 /// PUT ///
 app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
-        var country = req.params.country;
-        var year = req.params.year;
-        var updatedStat = pollutionStats.find( {"country": country, "year": year});
-        
-            
-                
-                if(updatedStat.totalSize == undefined){
-                    res.sendStatus(400);
-                } else if(req.body.country == country){
-                updatedStat.update({"country": country, "year": year},req.body);
-                   res.sendStatus(200); 
-                }else
-                   res.sendStatus(400);
-                    
-                });
-            
-            
-            
-            
-            
-            
-                /*if(err) console.log("FATAL ERROR: ", err);
-                if(pollutionStats_a.length > 0){
-                    pollutionStats.update( {"country": country, "year": year}, updatedStat );
-                    console.log("Request accepted, updating resource of database.");
-                    res.sendStatus(200);
-                } else {
-                    console.log("FATAL ERROR : Resource not found in database.");
-                    res.sendStatus(400);
-                }*/
-            
-        
+
+    var country = req.params.country;
+    var year = req.params.year;
+    var updatedData = req.body;
+    var found = false;
+    var coincide = true;
+    var i = 0;
+    var updatedpi = [];
+    var aut = true;
+    console.log(req.params);
     
+    pollutionStats({}).toArray((error,pollutionStats_a)=>{
+            for(i=0;i<pollutionStats_a.length;i++)
+                if (pollutionStats_a[i].year==year && pollutionStats_a[i].country==country){
+                    if (pollutionStats_a[i].year==updatedData.year && pollutionStats_a[i].province==updatedData.country){
+                        if(updatedData._id != null) {
+                            if(pollutionStats_a[i]._id != updatedData._id)
+                                aut = false;
+                                found = true;
+                        } else {
+                        found = true;
+                        updatedpi.push(updatedData);
+                        }    
+                    }else{
+                        coincide = false;
+                    }
+                } else {
+                    updatedpi.push(pollutionStats_a[i]);
+                }
+        
+     if (coincide==false){
+        res.sendStatus(400);
+    }else if (found==false){
+        res.sendStatus(404);
+    } else if (aut == false){
+        res.sendStatus(401);
+    }else{
+        pollutionStats.remove();
+        updatedpi.filter((d) =>{
+                pollutionStats.insert(d);
+            });
+            res.sendStatus(200);
+    }
+    });
+});
 
 
-//POST /api/v1/pollutionStats/country/year (ERROR METODO NO PERMITIDO)
+//POST /api/v1/pollution-stats/country/year (ERROR METODO NO PERMITIDO)
 app.post("/api/v1/pollution-stats/:country/:year", (req, res) => {
     console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
@@ -427,16 +439,17 @@ app.post("/api/v1/life-expectancy-stats/:country/:year", (req, res) => {
 app.put("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
     var country = req.params.country;
     var year = req.params.year;
-    var updateStat = life_expectancy_stats.find({"country": country, "year": year});
-    if(updateStat.totalSize==undefined){
-        res.sendStatus(400);
-    } else if(req.body.country==country && req.body.year==year){
-        updateStat.update({"country": country, "year": year}, req.body);
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(400);
-    }
-});
+    var updateStats = life_expectancy_stats.find({"country": country, "year": year}.toArray((err, life_expectancy_stats_array) => {
+        if(req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined){
+            res.sendStatus(400);
+        } else if(req.body.country==country && req.body.year==year){
+            updateStats.update({"country": country, "year": year}, req.body);
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(404);
+        }
+    })
+);
 // PUT /api/v1/life-expectancy-stats (ERROR METODO NO PERMITIDO)
 app.put("/api/v1/life-expectancy-stats", (req, res) => {
         res.sendStatus(405);
@@ -463,13 +476,6 @@ app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
         }
     });
 });
-
-// GET /api/v1/life-expectancy-stats/docs //
-//app.get("/api/v1/life-expectancy-stats/docs", (req,res) => {
-//    res.writeHead(301, {Location: 'https://documenter.getpostman.com/view/6998737/S17tS8JC'});
-//    res.end();
-//});
-
 
 //////// ANDRES FERNANDEZ GOMEZ//////////
 
@@ -620,6 +626,7 @@ app.get("/api/v1/youth-unemployment-stats",(req,res)=>{
     });
 });
 
+<<<<<<< HEAD
 /// POST /api/v1/youth-unemployment-stats ///
 app.post("/api/v1/youth-unemployment-stats", (req, res) => {
         var newPs = req.body;
@@ -637,6 +644,14 @@ app.post("/api/v1/youth-unemployment-stats", (req, res) => {
         );
     }
 );
+=======
+/// DELETE /api/v1/youthUnemploymentStats ////
+
+app.delete("/api/v1/youthUnemploymentStats",(req,res) =>{
+    youthUnemploymentStats = []
+    res.sendStatus(200);
+});
+>>>>>>> 1b272fec87ea17827430f6207dd20c9de25226eb
 
 // GET /api/v1/youthUnemploymentStats/:country/:year
 app.get("/api/v1/youth-unemployment-stats/:country/:year", (req, res) => {
@@ -744,11 +759,15 @@ app.delete("/api/v1/youth-unemployment-stats/:country/:year",(req,res)=>{
         youthUnemploymentStats = updateUnemployment;
     }
     res.sendStatus(200);
+    });
 });
+<<<<<<< HEAD
 */
 
 
 
+=======
+>>>>>>> 1b272fec87ea17827430f6207dd20c9de25226eb
 app.listen(port, () => {
    console.log("PORT " + port + " OK");
 });
