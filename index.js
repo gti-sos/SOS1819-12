@@ -1,8 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-var life_expectancy_stats_api = require("./life-expextancy-stats-api");
-
 const MongoClient = require("mongodb").MongoClient;
 const uri = "mongodb+srv://test:test@Cluster0-fm5c9.mongodb.net/Cluster0?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
@@ -14,23 +12,9 @@ client.connect(err => {
   console.log("Funciona MongoDB");
 });
 
-const MongoClientA = require("mongodb").MongoClient;
-const uriA = "mongodb+srv://user:user@cluster0-gdn8y.mongodb.net/Cluster0?retryWrites=true";
-const clientA = new MongoClientA(uriA, { useNewUrlParser: true });
-
-var life_expectancy_stats;
-
-clientA.connect(err => {
-  life_expectancy_stats = clientA.db("sos1819-ajm").collection("life-expectancy-stats");
-  // perform actions on the collection object
-  console.log("Conneted");
-  //client.close();
-});
-
 const MongoClientC = require("mongodb").MongoClient;
 const uriC = "mongodb+srv://andfergom:SE120US784@sos-zgrhq.mongodb.net/sos?retryWrites=true";
 const clientC= new MongoClientC(uriC, { useNewUrlParser: true });
-
 
 var youthUnemploymentStats;
 
@@ -43,10 +27,15 @@ clientC.connect(err => {
 
 var app = express();
 
+var port = process.env.PORT || 8080;
+
+//const BASE_PATH = "/api";
+
 app.use("/", express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;
+
+//life_expectancy_stats_api(app,BASE_PATH,life_expectancy_stats);
 
 //////// ANTONIO ESCOBAR NÚÑEZ//////////
 
@@ -345,140 +334,8 @@ app.get("/api/v1/pollution-stats/docs", (req, res) => {
     res.redirect(ps);
 });
 
-///////////////////////////////////////
-///////////////////////////////////////
-
-//                                              API REST life_expectancy_stats
-
-const life_expectancy_stats_URL = "https://documenter.getpostman.com/view/6998737/S17tS8JC";
-app.get("/api/v1/life-expectancy-stats/docs", (req, res) => {
-    //res.sendStatus(301)
-    res.redirect(life_expectancy_stats_URL);
-});
-
-//GET /api/v1/life-expectancy-stats/loadInitialData
-app.get("/api/v1/life-expectancy-stats/loadInitialData", (req, res) => {
-    life_expectancy_stats.find({}).toArray((err, life_expectancy_stats_array)=>{
-        if(err)
-            console.log("Error: "+ err);
-        if(life_expectancy_stats_array.length == 0) {
-            life_expectancy_stats.insert({country: "spain", year: "2015", expectancy_woman: "85.7", expectancy_man: "80.1", expectancy: "83"});
-            life_expectancy_stats.insert({country: "germany", year: "2015", expectancy_woman: "83.1", expectancy_man: "78.3", expectancy: "80.7"});
-            life_expectancy_stats.insert({country: "uk", year: "2015", expectancy_woman: "82.8", expectancy_man: "79.2", expectancy: "81"});
-            life_expectancy_stats.insert({country: "spain", year: "2016", expectancy_woman: "86.3", expectancy_man: "80.5", expectancy: "83.5"});
-            life_expectancy_stats.insert({country: "germany", year: "2016", expectancy_woman: "83.5", expectancy_man: "78.6", expectancy: "81"});
-            life_expectancy_stats.insert({country: "uk", year: "2016", expectancy_woman: "83", expectancy_man: "79.4", expectancy: "81.2"});
-            life_expectancy_stats.insert({country: "spain", year: "2017", expectancy_woman: "86.1", expectancy_man: "80.6", expectancy: "83.4"});
-            life_expectancy_stats.insert({country: "germany", year: "2017", expectancy_woman: "83.4", expectancy_man: "78.7", expectancy: "81.1"});
-            life_expectancy_stats.insert({country: "uk", year: "2017", expectancy_woman: "83.1", expectancy_man: "79.5", expectancy: "81.3"});
-            res.sendStatus(201);
-        } else {
-            res.sendStatus(409);
-        }
-    });
-});
-
-// GET /api/v1/life-expectancy-stats
-app.get("/api/v1/life-expectancy-stats", (req,res) => {
-    life_expectancy_stats.find({}).toArray((err,statsArray)=>{
-        if(err)
-            console.log("Error: "+err);
-        res.send(statsArray);
-    });
-});
-// GET /api/v1/life-expectancy-stats/spain
-app.get("/api/v1/life-expectancy-stats/:country", (req,res) => {
-    var country = req.params.country;
-    life_expectancy_stats.find({"country": country}).toArray((err, life_expectancy_stats_array)=>{
-        if(err)
-            console.log("Error: "+err);
-        if(life_expectancy_stats_array.length>0){
-            res.send(life_expectancy_stats_array);
-        }else{
-            res.sendStatus(404);
-        }
-    });
-});
-// GET /api/v1/life-expectancy-stats/spain/2016
-app.get("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
-    var country = req.params.country;
-    var year = req.params.year;
-    life_expectancy_stats.find({"country": country, "year": year}).toArray((err, life_expectancy_stats_array)=>{
-        if(err)
-            console.log("Error: "+err);
-        if(life_expectancy_stats_array.length>0){
-            res.send(life_expectancy_stats_array[0]);
-        }else{
-            res.sendStatus(404);
-        }
-    });
-});
-
-// POST /api/v1/life-expectancy-stats
-app.post("/api/v1/life-expectancy-stats", (req,res) => {
-    var newStat = req.body;
-    life_expectancy_stats.find(newStat).toArray((err, life_expectancy_stats_array)=>{
-        if(err)
-            console.log("Error: "+err);
-        if(life_expectancy_stats_array.length==0){
-            life_expectancy_stats.insert(newStat);
-            res.sendStatus(201);
-        }else{
-            res.sendStatus(409);
-        }
-    });
-});
-//POST /api/v1/life-expectancy-stats/spain (ERROR METODO NO PERMITIDO)
-app.post("/api/v1/life-expectancy-stats/:country", (req, res) => {
-        res.sendStatus(405);
-});
-//POST /api/v1/life-expectancy-stats/spain/2017 (ERROR METODO NO PERMITIDO)
-app.post("/api/v1/life-expectancy-stats/:country/:year", (req, res) => {
-        res.sendStatus(405);
-});
-
-// PUT /api/v1/life-expectancy-stats/spain/2017
-app.put("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
-    var country = req.params.country;
-    var year = req.params.year;
-    var updateStats = life_expectancy_stats.find({"country": country, "year": year}.toArray((err, life_expectancy_stats_array) => {
-        if(req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined){
-            res.sendStatus(400);
-        } else if(req.body.country==country && req.body.year==year){
-            updateStats.update({"country": country, "year": year}, req.body);
-            res.sendStatus(200);
-        } else {
-            res.sendStatus(404);
-        }
-    })
-);
-// PUT /api/v1/life-expectancy-stats (ERROR METODO NO PERMITIDO)
-app.put("/api/v1/life-expectancy-stats", (req, res) => {
-        res.sendStatus(405);
-    }
-);
-
-// DELETE /api/v1/life-expectancy-stats
-app.delete("/api/v1/life-expectancy-stats", (req,res) => {
-    life_expectancy_stats.remove({});
-    res.sendStatus(200);
-});
-// DELETE /api/v1/life-expectancy-stats/spain/2015
-app.delete("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
-    var country = req.params.country;
-    var year = req.params.year;
-    life_expectancy_stats.find({"country": country, "year": year}).toArray((err, life_expectancy_stats_array)=>{
-        if(err)
-            console.log("Error: "+err);
-        if(life_expectancy_stats_array.length>0){
-            life_expectancy_stats.remove(life_expectancy_stats_array[0]);
-            res.sendStatus(200);
-        }else{
-            res.sendStatus(404);
-        }
-    });
-});
-
+/////////////////////////////////////////
+///////////////////////////////////
 //////// ANDRES FERNANDEZ GOMEZ//////////
 
 const youth_unemployment_stats_URL = "https://documenter.getpostman.com/view/7067069/S17usSLN";
