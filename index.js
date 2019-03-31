@@ -1,6 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
+var life_expectancy_stats_api = require("./life-expextancy-stats-api");
+
 const MongoClient = require("mongodb").MongoClient;
 const uri = "mongodb+srv://test:test@Cluster0-fm5c9.mongodb.net/Cluster0?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
