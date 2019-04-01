@@ -32,7 +32,10 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
         life_expectancy_stats.find({}).toArray((err,statsArray)=>{
             if(err)
                 console.log("Error: "+err);
-            res.send(statsArray);
+            res.send(statsArray.map((c) => {
+                delete c._id;
+                return c;
+            }));
         });
     });
     // GET /api/v1/life-expectancy-stats/spain
@@ -42,7 +45,10 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
             if(err)
                 console.log("Error: "+err);
                 if(life_expectancy_stats_array.length>0){
-                    res.send(life_expectancy_stats_array);
+                    res.send(life_expectancy_stats_array.map((c) => {
+                        delete c._id;
+                        return c;
+                    }));
                 }else{
                     res.sendStatus(404);
                 }
@@ -56,6 +62,7 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
             if(err)
                 console.log("Error: "+err);
                 if(life_expectancy_stats_array.length>0){
+                    delete life_expectancy_stats_array[0]._id;
                     res.send(life_expectancy_stats_array[0]);
                 }else{
                     res.sendStatus(404);
@@ -85,25 +92,23 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
         res.sendStatus(405);
     });
     
-    /*
     // PUT /api/v1/life-expectancy-stats/spain/2017
     app.put("/api/v1/life-expectancy-stats/:country/:year", (req,res) => {
         var country = req.params.country;
         var year = req.params.year;
-        var updateStats = life_expectancy_stats.find({"country": country, "year": year}.toArray((err, life_expectancy_stats_array) => {
+        life_expectancy_stats.find({"country": country, "year": year}).toArray((err, life_expectancy_stats_array) => {
             if(err)
                 console.log("Error: "+err);
-            if(req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined){
+            if(req.body.length!=5 || req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined){
                 res.sendStatus(400);
-            } else if(req.body.country==country && req.body.year==year){
-                updateStats.update({"country": country, "year": year}, req.body);
+            } else if(req.body.country==country && req.body.year==year && life_expectancy_stats_array.length==1){
+                life_expectancy_stats.update({"country": country, "year": year}, req.body);
                 res.sendStatus(200);
-            } else {
+            } else if(life_expectancy_stats_array.length==0){
                 res.sendStatus(404);
             }
-        })
-    );
-    */
+        });
+    });
     // PUT /api/v1/life-expectancy-stats (ERROR METODO NO PERMITIDO)
     app.put("/api/v1/life-expectancy-stats", (req, res) => {
         res.sendStatus(405);
