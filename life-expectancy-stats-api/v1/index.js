@@ -29,7 +29,10 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
     });
     // GET /api/v1/life-expectancy-stats
     app.get("/api/v1/life-expectancy-stats", (req,res) => {
-        life_expectancy_stats.find({}).toArray((err,statsArray)=>{
+        
+        const life_expectancy_stats_offset = parseInt(req.query.offset) || 0;
+        const life_expectancy_stats_limit = parseInt(req.query.limit) || 4;
+        life_expectancy_stats.find({}).skip(life_expectancy_stats_offset).limit(life_expectancy_stats_limit).toArray((err,statsArray)=>{
             if(err)
                 console.log("Error: "+err);
             res.send(statsArray.map((c) => {
@@ -40,18 +43,20 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
     });
     // GET /api/v1/life-expectancy-stats/spain
     app.get("/api/v1/life-expectancy-stats/:country", (req,res) => {
+        const life_expectancy_stats_offset = parseInt(req.query.offset) || 0;
+        const life_expectancy_stats_limit = parseInt(req.query.limit) || 4;
         var country = req.params.country;
-        life_expectancy_stats.find({"country": country}).toArray((err, life_expectancy_stats_array)=>{
+        life_expectancy_stats.find({"country": country}).skip(life_expectancy_stats_offset).limit(life_expectancy_stats_limit).toArray((err, life_expectancy_stats_array)=>{
             if(err)
                 console.log("Error: "+err);
-                if(life_expectancy_stats_array.length>0){
-                    res.send(life_expectancy_stats_array.map((c) => {
-                        delete c._id;
-                        return c;
-                    }));
-                }else{
-                    res.sendStatus(404);
-                }
+            if(life_expectancy_stats_array.length>0){
+                res.send(life_expectancy_stats_array.map((c) => {
+                    delete c._id;
+                    return c;
+                }));
+            }else{
+                res.sendStatus(404);
+            }
         });
     });
     // GET /api/v1/life-expectancy-stats/spain/2016
@@ -69,6 +74,7 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
                 }
         });
     });
+    
     // POST /api/v1/life-expectancy-stats
     app.post("/api/v1/life-expectancy-stats", (req,res) => {
         var newStat = req.body;
