@@ -40,19 +40,39 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     
     app.get(BASE_PATH+"/pollution-stats",(req,res)=>{
     
-        const pollutionStats_offset = parseInt(req.query.offset) || 0;
-        const pollutionStats_limit = parseInt(req.query.limit) || 4;
-    
-        pollutionStats.find({}).skip(pollutionStats_offset).limit(pollutionStats_limit).toArray((err,pollutionStatsArray) =>{
+        var pollutionStats_offset = parseInt(req.query.offset) || 0;
+        var pollutionStats_limit = parseInt(req.query.limit) || 4;
+        
+        var interval = 0.5;
+        var search = {};
+        
+        if(req.query.country){search["country"] = req.query.country;}
+        if(req.query.year){search["year"] = parseInt(req.query.year);} 
+        else if(req.query.from && req.query.to){search["year"] = { $gte : parseInt(req.query.from), $lte : parseInt(req.query.to)};}
+        if(req.query.pollution_tco2)  search["pollution_tco2"] = { $gte : parseFloat(req.query.pollution_tco2)-interval,
+        $lte : parseFloat(req.query.pollution_tco2)+interval};
+        if(req.query.pollution_kg1000)  search["pollution_kg1000"] = { $gte : parseFloat(req.query.pollution_kg1000)-interval, $lte : parseFloat(req.query.pollution_kg1000)+interval };
+        if(req.query.pollution_perca)  search["pollution_perca"] = { $gte : parseFloat(req.query.pollution_perca)-interval, $lte :parseFloat(req.query.pollution_perca)+interval };
+        
+        var fields = {"_id": 0};
+        if(req.query.fields){
+            req.query.fields.split(",").forEach( (f) => {
+                fields[f] = 1;
+                }
+            );
+        }
+
+        pollutionStats.find(search, {"fields":fields}).skip(pollutionStats_offset).limit(pollutionStats_limit).toArray((err,statsArray)=>{
             if(err)
-                console.log("Error: " +err)
-            res.send(pollutionStatsArray.map((c)=> {
-                delete c._id;
-                return c;
-            }));   
+                console.log("Error: "+err);
+            res.send(statsArray);
         });
     });
-
+    
+    
+    
+    
+    
     // GET /api/v1/pollution-stats/spain
     app.get(BASE_PATH+"/pollution-stats/:country", (req,res) => {
         const pollutionStats_offset = parseInt(req.query.offset) || 0;
