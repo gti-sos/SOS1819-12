@@ -187,7 +187,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     app.delete(BASE_PATH+"/pollution-stats/:country/:year", (req,res) => {
         var country = req.params.country;
         var year = req.params.year;
-        pollutionStats.find({"country": country, "year": year}).toArray((err, pollutionStats_a)=>{
+        pollutionStats.find({"country": country, year: year}).toArray((err, pollutionStats_a)=>{
             if(err)
                 console.log("Error: "+err);
             if(pollutionStats_a.length>0){
