@@ -40,7 +40,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     
     app.get(BASE_PATH+"/pollution-stats",(req,res)=>{
     
-        const pollutionStats_offset = parseInt(req.query.offset) || 4;
+        const pollutionStats_offset = parseInt(req.query.offset) || 0;
         const pollutionStats_limit = parseInt(req.query.limit) || 4;
     
         pollutionStats.find({}).skip(pollutionStats_offset).limit(pollutionStats_limit).toArray((err,pollutionStatsArray) =>{
