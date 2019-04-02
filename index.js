@@ -56,6 +56,7 @@ clientC.connect(err => {
   youthUnemploymentStats = clientC.db("sos1819").collection("countries");
   // perform actions on the collection object
   console.log("Conneted my collection countries");
+   youthUnemploymentStatsApi(app,BASE_PATH,youthUnemploymentStats);
   //client.close();
 });
 
