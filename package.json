@@ -6,12 +6,12 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mongo": "^0.1.0",
     "mongodb": "^3.2.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error no test especified\" && exit 1",
+    "test-life-expectancy-stats": "newman run https://www.getpostman.com/collections/dec3cd0f1d4245276eb2",
     "start": "node index.js"
   },
   "repository": {
