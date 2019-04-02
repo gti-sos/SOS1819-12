@@ -65,6 +65,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
                 res.send(pollutionStats_a.map((c) => {
                     delete c._id;
                     return c;
+            //send 200 ok
                 }));
             }else{
                 res.sendStatus(404);
