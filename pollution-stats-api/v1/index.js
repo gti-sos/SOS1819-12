@@ -41,9 +41,9 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     app.get(BASE_PATH+"/pollution-stats",(req,res)=>{
     
         var pollutionStats_offset = parseInt(req.query.offset) || 0;
-        var pollutionStats_limit = parseInt(req.query.limit) || 4;
+        var pollutionStats_limit = parseInt(req.query.limit) || 6;
         
-        var interval = 0.0;
+        var interval = 0.6;
         var search = {};
         
         if(req.query.country){search["country"] = req.query.country;}
@@ -51,7 +51,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
         else if(req.query.from && req.query.to){search["year"] = { $gte : parseInt(req.query.from), $lte : parseInt(req.query.to)};}
         if(req.query.pollution_tco2)  search["pollution_tco2"] = { $gte : parseFloat(req.query.pollution_tco2)-interval,
         $lte : parseFloat(req.query.pollution_tco2)+interval};
-        if(req.query.pollution_kg1000)  search["pollution_kg1000"] = { $gte : parseFloat(req.query.pollution_kg1000)-interval,
+        if(req.query.pollution_kg1000)  search["pollution_kg1000"] = { $gte : parseInt(req.query.pollution_kg1000)-interval,
         $lte : parseFloat(req.query.pollution_kg1000)+interval };
         if(req.query.pollution_perca)  search["pollution_perca"] = { $gte : parseFloat(req.query.pollution_perca)-interval,
         $lte :parseFloat(req.query.pollution_perca)+interval };
@@ -78,7 +78,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     // GET /api/v1/pollution-stats/spain
     app.get(BASE_PATH+"/pollution-stats/:country", (req,res) => {
         const pollutionStats_offset = parseInt(req.query.offset) || 0;
-        const pollutionStats_limit = parseInt(req.query.limit) || 4;
+        const pollutionStats_limit = parseInt(req.query.limit) || 6;
         var country = req.params.country;
         
         var fields = {"_id": 0};
