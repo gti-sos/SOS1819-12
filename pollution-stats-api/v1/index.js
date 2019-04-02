@@ -78,36 +78,56 @@ module.exports = function (app, BASE_PATH, pollutionStats){
         const pollutionStats_offset = parseInt(req.query.offset) || 0;
         const pollutionStats_limit = parseInt(req.query.limit) || 4;
         var country = req.params.country;
-        pollutionStats.find({"country": country}).skip(pollutionStats_offset).limit(pollutionStats_limit).toArray((err, pollutionStats_a)=>{
+        
+        var fields = {"_id": 0};
+        if(req.query.fields){
+            req.query.fields.split(",").forEach( (f) => {
+                fields[f] = 1;
+                }
+            );
+        }
+        pollutionStats.find({"country": country}, {"fields":fields}).skip(pollutionStats_offset).limit(pollutionStats_limit).
+        toArray((err, pollutionStats_a)=>{
             if(err)
                 console.log("Error: "+err);
             if(pollutionStats_a.length>0){
-                res.send(pollutionStats_a.map((c) => {
-                    delete c._id;
-                    return c;
-            //send 200 ok
-                }));
+                res.send(pollutionStats_a);
             }else{
                 res.sendStatus(404);
             }
         });
     });
     
+    
+    
+    
+    
+    
     // GET /api/v1/pollution-stats/spain/2016
     app.get(BASE_PATH+"/pollution-stats/:country/:year", (req,res) => {
         var country = req.params.country;
-        var year = req.params.year;
-        pollutionStats.find({"country": country, "year": year}).toArray((err, pollutionStats_a)=>{
+        var year = parseInt(req.params.year);
+        
+        var fields = {"_id": 0};
+        if(req.query.fields){
+            req.query.fields.split(",").forEach( (f) => {
+                fields[f] = 1;
+                }
+            );
+        }
+        pollutionStats.find({"country": country, "year": year}, {"fields":fields}).toArray((err, pollutionStats_a)=>{
             if(err)
                 console.log("Error: "+err);
                 if(pollutionStats_a.length>0){
-                    delete pollutionStats_a[0]._id;
                     res.send(pollutionStats_a[0]);
                 }else{
                     res.sendStatus(404);
                 }
         });
     });
+    
+    
+    
     
     // POST /api/v1/pollution-stats
     app.post(BASE_PATH+"/pollution-stats", (req,res) => {
