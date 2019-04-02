@@ -38,7 +38,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
 
     /// GET /api/v1/pollutionStats ///
     
-    app.get(BASE_PATH+"/api/v1/pollution-stats",(req,res)=>{
+    app.get(BASE_PATH+"/pollution-stats",(req,res)=>{
     
         const pollutionStats_offset = parseInt(req.query.offset) || 0;
         const pollutionStats_limit = parseInt(req.query.limit) || 4;
@@ -54,7 +54,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     });
 
     // GET /api/v1/pollution-stats/spain
-    app.get("/api/v1/pollution-stats/:country", (req,res) => {
+    app.get(BASE_PATH+"/pollution-stats/:country", (req,res) => {
         const pollutionStats_offset = parseInt(req.query.offset) || 0;
         const pollutionStats_limit = parseInt(req.query.limit) || 4;
         var country = req.params.country;
@@ -74,7 +74,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     });
     
     // GET /api/v1/pollution-stats/spain/2016
-    app.get("/api/v1/pollution-stats/:country/:year", (req,res) => {
+    app.get(BASE_PATH+"/pollution-stats/:country/:year", (req,res) => {
         var country = req.params.country;
         var year = req.params.year;
         pollutionStats.find({"country": country, "year": year}).toArray((err, pollutionStats_a)=>{
@@ -90,7 +90,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     });
     
     // POST /api/v1/pollution-stats
-    app.post("/api/v1/pollution-stats", (req,res) => {
+    app.post(BASE_PATH+"/pollution-stats", (req,res) => {
         var newStat = req.body;
         pollutionStats.find(newStat).toArray((err, pollutionStats_a)=>{
             if(err)
@@ -105,16 +105,16 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     });
     
     //POST /api/v1/pollution-stats/spain (ERROR METODO NO PERMITIDO)
-    app.post("/api/v1/pollution-stats/:country", (req, res) => {
+    app.post(BASE_PATH+"/pollution-stats/:country", (req, res) => {
         res.sendStatus(405);
     });
     //POST /api/v1/pollution-stats/spain/2017 (ERROR METODO NO PERMITIDO)
-    app.post("/api/v1/pollution-stats/:country/:year", (req, res) => {
+    app.post(BASE_PATH+"/pollution-stats/:country/:year", (req, res) => {
         res.sendStatus(405);
     });
     
     // PUT /api/v1/pollution-stats/spain/2017
-    app.put("/api/v1/pollution-stats/:country/:year", (req,res) => {
+    app.put(BASE_PATH+"/pollution-stats/:country/:year", (req,res) => {
         var country = req.params.country;
         var year = req.params.year;
         pollutionStats.find({"country": country, "year": year}).toArray((err, pollutionStats_a) => {
@@ -134,17 +134,17 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     });
     
     // PUT /api/v1/pollution-stats (ERROR METODO NO PERMITIDO)
-    app.put("/api/v1/pollution-stats", (req, res) => {
+    app.put(BASE_PATH+"/pollution-stats", (req, res) => {
         res.sendStatus(405);
     });
     
         // DELETE /api/v1/pollution-stats
-    app.delete("/api/v1/pollution-stats", (req,res) => {
+    app.delete(BASE_PATH+"/pollution-stats", (req,res) => {
         pollutionStats.remove({});
         res.sendStatus(200);
     });
     // DELETE /api/v1/pollution-stats/spain/2015
-    app.delete("/api/v1/pollution-stats/:country/:year", (req,res) => {
+    app.delete(BASE_PATH+"/pollution-stats/:country/:year", (req,res) => {
         var country = req.params.country;
         var year = req.params.year;
         pollutionStats.find({"country": country, "year": year}).toArray((err, pollutionStats_a)=>{
