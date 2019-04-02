@@ -38,7 +38,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
 
     /// GET /api/v1/pollutionStats ///
     
-    app.get("/api/v1/pollution-stats",(req,res)=>{
+    app.get(BASE_PATH+"/api/v1/pollution-stats",(req,res)=>{
     
         const pollutionStats_offset = parseInt(req.query.offset) || 0;
         const pollutionStats_limit = parseInt(req.query.limit) || 4;

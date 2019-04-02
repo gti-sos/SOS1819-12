@@ -34,9 +34,6 @@ const uriA = "mongodb+srv://user:user@cluster0-gdn8y.mongodb.net/Cluster0?retryW
 const clientA = new MongoClientA(uriA, { useNewUrlParser: true });
 
 
-var pollutionStats ;
-
-
 var life_expectancy_stats;
 
 clientA.connect(err => {
