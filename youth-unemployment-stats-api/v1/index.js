@@ -70,7 +70,7 @@ app.get("/api/v1/youth-unemployment-stats/loadInitialData", (req, res) => {
     });
     
     // GET /api/v1/youth-unemployment-stats/spain
-    app.get("/api/v1//youth-unemployment-stats/:country", (req,res) => {
+    app.get("/api/v1/youth-unemployment-stats/:country", (req,res) => {
         const youth_unemployment_stats_offset = parseInt(req.query.offset) || 0;
         const youth_unemployment_stats_limit = parseInt(req.query.limit) || 100;
         var country = req.params.country;
