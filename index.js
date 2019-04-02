@@ -243,53 +243,27 @@ app.delete("/api/v1/pollution-stats/:country/:year", (req, res) => {
 /// PUT ///
 app.put("/api/v1/pollution-stats/:country/:year", (req, res) => {
 
-    var country = req.params.country;
+   var country = req.params.country;
     var year = req.params.year;
-    var updatedData = req.body;
-    var found = false;
-    var coincide = true;
-    var i = 0;
-    var updatedpi = [];
-    var aut = true;
-    console.log(req.params);
-    
-    pollutionStats({}).toArray((error,pollutionStats_a)=>{
-            for(i=0;i<pollutionStats_a.length;i++)
-                if (pollutionStats_a[i].year==year && pollutionStats_a[i].country==country){
-                    if (pollutionStats_a[i].year==updatedData.year && pollutionStats_a[i].province==updatedData.country){
-                        if(updatedData._id != null) {
-                            if(pollutionStats_a[i]._id != updatedData._id)
-                                aut = false;
-                                found = true;
-                        } else {
-                        found = true;
-                        updatedpi.push(updatedData);
-                        }    
-                    }else{
-                        coincide = false;
-                    }
-                } else {
-                    updatedpi.push(pollutionStats_a[i]);
-                }
+    pollutionStats.find({"country": country, "year" : year}).toArray((err,pollutionStats_a) => {
         
-     if (coincide==false){
-        res.sendStatus(400);
-    }else if (found==false){
-        res.sendStatus(404);
-    } else if (aut == false){
-        res.sendStatus(401);
-    }else{
-        pollutionStats.remove();
-        updatedpi.filter((d) =>{
-                pollutionStats.insert(d);
-            });
+        if(err)
+            console.log("Error" + err);
+        if(req.body.country == undefined || req.body.year == undefined || req.body.pollution_tco2 == undefined || req.body.pollution_kg1000 == undefined 
+        || req.body.pollution_perca == undefined){
+            res.sendStatus(400);
+        }else if(req.body.country==country && req.body.year==year && pollutionStats_a.length==1){
+            pollutionStats.update({"country" : country, "year" : year},req.body);
             res.sendStatus(200);
-    }
+        }else if(pollutionStats_a.length==0){
+            res.sendStatus(404)
+        }   
+
     });
 });
 
 
-//POST /api/v1/pollution-stats/country/year (ERROR METODO NO PERMITIDO)
+//POST /api/v1/pollutionStats/country/year (ERROR METODO NO PERMITIDO)
 app.post("/api/v1/pollution-stats/:country/:year", (req, res) => {
     console.log("FATAL ERROR !!: Method not Allowed.");
         res.sendStatus(405);
