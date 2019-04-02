@@ -11,12 +11,11 @@ var port = process.env.PORT || 8080;
 app.use("/", express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
+//===========================================================================================> life-expectancy-stats
 
 const MongoClientA = require("mongodb").MongoClient;
 const uriA = "mongodb+srv://user:user@cluster0-gdn8y.mongodb.net/Cluster0?retryWrites=true";
 const clientA = new MongoClientA(uriA, { useNewUrlParser: true });
-
-//===========================================================================================> life-expectancy-stats
 
 var life_expectancy_stats;
 
