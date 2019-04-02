@@ -1,6 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
+//===========================================================================================> life-expectancy-stats
+
 var life_expectancy_stats_api = require("./life-expectancy-stats-api")
 
 var app = express();
@@ -15,6 +17,8 @@ app.use(bodyParser.json());
 const MongoClientA = require("mongodb").MongoClient;
 const uriA = "mongodb+srv://user:user@cluster0-gdn8y.mongodb.net/Cluster0?retryWrites=true";
 const clientA = new MongoClientA(uriA, { useNewUrlParser: true });
+
+//===========================================================================================> life-expectancy-stats
 
 var life_expectancy_stats;
 
