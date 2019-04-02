@@ -1,17 +1,16 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-var life_expectancy_stats_api = require("./life-expectancy-stats-api")
-
-var app = express();
-const BASE_PATH = "/api";
-
 var app = express();
 var port = process.env.PORT || 8080;
+
+const BASE_PATH = "/api";
+
 app.use("/", express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
 //===========================================================================================> life-expectancy-stats
+var life_expectancy_stats_api = require("./life-expectancy-stats-api")
 
 const MongoClientA = require("mongodb").MongoClient;
 const uriA = "mongodb+srv://user:user@cluster0-gdn8y.mongodb.net/Cluster0?retryWrites=true";
@@ -59,6 +58,5 @@ clientC.connect(err => {
   console.log("Conneted my collection countries");
   //client.close();
 });
-
 
 app.listen(port);
