@@ -135,7 +135,12 @@ module.exports = function (app, BASE_PATH, pollutionStats){
         pollutionStats.find(newStat).toArray((err, pollutionStats_a)=>{
             if(err)
                 console.log("Error: "+err);
-            if(pollutionStats_a.length==0){
+            if(Object.keys(req.body).length!=5 || req.body.country==undefined || req.body.year==undefined || 
+            req.body.pollution_tco2==undefined || req.body.pollution_kg1000==undefined || req.body.pollution_perca==undefined || 
+            typeof(req.body.country)!= "string" || typeof(req.body.year)!= "number" || typeof(req.body.pollution_tco2)!= "number" || 
+            typeof(req.body.pollution_kg1000)!= "number" || typeof(req.body.pollution_perca)!= "number"){
+                res.sendStatus(400);
+            } else if(pollutionStats_a.length==0){
                 pollutionStats.insert(newStat);
                 res.sendStatus(201);
             }else{
@@ -143,6 +148,9 @@ module.exports = function (app, BASE_PATH, pollutionStats){
             }
         });
     });
+    
+    
+    
     
     //POST /api/v1/pollution-stats/spain (ERROR METODO NO PERMITIDO)
     app.post(BASE_PATH+"/pollution-stats/:country", (req, res) => {
