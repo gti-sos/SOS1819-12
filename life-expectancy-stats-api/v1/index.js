@@ -32,9 +32,28 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
         var life_expectancy_stats_offset = parseInt(req.query.offset) || 0;
         var life_expectancy_stats_limit = parseInt(req.query.limit) || 100;
         
+        var interval = 0.5;
+        var search = {};
         
+        if(req.query.country)  search["country"] = req.query.country;
+        if(req.query.year){
+            search["year"] = parseInt(req.query.year);
+        } else if(req.query.from && req.query.to){
+            search["year"] = { $gte : parseInt(req.query.from), $lte : parseInt(req.query.to) };
+        }
+        if(req.query.expectancy_woman)  search["expectancy_woman"] = { $gte : parseFloat(req.query.expectancy_woman)-interval, $lte : parseFloat(req.query.expectancy_woman)+interval };
+        if(req.query.expectancy_man)  search["expectancy_man"] = { $gte : parseFloat(req.query.expectancy_man)-interval, $lte : parseFloat(req.query.expectancy_man)+interval };
+        if(req.query.expectancy)  search["expectancy"] = { $gte : parseFloat(req.query.expectancy)-interval, $lte :parseFloat(req.query.expectancy)+interval };
         
-        life_expectancy_stats.find().skip(life_expectancy_stats_offset).limit(life_expectancy_stats_limit).toArray((err,statsArray)=>{
+        var fields = {"_id": 0};
+        if(req.query.fields){
+            req.query.fields.split(",").forEach( (f) => {
+                fields[f] = 1;
+                }
+            );
+        }
+
+        life_expectancy_stats.find(search, {"fields":fields}).skip(life_expectancy_stats_offset).limit(life_expectancy_stats_limit).toArray((err,statsArray)=>{
             if(err)
                 console.log("Error: "+err);
             res.send(statsArray);
