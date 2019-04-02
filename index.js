@@ -26,7 +26,6 @@ clientA.connect(err => {
   //app.listen(port);
   //client.close();
 });
-
 //===========================================================================================> life-expectancy-stats
 
 var pollutionStatsApi = require("./pollution-stats-api");

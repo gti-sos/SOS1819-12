@@ -10,8 +10,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error no test especified\" && exit 1",
-    "test-life-expectancy-stats": "newman run https://www.getpostman.com/collections/dec3cd0f1d4245276eb2",
+    "test": "newman run https://www.getpostman.com/collections/8dba6b0567cd62f3af4c;",
+    "test-life-expectancy-stats-cloud9": "newman run https://www.getpostman.com/collections/dec3cd0f1d4245276eb2",
+    "test-life-expectancy-stats": "newman run https://www.getpostman.com/collections/8dba6b0567cd62f3af4c",
     "start": "node index.js"
   },
   "repository": {
