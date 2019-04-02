@@ -1,13 +1,17 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var pollutionStatsApi = require("./pollution-stats-api");
 
 var app = express();
-const BASE_PATH ="/api";
 var port = process.env.PORT || 8080;
+
+const BASE_PATH = "/api";
+
 app.use("/", express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
+//==============================================================================
+
+var pollutionStatsApi = require("./pollution-stats-api");
 
 const MongoClient = require("mongodb").MongoClient;
 const uri = "mongodb+srv://test:test@Cluster0-fm5c9.mongodb.net/Cluster0?retryWrites=true";
@@ -21,13 +25,46 @@ client.connect(err => {
   pollutionStatsApi(app,BASE_PATH,pollutionStats);
 });
 
-app.listen(port);
+
+//===========================================================================================> life-expectancy-stats
+var life_expectancy_stats_api = require("./life-expectancy-stats-api")
+
+const MongoClientA = require("mongodb").MongoClient;
+const uriA = "mongodb+srv://user:user@cluster0-gdn8y.mongodb.net/Cluster0?retryWrites=true";
+const clientA = new MongoClientA(uriA, { useNewUrlParser: true });
 
 
+var pollutionStats ;
 
 
+var life_expectancy_stats;
 
-
-app.listen(port, () => {
-   console.log("PORT " + port + " OK");
+clientA.connect(err => {
+  life_expectancy_stats = clientA.db("sos1819-ajm").collection("life-expectancy-stats");
+  // perform actions on the collection object
+  console.log("Connetion of life-expectancy-stats in MongoDB actived");
+  life_expectancy_stats_api(app, BASE_PATH, life_expectancy_stats);
+  //app.listen(port);
+  //client.close();
 });
+//===========================================================================================> life-expectancy-stats
+
+
+var youthUnemploymentStatsApi = require("./youth-unemployment-stats-api")
+
+const MongoClientC = require("mongodb").MongoClient;
+const uriC = "mongodb+srv://andfergom:database@sos-zgrhq.mongodb.net/sos?retryWrites=true";
+const clientC= new MongoClientC(uriC, { useNewUrlParser: true });
+
+
+var youthUnemploymentStats;
+
+clientC.connect(err => {
+  youthUnemploymentStats = clientC.db("sos1819").collection("countries");
+  // perform actions on the collection object
+  console.log("Conneted my collection countries");
+   youthUnemploymentStatsApi(app,BASE_PATH,youthUnemploymentStats);
+  //client.close();
+});
+
+app.listen(port);
