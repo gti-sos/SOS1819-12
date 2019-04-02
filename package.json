@@ -14,7 +14,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "newman run https://www.getpostman.com/collections/3b8e9f1a8870c3618b08;",
-    "test-life-expectancy-stats": "https://www.getpostman.com/collections/3b8e9f1a8870c3618b08",
+    "test-life-expectancy-stats": "newman run https://www.getpostman.com/collections/3b8e9f1a8870c3618b08",
     "start": "node index.js"
   },
   "repository": {

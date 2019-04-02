@@ -87,7 +87,7 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
     app.get(BASE_PATH+"/life-expectancy-stats/:country/:year", (req,res) => {
         var country = req.params.country;
         var year = parseInt(req.params.year);
-        
+        console.log(typeof(req.body.country));
         var fields = {"_id": 0};
         if(req.query.fields){
             req.query.fields.split(",").forEach( (f) => {
@@ -113,7 +113,7 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
         life_expectancy_stats.find(newStat).toArray((err, life_expectancy_stats_array)=>{
             if(err)
                 console.log("Error: "+err);
-            if(Object.keys(req.body).length!=5 || req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined){
+            if(Object.keys(req.body).length!=5 || req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined || typeof(req.body.country)!= "string" || typeof(req.body.year)!= "number" || typeof(req.body.expectancy_woman)!= "number" || typeof(req.body.expectancy_man)!= "number" || typeof(req.body.expectancy)!= "number"){
                 res.sendStatus(400);
             } else if(life_expectancy_stats_array.length==0){
                 life_expectancy_stats.insert(newStat);
@@ -139,7 +139,7 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
         life_expectancy_stats.find({"country": country, "year": year}).toArray((err, life_expectancy_stats_array) => {
             if(err)
                 console.log("Error: "+err);
-            if(Object.keys(req.body).length!=5 || req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined){
+            if(Object.keys(req.body).length!=5 || req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined || typeof(req.body.country)!= "string" || typeof(req.body.year)!= "number" || typeof(req.body.expectancy_woman)!= "number" || typeof(req.body.expectancy_man)!= "number" || typeof(req.body.expectancy)!= "number"){
                 res.sendStatus(400);
             } else if(req.body.country==country && req.body.year==year && life_expectancy_stats_array.length==1){
                 life_expectancy_stats.update({"country": country, "year": year}, req.body);
