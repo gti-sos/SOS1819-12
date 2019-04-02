@@ -44,4 +44,21 @@ client.connect(err => {
   pollutionStatsApi(app,BASE_PATH,pollutionStats);
 });
 
+var youthUnemploymentStatsApi = require("./youth-unemployment-stats-api")
+
+const MongoClientC = require("mongodb").MongoClient;
+const uriC = "mongodb+srv://andfergom:database@sos-zgrhq.mongodb.net/sos?retryWrites=true";
+const clientC= new MongoClientC(uriC, { useNewUrlParser: true });
+
+
+var youthUnemploymentStats;
+
+clientC.connect(err => {
+  youthUnemploymentStats = clientC.db("sos1819").collection("countries");
+  // perform actions on the collection object
+  console.log("Conneted my collection countries");
+  //client.close();
+});
+
+
 app.listen(port);
