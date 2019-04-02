@@ -8,7 +8,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     });
 
     //GET /api/v1/pollution-stats/loadInitialData
-    app.get("/pollution-stats/loadInitialData", (req, res) => {
+    app.get(BASE_PATH+"/pollution-stats/loadInitialData", (req, res) => {
         pollutionStats.find({}).toArray((err, pollutionStats_a)=>{
             if(err)
                 console.log("Error: "+ err);
