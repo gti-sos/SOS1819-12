@@ -10,9 +10,10 @@ module.exports = function (app, BASE_PATH, youthUnemploymentStats){
 //GET /api/v1/youthUnemploymentStats/loadInitialData
 app.get("/api/v1/youth-unemployment-stats/loadInitialData", (req, res) => {
     youthUnemploymentStats.find({}).toArray( (err, youthUnemploymentStats_a) => {
-    if (err) console.log("FATAL ERROR !!: ", err);
-    if (youthUnemploymentStats_a.length == 0) {
-   youthUnemploymentStats.insert({country: "spain", year: "2017", youth_unemployment: "36.8", youth_unemployment_man: "37.8", youth_unemployment_woman: "35.7" });
+        if (err) 
+            console.log("FATAL ERROR !!: ", err);
+        if (youthUnemploymentStats_a.length == 0) {
+    youthUnemploymentStats.insert({country: "spain", year: "2017", youth_unemployment: "36.8", youth_unemployment_man: "37.8", youth_unemployment_woman: "35.7" });
     youthUnemploymentStats.insert({country: "spain", year: "2016", youth_unemployment: "42.1", youth_unemployment_man: "42.5", youth_unemployment_woman: "41.7"});
     youthUnemploymentStats.insert({country: "spain", year: "2015", youth_unemployment: "45.8", youth_unemployment_man: "45", youth_unemployment_woman: "46.7"});
     youthUnemploymentStats.insert({country: "alemania", year: "2017", youth_unemployment: "6.5", youth_unemployment_man: "7.2", youth_unemployment_woman: "5.6"});
