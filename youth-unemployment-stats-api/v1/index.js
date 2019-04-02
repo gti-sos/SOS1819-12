@@ -37,7 +37,7 @@ app.get("/api/v1/youth-unemployment-stats/loadInitialData", (req, res) => {
 
 
 // GET /api/v1/youth_unemployment-stats
-    app.get(BASE_PATH+"youth-unemployment-stats", (req,res) => {
+    app.get("/api/v1/youth-unemployment-stats", (req,res) => {
         var youth_unemployment_stats_offset = parseInt(req.query.offset) || 0;
         var youth_unemployment_stats_limit = parseInt(req.query.limit) || 100;
         
@@ -70,7 +70,7 @@ app.get("/api/v1/youth-unemployment-stats/loadInitialData", (req, res) => {
     });
     
     // GET /api/v1/youth-unemployment-stats/spain
-    app.get(BASE_PATH+"/youth-unemployment-stats/:country", (req,res) => {
+    app.get("/api/v1//youth-unemployment-stats/:country", (req,res) => {
         const youth_unemployment_stats_offset = parseInt(req.query.offset) || 0;
         const youth_unemployment_stats_limit = parseInt(req.query.limit) || 100;
         var country = req.params.country;
@@ -94,7 +94,7 @@ app.get("/api/v1/youth-unemployment-stats/loadInitialData", (req, res) => {
         });
     });
     // GET /api/v1/youth-unemployment-stats/spain/2016
-    app.get(BASE_PATH+"/youth-unemployment-stats/:country/:year", (req,res) => {
+    app.get("/api/v1//youth-unemployment-stats/:country/:year", (req,res) => {
         var country = req.params.country;
         var year = parseInt(req.params.year);
         
@@ -143,7 +143,7 @@ app.get("/api/v1/youth-unemployment-stats/loadInitialData", (req, res) => {
     });
     
     // PUT /api/v1/youth-unemployment-stats/spain/2017
-    app.put(BASE_PATH+"youth-unemployment-stats/:country/:year", (req,res) => {
+    app.put("/api/v1/youth-unemployment-stats/:country/:year", (req,res) => {
         var country = req.params.country;
         var year = parseInt(req.params.year);
         youthUnemploymentStats.find({"country": country, "year": year}).toArray((err, youthUnemploymentStats_a) => {
