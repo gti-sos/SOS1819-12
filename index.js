@@ -1,8 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-//===========================================================================================> life-expectancy-stats
-
 var life_expectancy_stats_api = require("./life-expectancy-stats-api")
 
 var app = express();
@@ -30,6 +28,8 @@ clientA.connect(err => {
   //app.listen(port);
   //client.close();
 });
+
+//===========================================================================================> life-expectancy-stats
 
 var pollutionStatsApi = require("./pollution-stats-api");
 
