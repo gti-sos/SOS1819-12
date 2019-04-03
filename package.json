@@ -12,9 +12,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "newman run https://www.getpostman.com/collections/e44012f7ef25613b3d95; newman run https://www.getpostman.com/collections/47b40f70e2bbae9d9a62; newman run https://www.getpostman.com/collections/4f1ad4704a2dbb2cfe20",
+    "test": "newman run https://www.getpostman.com/collections/e44012f7ef25613b3d95; newman run https://www.getpostman.com/collections/5f1891ab333bc1a0f947; newman run https://www.getpostman.com/collections/4f1ad4704a2dbb2cfe20",
     "test-pollution-stats": "newman run https://www.getpostman.com/collections/e44012f7ef25613b3d95",
-    "test-life-expectancy-stats": "newman run https://www.getpostman.com/collections/47b40f70e2bbae9d9a62",
+    "test-life-expectancy-stats": "newman run https://www.getpostman.com/collections/5f1891ab333bc1a0f947",
     "test-youth-unemployment-stats":"newman run https://www.getpostman.com/collections/4f1ad4704a2dbb2cfe20",
     "start": "node index.js"
   },
