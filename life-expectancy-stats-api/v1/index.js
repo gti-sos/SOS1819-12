@@ -73,7 +73,8 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
             );
         }
         
-        life_expectancy_stats.find({"country": country}, {"fields":fields}).skip(life_expectancy_stats_offset).limit(life_expectancy_stats_limit).toArray((err, life_expectancy_stats_array)=>{
+        life_expectancy_stats.find({"country": country}, {"fields":fields}).skip(life_expectancy_stats_offset).
+        limit(life_expectancy_stats_limit).toArray((err, life_expectancy_stats_array)=>{
             if(err)
                 console.log("Error: "+err);
             if(life_expectancy_stats_array.length>0){
