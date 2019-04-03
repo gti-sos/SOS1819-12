@@ -80,7 +80,7 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
             if(life_expectancy_stats_array.length>0){
                 res.send(life_expectancy_stats_array);
             }else{
-                res.send(life_expectancy_stats_array);
+                res.send([]);
                 res.sendStatus(200);
             }
         });
