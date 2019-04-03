@@ -145,7 +145,7 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
             } else if(req.body.country==country && req.body.year==year && life_expectancy_stats_array.length==1){
                 life_expectancy_stats.update({"country": country, "year": year}, req.body);
                 res.sendStatus(200);
-            } else if(life_expectancy_stats_array.length==0){
+            } else {
                 res.sendStatus(404);
             }
         });
