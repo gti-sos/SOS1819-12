@@ -94,10 +94,10 @@ app.get("/api/v1/youth-unemployment-stats/loadInitialData", (req, res) => {
         });
     });
     // GET /api/v1/youth-unemployment-stats/spain/2016
-    app.get("/api/v1//youth-unemployment-stats/:country/:year", (req,res) => {
+    app.get("/api/v1/youth-unemployment-stats/:country/:year", (req,res) => {
         var country = req.params.country;
         var year = parseInt(req.params.year);
-        
+        console.log(typeof(req.body.country));
         var fields = {"_id": 0};
         if(req.query.fields){
             req.query.fields.split(",").forEach( (f) => {
