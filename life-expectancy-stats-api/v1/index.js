@@ -138,6 +138,9 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
         var country = req.params.country;
         var year = parseInt(req.params.year);
         life_expectancy_stats.find({"country": country, "year": year}).toArray((err, life_expectancy_stats_array) => {
+            console.log(req.body.country==undefined);
+            console.log(req.body.country!=country);
+            console.log(req.body.year!=year);
             if(err)
                 console.log("Error: "+err);
             if(Object.keys(req.body).length!=5 || req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined || typeof(req.body.country)!= "string" || typeof(req.body.year)!= "number" || typeof(req.body.expectancy_woman)!= "number" || typeof(req.body.expectancy_man)!= "number" || typeof(req.body.expectancy)!= "number" || req.body.country!=country || req.body.year!=year){
