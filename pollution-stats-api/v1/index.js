@@ -169,10 +169,11 @@ module.exports = function (app, BASE_PATH, pollutionStats){
         var year = parseInt(req.params.year);
         pollutionStats.find({"country": country, "year": year}).toArray((err, pollutionStats_a) => {
             if(err)
-            
                 console.log("Error: "+err);
-            if(req.body.length!=5 || req.body.country==undefined || req.body.year==undefined || req.body.pollution_tco2==undefined
-                || req.body.pollution_kg1000==undefined || req.body.pollution_perca==undefined){
+            if(Object.keys(req.body).length!=5 || req.body.country==undefined || req.body.year==undefined || req.body.pollution_tco2==undefined
+            || req.body.pollution_kg1000==undefined || req.body.pollution_perca==undefined
+            || typeof(req.body.country)!= "string" || typeof(req.body.year)!= "number" || typeof(req.body.pollution_tco2)!= "number" ||
+            typeof(req.body.pollution_kg1000)!= "number" || typeof(req.body.pollution_perca)!= "number"){
                 res.sendStatus(400);
             } else if(req.body.country==country && req.body.year==year && pollutionStats_a.length==1){
                 pollutionStats.update({"country": country, "year": year}, req.body);
