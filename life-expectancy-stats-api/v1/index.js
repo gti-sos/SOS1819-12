@@ -62,7 +62,7 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
     // GET /api/v1/life-expectancy-stats/spain
     app.get(BASE_PATH+"/life-expectancy-stats/:country", (req,res) => {
         const life_expectancy_stats_offset = parseInt(req.query.offset) || 0;
-        const life_expectancy_stats_limit = parseInt(req.query.limit) || 100;
+        const life_expectancy_stats_limit = parseInt(req.query.limit) || 4;
         var country = req.params.country;
         
         var fields = {"_id": 0};
