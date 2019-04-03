@@ -95,7 +95,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
             if(pollutionStats_a.length>0){
                 res.send(pollutionStats_a);
             }else{
-                res.send([]);
+               // res.send([]);
                 res.sendStatus(200);
             }
         });
