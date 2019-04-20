@@ -7,7 +7,6 @@ var port = process.env.PORT || 8080;
 
 const BASE_PATH = "/api";
 
-
 app.use('/', express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 

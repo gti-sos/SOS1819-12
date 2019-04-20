@@ -1,0 +1,88 @@
+<html ng-app="LifeExpectancyStatsApp">
+    <head>
+        <title>Life expectancy App</title>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="life-expectancy-stats-app.js"></script>
+        <script type="text/javascript" src="main-ctrl.js"></script>
+    </head>
+    
+    <body ng-controller="MainCtrl">
+        <h1>Life Expectancy Stats</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Year</th>
+                    <th>Expectancy woman</th>
+                    <th>Expectancy man</th>
+                    <th>Expectancy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input class="form-control" ng-model="searchedStatT.from" placeholder="Desde" value="searched year from"/>
+                        <input class="form-control" ng-model="searchedStatT.to" placeholder="Hasta" value="searched year to"/>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="btn btn-secondary" ng-click="searchTimeInterval()" >Buscar por intervalo temporal</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="form-control" ng-model="searchedStat.country" value="searched country"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="searchedStat.year" value="searched year"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="searchedStat.expectancy_woman" value="searched expectancy woman"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="searchedStat.expectancy_man" value="searched expectancy man"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="searchedStat.expectancy" value="searched expectancy"/>
+                    </td>
+                    <td><button class="btn btn-secondary" ng-click="searchStat()" >Buscar</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="form-control" ng-model="newStat.country" value="new country"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="newStat.year" value="new year"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="newStat.expectancy_woman" value="new expectancy woman"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="newStat.expectancy_man" value="new expectancy man"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="newStat.expectancy" value="new expectancy"/>
+                    </td>
+                    <td><button class="btn btn-success" ng-click="addStat()" >Añadir</button></td>
+                </tr>
+                <tr ng-repeat="stat in life_expectancy_stats">
+                    <td>{{ stat.country }}</td>
+                    <td>{{ stat.year }}</td>
+                    <td>{{ stat.expectancy_woman }}</td>
+                    <td>{{ stat.expectancy_man }}</td>
+                    <td>{{ stat.expectancy }}</td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="putStat(stat.country,stat.year,stat.expectancy_woman,stat.expectancy_man,stat.expectancy)" >Editar</button>
+                        <button class="btn btn-danger" ng-click="deleteStat(stat.country,stat.year)" >Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <tr>
+            <td align="center"><button class="btn btn-info" ng-click="restoreStats()">Restaurar datos</button></td>
+            <td align="center"><button class="btn btn-warning" ng-click="deleteAllStats()">Eliminar todo</button></td>
+        </tr>
+    </body>
+</html>

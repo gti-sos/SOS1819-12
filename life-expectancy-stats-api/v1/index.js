@@ -1,8 +1,6 @@
 const life_expectancy_stats_URL = "https://documenter.getpostman.com/view/6998737/S17tS8JC";
 
 module.exports = function (app, BASE_PATH, life_expectancy_stats){
-    //var express = require("express");
-    //app.use(BASE_PATH + "/life_expectancy_stats/minipostman-LES", express.static(__dirname + "/minipostman-LES"))
     // POSTMAN
     app.get(BASE_PATH+"/life-expectancy-stats/docs", (req, res) => {
         res.redirect(life_expectancy_stats_URL);
@@ -32,7 +30,7 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
     // GET /api/v1/life-expectancy-stats
     app.get(BASE_PATH+"/life-expectancy-stats", (req,res) => {
         var life_expectancy_stats_offset = parseInt(req.query.offset) || 0;
-        var life_expectancy_stats_limit = parseInt(req.query.limit) || 5;
+        var life_expectancy_stats_limit = parseInt(req.query.limit) || 100;
         
         var interval = 0.5;
         var search = {};
@@ -91,7 +89,6 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
     app.get(BASE_PATH+"/life-expectancy-stats/:country/:year", (req,res) => {
         var country = req.params.country;
         var year = parseInt(req.params.year);
-        console.log(typeof(req.body.country));
         var fields = {"_id": 0};
         if(req.query.fields){
             req.query.fields.split(",").forEach( (f) => {
