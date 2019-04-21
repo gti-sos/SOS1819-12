@@ -8,15 +8,15 @@
     </head>
     
     <body ng-controller="MainCtrl">
-        <h1>Life Expectancy Stats</h1>
+        <h1>Estadísticas de esperanza de vida</h1>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Country</th>
-                    <th>Year</th>
-                    <th>Expectancy woman</th>
-                    <th>Expectancy man</th>
-                    <th>Expectancy</th>
+                    <th>País</th>
+                    <th>Año</th>
+                    <th>Esperanza para la mujer</th>
+                    <th>Esperanza para el hombre</th>
+                    <th>Esperanza media</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,6 +78,18 @@
                         <button class="btn btn-danger" ng-click="deleteStat(stat.country,stat.year)" >Eliminar</button>
                     </td>
                 </tr>
+                <!--<tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-secondary" ng-click="paged()" >Anterior</button>
+                        <input class="form-control" ng-model="paged.num" placeholder="10" value="paginado"/>
+                        <button class="btn btn-secondary" ng-click="paged()" >Posterior</button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>-->
             </tbody>
         </table>
         <tr>
