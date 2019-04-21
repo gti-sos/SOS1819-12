@@ -15,12 +15,24 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
                 life_expectancy_stats.insert({country: "spain", year: 2015, expectancy_woman: 85.7, expectancy_man: 80.1, expectancy: 83});
                 life_expectancy_stats.insert({country: "germany", year: 2015, expectancy_woman: 83.1, expectancy_man: 78.3, expectancy: 80.7});
                 life_expectancy_stats.insert({country: "uk", year: 2015, expectancy_woman: 82.8, expectancy_man: 79.2, expectancy: 81});
+                life_expectancy_stats.insert({country: "portugal", year: 2015, expectancy_woman: 84.3, expectancy_man: 78.1, expectancy: 81.3});
+                life_expectancy_stats.insert({country: "eeuu", year: 2015, expectancy_woman: 81.2, expectancy_man: 76.3, expectancy: 78.69});
+                life_expectancy_stats.insert({country: "japan", year: 2015, expectancy_woman: 86.99, expectancy_man: 80.75, expectancy: 83.79});
+                life_expectancy_stats.insert({country: "china", year: 2015, expectancy_woman: 77.67, expectancy_man: 74.64, expectancy: 76.09});
                 life_expectancy_stats.insert({country: "spain", year: 2016, expectancy_woman: 86.3, expectancy_man: 80.5, expectancy: 83.5});
                 life_expectancy_stats.insert({country: "germany", year: 2016, expectancy_woman: 83.5, expectancy_man: 78.6, expectancy: 81});
                 life_expectancy_stats.insert({country: "uk", year: 2016, expectancy_woman: 83, expectancy_man: 79.4, expectancy: 81.2});
+                life_expectancy_stats.insert({country: "portugal", year: 2016, expectancy_woman: 84.3, expectancy_man: 78.1, expectancy: 81.3});
+                life_expectancy_stats.insert({country: "eeuu", year: 2016, expectancy_woman: 81.2, expectancy_man: 76.3, expectancy: 78.69});
+                life_expectancy_stats.insert({country: "japan", year: 2016, expectancy_woman: 87.14, expectancy_man: 80.98, expectancy: 83.98});
+                life_expectancy_stats.insert({country: "china", year: 2016, expectancy_woman: 77.83, expectancy_man: 74.8, expectancy: 76.25});
                 life_expectancy_stats.insert({country: "spain", year: 2017, expectancy_woman: 86.1, expectancy_man: 80.6, expectancy: 83.4});
                 life_expectancy_stats.insert({country: "germany", year: 2017, expectancy_woman: 83.4, expectancy_man: 78.7, expectancy: 81.1});
                 life_expectancy_stats.insert({country: "uk", year: 2017, expectancy_woman: 83.1, expectancy_man: 79.5, expectancy: 81.3});
+                life_expectancy_stats.insert({country: "portugal", year: 2017, expectancy_woman: 84.6, expectancy_man: 78.4, expectancy: 81.6});
+                life_expectancy_stats.insert({country: "eeuu", year: 2017, expectancy_woman: 81.2, expectancy_man: 76.3, expectancy: 78.69});
+                life_expectancy_stats.insert({country: "japan", year: 2017, expectancy_woman: 87.14, expectancy_man: 80.98, expectancy: 83.98});
+                life_expectancy_stats.insert({country: "china", year: 2017, expectancy_woman: 77.83, expectancy_man: 74.8, expectancy: 76.25});
                 res.sendStatus(201);
             } else {
                 res.sendStatus(409);
