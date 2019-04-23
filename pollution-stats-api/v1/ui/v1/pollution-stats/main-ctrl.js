@@ -1,5 +1,5 @@
 /* global angular */
-angular.module("PollutionApp").controller("MainCtrl",["$scope","$http", function ($scope,$http){
+angular.module("PollutionApp").controller('MainCtrl',["$scope","$http", function ($scope,$http){
     console.log("Main controller initialized");
     
     var API = "/api/v1/pollution-stats";
