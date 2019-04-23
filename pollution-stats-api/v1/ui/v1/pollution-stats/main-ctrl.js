@@ -4,6 +4,8 @@ angular.module("PollutionApp").controller("MainCtrl",["$scope","$http", function
     
     var API = "/api/v1/pollution-stats";
     
+    refresh();
+    
     
     function refresh(){
         console.log("Requesting pollution stats to <"+API+">...");
