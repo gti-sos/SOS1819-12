@@ -10,7 +10,7 @@ angular.module("PollutionApp").controller("MainCtrl",["$scope","$http", function
     function refresh(){
         console.log("Requesting pollution stats to <"+API+">...");
         $http.get(API).then(function (response){
-            //console.log("Data received: " + JSON.stringify(response.data,null,2));
+            console.log("Data received: " + JSON.stringify(response.data,null,2));
             $scope.pollutionStats = response.data;
         });
     }
@@ -45,7 +45,7 @@ angular.module("PollutionApp").controller("MainCtrl",["$scope","$http", function
         console.log("Restoring stats");
         $http.get(API+"/loadInitialData").then(function (response){
             //console.log("Data received: " + JSON.stringify(response.data,null,2));
-            //$scope.life_expectancy_stats = response.data;
+            //$scope.pollutionStats = response.data;
             refresh();
         });
     };
