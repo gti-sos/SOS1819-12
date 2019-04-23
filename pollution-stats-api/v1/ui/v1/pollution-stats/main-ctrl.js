@@ -11,7 +11,7 @@ angular.module("PollutionApp").controller("MainCtrl",["$scope","$http", function
         console.log("Requesting pollution stats to <"+API+">...");
         $http.get(API).then(function (response){
             //console.log("Data received: " + JSON.stringify(response.data,null,2));
-            $scope.pollution_stats = response.data;
+            $scope.pollutionStats = response.data;
         });
     }
     
@@ -64,7 +64,7 @@ angular.module("PollutionApp").controller("MainCtrl",["$scope","$http", function
         console.log("Searching stats: "+searchString);
         $http.get(searchString).then(function (response){
             //console.log("Data received: " + JSON.stringify(response.data,null,2));
-            $scope.pollution_stats = response.data;
+            $scope.pollutionStats = response.data;
         });
     }
     $scope.searchTimeInterval = function (){
@@ -79,7 +79,7 @@ angular.module("PollutionApp").controller("MainCtrl",["$scope","$http", function
         console.log("Searching stats: "+searchStringT);
         $http.get(searchStringT).then(function (response){
             //console.log("Data received: " + JSON.stringify(response.data,null,2));
-            $scope.pollution_stats = response.data;
+            $scope.pollutionStats = response.data;
         });
     }
 }]);
