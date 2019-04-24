@@ -51,7 +51,7 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
     // GET /api/v1/life-expectancy-stats
     app.get(BASE_PATH+"/life-expectancy-stats", (req,res) => {
         var life_expectancy_stats_offset = parseInt(req.query.offset) || 0;
-        var life_expectancy_stats_limit = parseInt(req.query.limit) || 100;
+        var life_expectancy_stats_limit = parseInt(req.query.limit) || 1000;
         
         var interval = 0.5;
         var search = {};
