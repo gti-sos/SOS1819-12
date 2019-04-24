@@ -67,6 +67,26 @@
                     </td>
                     <td><button class="btn btn-success" ng-click="addStat()" >Añadir</button></td>
                 </tr>
+                <tr>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.country" value="update country"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.year" value="update year"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.expectancy_woman" value="update expectancy woman"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.expectancy_man" value="update expectancy man"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.expectancy" value="update expectancy"/>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="putStat()" >Editar</button>
+                    </td>
+                </tr>
                 <tr ng-repeat="stat in life_expectancy_stats">
                     <td>{{ stat.country }}</td>
                     <td>{{ stat.year }}</td>
@@ -74,22 +94,27 @@
                     <td>{{ stat.expectancy_man }}</td>
                     <td>{{ stat.expectancy }}</td>
                     <td>
-                        <button class="btn btn-primary" ng-click="putStat(stat.country,stat.year,stat.expectancy_woman,stat.expectancy_man,stat.expectancy)" >Editar</button>
+                        <!-- <button class="btn btn-primary" ng-click="putStat(stat.country,stat.year,stat.expectancy_woman,stat.expectancy_man,stat.expectancy)" >Editar</button> -->
                         <button class="btn btn-danger" ng-click="deleteStat(stat.country,stat.year)" >Eliminar</button>
                     </td>
                 </tr>
-                <!--<tr>
-                    <td></td>
+                <tr>
                     <td></td>
                     <td>
-                        <button class="btn btn-secondary" ng-click="paged()" >Anterior</button>
-                        <input class="form-control" ng-model="paged.num" placeholder="10" value="paginado"/>
-                        <button class="btn btn-secondary" ng-click="paged()" >Posterior</button>
+                        <button class="btn btn-secondary" ng-click="pagedPrevious()" >Anteriores</button>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="pageded.inicio" placeholder="Inicio" value="inicio"/>
+                        <input class="form-control" ng-model="pageded.numero" placeholder="Elementos" value="numero"/>
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary" ng-click="pagedFollowing()" >Siguientes</button>
                     </td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>-->
+                    <td>
+                        <button class="btn btn-secondary" ng-click="paged()" >Paginar</button>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <tr>
