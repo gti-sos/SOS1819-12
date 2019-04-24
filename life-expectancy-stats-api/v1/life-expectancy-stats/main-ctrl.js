@@ -221,9 +221,9 @@ angular.module("LifeExpectancyStatsApp").controller("MainCtrl",["$scope","$http"
     }
     $scope.pagedFollowing = function () {
         var paginadoAPIF = API;
-        console.log(elementosTotales);
-        console.log(empezarPor);
-        console.log(numeroAVisualizar);
+        //console.log(elementosTotales);
+        //console.log(empezarPor);
+        //console.log(numeroAVisualizar);
         if((empezarPor+numeroAVisualizar)>=elementosTotales){
             empezarPor = elementosTotales-numeroAVisualizar;
             console.log("Estos son los últimos "+numeroAVisualizar+" elementos");
