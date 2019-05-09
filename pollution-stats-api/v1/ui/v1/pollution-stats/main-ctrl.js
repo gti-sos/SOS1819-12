@@ -1,16 +1,15 @@
 /* global angular */
-angular.module("PollutionApp").controller('MainCtrl',["$scope","$http", function ($scope,$http){
+angular.module("PollutionApp").controller("MainCtrl",["$scope","$http", function ($scope,$http){
     console.log("Main controller initialized");
-    
     var API = "/api/v1/pollution-stats";
+    console.log("ok");
     
     refresh();
-    
     
     function refresh(){
         console.log("Requesting pollution stats to <"+API+">...");
         $http.get(API).then(function (response){
-            console.log("Data received: " + JSON.stringify(response.data,null,2));
+            //console.log("Data received: " + JSON.stringify(response.data,null,2));
             $scope.pollutionStats = response.data;
         });
     }
