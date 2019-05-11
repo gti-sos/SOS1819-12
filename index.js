@@ -8,18 +8,8 @@ var port = process.env.PORT || 8080;
 const BASE_PATH = "/api";
 
 app.use('/', express.static(path.join(__dirname, "public")));
-<<<<<<< HEAD
 app.use("/ui/v1/life-expectancy-stats", express.static(__dirname+"/ui/v1/life-expectancy-stats"));
-=======
-
-//
-app.use("/ui/v1/life-expectancy-stats", express.static(__dirname+"/life-expectancy-stats-api/v1/life-expectancy-stats"));
-//
-
-app.use("/ui/v1/pollution-stats", express.static(__dirname+"/pollution-stats-api/v1/ui/v1/pollution-stats"));
-
-app.use("/ui/v1/pollution-stats", express.static(__dirname+"/ui/v1/pollution-stats"));
->>>>>>> 3aabc9eca616e6e2af76523a06eb506c56f635b7
+app.use("/u1/v1/youth-unemployment-stats", express.static(__dirname+"/u1/v1/youth-unemployment-stats"));
 app.use(bodyParser.json());
 
 //===========================================================================================> life-expectancy-stats
@@ -58,23 +48,22 @@ client.connect(err => {
   console.log("Funciona MongoDB");
   pollutionStatsApi(app,BASE_PATH,pollutionStats);
 });
-//=====================================================================================
+//=====================================================================================> youth-unemployment-stats
 
-app.use('/u1/v1/youth-unemployment', express.static(path.join(__dirname, "public/u1/v1/youth-unemployment")));
-
+var youth_unemployment_stats_api = require("./youth-unemployment-stats-api");
 
 
 const MongoClientC = require("mongodb").MongoClient;
 const uriC = "mongodb+srv://andfergom:database@sos-zgrhq.mongodb.net/sos?retryWrites=true";
 const clientC= new MongoClientC(uriC, { useNewUrlParser: true });
 
-var youthUnemploymentStatsApi = require("./youth-unemployment-stats-api");
-var youthUnemploymentStats;
+
+var youth_unemployment_stats;
 
 clientC.connect(err => {
-  youthUnemploymentStats = clientC.db("sos1819").collection("countries");
+  youth_unemployment_stats = clientC.db("sos1819").collection("countries");
   console.log("Conneted my collection countries");
-   youthUnemploymentStatsApi(app,BASE_PATH,youthUnemploymentStats);
+   youth_unemployment_stats_api(app,BASE_PATH,youth_unemployment_stats);
   //client.close();
 });
 

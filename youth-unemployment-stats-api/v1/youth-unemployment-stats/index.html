@@ -1,0 +1,125 @@
+<html ng-app="YouthUnemploymentStatsApp">
+    <head>
+        <title>Youth Unemployment App</title>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="youth-unemployment-stats-app.js"></script>
+        <script type="text/javascript" src="main-ctrl.js"></script>
+    </head>
+    
+    <body ng-controller="MainCtrl">
+        <h1>Estadísticas del desempleo juvenil</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>País</th>
+                    <th>Año</th>
+                    <th>Desempleo juvenil</th>
+                    <th>Desempleo juvenil masculino</th>
+                    <th>Desempleo juvenil femenino</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input class="form-control" ng-model="searchedStatT.from" placeholder="Desde" value="searched year from"/>
+                        <input class="form-control" ng-model="searchedStatT.to" placeholder="Hasta" value="searched year to"/>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="btn btn-secondary" ng-click="searchTimeInterval()" >Buscar por intervalo temporal</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="form-control" ng-model="searchedStat.country" value="searched country"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="searchedStat.year" value="searched year"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="searchedStat.youth_unemployment" value="searched youth unemployment" />
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="searchedStat.youth_unemployment_man" value="searched youth unemployment man"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="searchedStat.youth_unemployment_woman" value="searched youth unemployment woman"/>
+                    </td>
+                    <td><button class="btn btn-secondary" ng-click="searchStat()" >Buscar</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="form-control" ng-model="newStat.country" value="new country"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="newStat.year" value="new year"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="newStat.youth_unemployment" value="new youth unemployment "/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="newStat.youth_unemployment_man" value="new youth unemployment man"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="newStat.youth_unemployment_woman" value="new youth unemployment woman "/>
+                    </td>
+                    <td><button class="btn btn-success" ng-click="addStat()" >Añadir</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.country" value="update country"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.year" value="update year"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.youth_unemployment" value="update youth unemployment"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.youth_unemployment_man" value="update youth unemployment man"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.youth_unemployment_woman" value="update youth unemployment woman"/>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="putStat()" >Editar</button>
+                    </td>
+                </tr>
+                <tr ng-repeat="stat in youth_unemployment_stats">
+                    <td>{{ stat.country }}</td>
+                    <td>{{ stat.year }}</td>
+                    <td>{{ stat.youth_unemployment }}</td>
+                    <td>{{ stat.youth_unemployment_man }}</td>
+                    <td>{{ stat.youth_unemployment_woman }}</td>
+                    <td>
+                        <!-- <button class="btn btn-primary" ng-click="putStat(stat.country,stat.year,stat.youth_unemployment,stat.youth_unemployment_man,stat.youth_unemployment_woman)" >Editar</button> -->
+                        <button class="btn btn-danger" ng-click="deleteStat(stat.country,stat.year)" >Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-secondary" ng-click="pagedPrevious()" >Anteriores</button>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="pageded.inicio" placeholder="Inicio" value="inicio"/>
+                        <input class="form-control" ng-model="pageded.numero" placeholder="Elementos" value="numero"/>
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary" ng-click="pagedFollowing()" >Siguientes</button>
+                    </td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-secondary" ng-click="paged()" >Paginar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <tr>
+            <td align="center"><button class="btn btn-info" ng-click="restoreStats()">Restaurar datos</button></td>
+            <td align="center"><button class="btn btn-warning" ng-click="deleteAllStats()">Eliminar todo</button></td>
+        </tr>
+    </body>
+</html>
