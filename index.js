@@ -8,8 +8,8 @@ var port = process.env.PORT || 8080;
 const BASE_PATH = "/api";
 
 app.use('/', express.static(path.join(__dirname, "public")));
-app.use("/ui/v1/life-expectancy-stats", express.static(__dirname+"/ui/v1/life-expectancy-stats"));
-app.use("/u1/v1/youth-unemployment-stats", express.static(__dirname+"/u1/v1/youth-unemployment-stats"));
+app.use("/ui/v1/life-expectancy-stats", express.static(__dirname+"/life-expectancy-stats-api/v1/life-expectancy-stats"));
+app.use("/ui/v1/youth-unemployment-stats", express.static(__dirname+"/youth-unemployment-stats-api/v1/youth-unemployment-stats"));
 app.use(bodyParser.json());
 
 //===========================================================================================> life-expectancy-stats
