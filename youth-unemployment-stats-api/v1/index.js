@@ -37,7 +37,7 @@ module.exports = function (app, BASE_PATH, youth_unemployment_stats){
 
 
 // GET /api/v1/youth_unemployment-stats
-     app.get(BASE_PATH+"/youth_unemployment-stats", (req,res) => {
+     app.get(BASE_PATH+"/youth-unemployment-stats", (req,res) => {
         var youth_unemployment_stats_offset = parseInt(req.query.offset) || 0;
         var youth_unemployment_stats_limit = parseInt(req.query.limit) || 100;
         
