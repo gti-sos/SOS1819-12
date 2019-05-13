@@ -17,21 +17,20 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http","$routePa
     
 
     $scope.updateStat = function (){
-        var updateStat = $scope.pollutionStat;
-        if(updateStat){
+        var pollutionStatpollutionStat = $scope.pollutionStat;
+        if(pollutionStat){
             
-            updateStat.year = parseInt(updateStat.year);
-            updateStat.pollution_tco2 = parseFloat(updateStat.pollution_tco2);
-            updateStat.pollution_kg1000 = parseFloat(updateStat.pollution_kg1000);
-            updateStat.pollution_perca = parseFloat(updateStat.pollution_perca);
-            console.log("Updating a stat: "+JSON.stringify(updateStat,null,2));
-            $http.put(API+"/"+updateStat.country+"/"+updateStat.year,updateStat).then(function (response){
+            pollutionStat.year = parseInt(pollutionStat.year);
+            pollutionStat.pollution_tco2 = parseFloat(pollutionStat.pollution_tco2);
+            pollutionStat.pollution_kg1000 = parseFloat(pollutionStat.pollution_kg1000);
+            pollutionStat.pollution_perca = parseFloat(pollutionStat.pollution_perca);
+            console.log("Updating a stat: "+JSON.stringify(pollutionStat,null,2));
+            $http.put(API+"/"+updateStat.country+"/"+pollutionStat.year,pollutionStat).then(function (response){
                 console.log("POST Response: " + response.status + " " + response.data);
                 $scope.status = response.status + " " + response.statusText;
                 if(response.status==200){
                     alert("Elemento editado con éxito");
                 }
-                refresh();
             }).catch(function(response2){
                 $scope.status = response2.status + " " + response2.statusText;
                 if(response2.status==404){
