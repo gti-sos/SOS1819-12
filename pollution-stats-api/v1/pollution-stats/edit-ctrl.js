@@ -20,7 +20,7 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http", function
     }
     
 
-    $scope.putStat = function (){
+    $scope.updateStat = function (){
         var updateStat = $scope.updateStat;
         if(updateStat){
             updateStat.year = parseInt(updateStat.year);
