@@ -65,24 +65,26 @@
                         <input class="form-control" ng-model="newStat.pollution_perca"
                     </td>
                     
+                  <tr>
+                    <td>
+                        <button class="btn btn-primary" ng-click="putStat()" >Editar</button>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.country" value="update country"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.year" value="update year"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.pollution_tco2" value="update pollution_tco2"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.pollution_kg1000" value="update pollution_kg1000"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="updateStat.pollution_perca" value="update pollution_perca"/>
+                    </td>
                 </tr>
-                    <td></td><button class="btn btn-primary" ng-click="putStat()" >Editar</button></td>
-                    <td>
-                        <input class="form-control" ng-model="newStat.country"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="newStat.year"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="newStat.pollution_tco2"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="newStat.pollution_kg1000"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="newStat.pollution_perca"
-                    </td>
-                <tr>
                     <tr>
                     <td></td>
                     <td>
@@ -95,28 +97,30 @@
                     <td>
                         <button class="btn btn-secondary" ng-click="pagedFollowing()" >Siguientes</button>
                     </td>
-                    <td></td>
                     <td>
                         <button class="btn btn-secondary" ng-click="paged()" >Paginar</button>
                     </td>
                 </tr>
                 </tr>
                 <tr ng-repeat="stat in pollutionStats">
+                     <td>
+                        <button type="button" class="btn btn-warning" ng-click="deleteStat(stat.country,stat.year)" >-Eliminar-</button>
+                    </td>
                     <td>{{ stat.country }}</td>
                     <td>{{ stat.year }}</td>
                     <td>{{ stat.pollution_tco2 }}</td>
                     <td>{{ stat.pollution_kg1000 }}</td>
                     <td>{{ stat.pollution_perca }}</td>
-                    <td>
-                        
-                        <button type="button" class="btn btn-warning" ng-click="deleteStat(stat.country,stat.year)" >-Eliminar-</button>
-                    </td>
                 </tr>
             </tablebody>
         </table>
         <tr>
             <td>Pulse aquí para restaurar:</td>
             <td align="center"><button class="btn btn-info" ng-click="restoreStats()">Restaurar datos</button></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td>Pulse aquí para eliminar:</td>
             <td align="center"><button class="btn btn-danger" ng-click="deleteAllStats()">Eliminar todo</button></td>
         </tr>   
