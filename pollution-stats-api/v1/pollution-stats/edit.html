@@ -11,7 +11,7 @@
     <tablebody>
         <tr>
             <td>
-                <button type="button" class="btn btn-warning" ng-click="updateStat(stat.country,stat.year)" >-Edit-</button>
+                <button type="button" class="btn btn-warning" ng-click="updateStat(stat.country,stat.year)" >Editar</button>
             </td>
             <td>
                 <input class="form-control" ng-model="updateStat.country" value="update country"/>
@@ -31,9 +31,3 @@
         </tr>
     </tablebody>
 </table>
-<tr>
-    <td>Pulse aquí para restaurar:</td>
-    <td align="center"><button class="btn btn-info" ng-click="restoreStats()">Restaurar datos</button></td>
-    <td>Pulse aquí para eliminar:</td>
-    <td align="center"><button class="btn btn-danger" ng-click="deleteAllStats()">Eliminar todo</button></td>
-</tr>   
