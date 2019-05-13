@@ -6,7 +6,7 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http", function
     
   
     $scope.updateStat = function (){
-       /* var updateStat = $scope.updateStat;
+        var updateStat = $scope.updateStat;/*
         if(updateStat){
             updateStat.year = parseInt(updateStat.year);
             updateStat.pollution_tco2 = parseFloat(updateStat.pollution_tco2);

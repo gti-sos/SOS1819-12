@@ -9,7 +9,7 @@ angular.module("PollutionApp").controller("ListCtrl",["$scope","$http", function
     refresh();
     
      function refresh(){
-        console.log("Requesting life expectancy stats to <"+API+">...");
+        console.log("Requesting pollution stats to <"+API+">...");
         $http.get(API).then(function (response){
             $scope.status = response.status + " " + response.statusText;
             $scope.pollutionStats = response.data;
