@@ -6,13 +6,13 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http", function
     
   
     $scope.updateStat = function (){
-        var updateStat = $scope.updateStat;/*
+        var updateStat = $scope.updateStat;
         if(updateStat){
             updateStat.year = parseInt(updateStat.year);
             updateStat.pollution_tco2 = parseFloat(updateStat.pollution_tco2);
             updateStat.pollution_kg1000 = parseFloat(updateStat.pollution_kg1000);
             updateStat.pollution_perca = parseFloat(updateStat.pollution_perca);
-            console.log("Updating a stat: "+JSON.stringify(updateStat,null,2));*/
+            console.log("Updating a stat: "+JSON.stringify(updateStat,null,2));
             $http.put(API+"/"+updateStat.country+"/"+updateStat.year,updateStat).then(function (response){
                 console.log("POST Response: " + response.status + " " + response.data);
                 $scope.status = response.status + " " + response.statusText;
@@ -28,7 +28,7 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http", function
                     alert("Elemento no editado: Revise el si todos los campos están completados y el formato de estos");
                 }
             });
-      /*  }*/
+        }
     };
 
 }]);
