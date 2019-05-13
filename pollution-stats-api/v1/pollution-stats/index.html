@@ -90,14 +90,15 @@
                         <button class="btn btn-info" ng-click="paged()" >Paginar</button>
                     </td>
                     <td>
-                        <input class="form-control" ng-model="pageded.numero" placeholder="Elementos" value="numero"/>
+                        <input class="form-control" ng-model="pageded.numero" placeholder="Número de elementos" value="numero"/>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="pageded.inicio" placeholder="Primer elemento" value="inicio"/>
                     </td>
                     <td>
                         <button class="btn btn-secondary" ng-click="pagedPrevious()" >Anteriores</button>
                     </td>
-                    <td>
-                        <input class="form-control" ng-model="pageded.inicio" placeholder="Inicio" value="inicio"/>
-                    </td>
+                   
                     <td>
                         <button class="btn btn-secondary" ng-click="pagedFollowing()" >Siguientes</button>
                     </td>
