@@ -9,12 +9,17 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http","$routePa
     var year = $routeParams.year;
     
     
-    $http.get(API+"/"+country+"/"+year).then(function(res){$scope.updateStat = res.data;});
+    $http.get(API+"/"+country+"/"+year).then(function(res){
+    console.log("parece que va bien");
+    $scope.updateStat = res.data;
+        
+    });
     
 
-    $scope.updateStat = function (name,year){
+    $scope.updateStat = function (){
         var updateStat = $scope.updateStat;
         if(updateStat){
+            
             updateStat.year = parseInt(updateStat.year);
             updateStat.pollution_tco2 = parseFloat(updateStat.pollution_tco2);
             updateStat.pollution_kg1000 = parseFloat(updateStat.pollution_kg1000);
