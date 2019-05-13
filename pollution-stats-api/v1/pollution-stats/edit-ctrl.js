@@ -12,7 +12,7 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http","$routePa
     $http.get(API+"/"+country+"/"+year).then(function(res){$scope.updateStat = res.data;});
     
 
-    $scope.updateStat = function (){
+    $scope.updateStat = function (name,year){
         var updateStat = $scope.updateStat;
         if(updateStat){
             updateStat.year = parseInt(updateStat.year);
