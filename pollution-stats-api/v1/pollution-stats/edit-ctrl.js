@@ -4,6 +4,20 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http", function
     var API = "/api/v1/pollution-stats";
     console.log("ok");
     
+    var elementosTotales = 0;
+    
+    refresh();
+    
+    function refresh(){
+        console.log("Requesting pollution stats to <"+API+">...");
+        $http.get(API).then(function (response){
+            $scope.status = response.status + " " + response.statusText;
+            $scope.pollutionStats = response.data;
+            elementosTotales = response.data.length;
+        }).catch(function(response2){
+            $scope.status = response2.status + " " + response2.statusText;
+        });
+    }
   
     $scope.updateStat = function (){
         var updateStat = $scope.updateStat;
