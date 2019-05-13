@@ -8,9 +8,9 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http","$routePa
     var country = $routeParams.country;
     var year = $routeParams.year;
     
-    
+    console.log("Parece que va bien");
     $http.get(API+"/"+country+"/"+year).then(function(res){
-    console.log("parece que va bien");
+    console.log("parece que va bien definitivamente");
     $scope.updateStat = res.data;
         
     });
