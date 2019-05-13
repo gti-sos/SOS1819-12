@@ -2,8 +2,6 @@
 <table class="table">
     <tr>
         <th>Acciones</th>
-        <th>País</th>
-        <th>Año</th>
         <th>Emisiones de CO2 totales</th>
         <th>Emisiones de CO2 por 1000 dólares del PIB</th>
         <th>Emisiones de CO2 toneladas per capita</th>
@@ -12,12 +10,6 @@
         <tr>
             <td>
                 <button type="button" class="btn btn-warning" ng-click="updateStat(stat.country,stat.year)" >Editar</button>
-            </td>
-            <td>
-                <input class="form-control" ng-model="updateStat.country" value="update country"/>
-            </td>
-            <td>
-                <input class="form-control" ng-model="updateStat.year" value="update year"/>
             </td>
             <td>
                 <input class="form-control" ng-model="updateStat.pollution_tco2" value="update pollution_tco2"/>
