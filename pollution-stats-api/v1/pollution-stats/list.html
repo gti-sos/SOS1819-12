@@ -2,7 +2,7 @@
 <table class="table">
     <tr>
         <th>Acciones</th>
-        <th><a href="#!/edit/{{stat.country}}/{{stat.year}}">País</th>
+        <th>País</th>
         <th>Año</th>
         <th>Emisiones de CO2 totales</th>
         <th>Emisiones de CO2 por 1000 dólares del PIB</th>
@@ -97,7 +97,7 @@
              <td>
                 <button type="button" class="btn btn-warning" ng-click="deleteStat(stat.country,stat.year)" >-Eliminar-</button>
             </td>
-            <td>{{ stat.country }}</td>
+            <td><a href="#!/edit/{{stat.country}}/{{stat.year}}">{{ stat.country }}</td>
             <td>{{ stat.year }}</td>
             <td>{{ stat.pollution_tco2 }}</td>
             <td>{{ stat.pollution_kg1000 }}</td>
