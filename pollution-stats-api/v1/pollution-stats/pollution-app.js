@@ -11,7 +11,7 @@
                 
             })
             
-            .when("/edit",{
+            .when("/edit/:name/:year",{
                 controller : "EditCtrl",
                 templateUrl: "edit.html"
             })

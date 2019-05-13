@@ -1,24 +1,17 @@
 /* global angular */
-angular.module("PollutionApp").controller("EditCtrl",["$scope","$http", function ($scope,$http){
+angular.module("PollutionApp").controller("EditCtrl",["$scope","$http","$routeParams", function ($scope,$http,$routeParams){
     console.log("Edit controller initialized");
     var API = "/api/v1/pollution-stats";
     console.log("ok");
     
-    var elementosTotales = 0;
     
-    refresh();
+    var country = $routeParams.country;
+    var year = $routeParams.year;
     
-    function refresh(){
-        console.log("Requesting pollution stats to <"+API+">...");
-        $http.get(API).then(function (response){
-            $scope.status = response.status + " " + response.statusText;
-            $scope.pollutionStats = response.data;
-            elementosTotales = response.data.length;
-        }).catch(function(response2){
-            $scope.status = response2.status + " " + response2.statusText;
-        });
-    }
-  
+    
+    $http.get(API+"/"+country+"/"+year).then(function(res){$scope.updateStat = res.data;});
+    
+
     $scope.updateStat = function (){
         var updateStat = $scope.updateStat;
         if(updateStat){
