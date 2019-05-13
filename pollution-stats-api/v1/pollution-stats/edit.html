@@ -1,126 +1,39 @@
-<html ng-app="PollutionApp">
-    <head >
-        <meta charset="utf-8">
-        <title>pollution Stats App</title>
-        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
-        <script type="text/javascript" src="pollution-app.js"></script>
-        <script type="text/javascript" src="main-ctrl.js"></script>
-     
-    </head>
-    <body ng-controller ="MainCtrl">
-        <h1 align = "center"> Estadisticas sobre la polución</h1>
-        <table class="table">
-            <tr>
-                <th>Acciones</th>
-                <th>País</th>
-                <th>Año</th>
-                <th>Emisiones de CO2 totales</th>
-                <th>Emisiones de CO2 por 1000 dólares del PIB</th>
-                <th>Emisiones de CO2 toneladas per capita</th>
-            </tr>
-            <tablebody>
-                <tr>
-                    <td><button type="button" class="btn btn-info" ng-click="searchTimeInterval()" >Busqueda por año</button></td>
-                    <td></td>
-                    <td>
-                        <input class="form-control" ng-model="searchedStatT.from" placeholder="Desde"/>
-                        <input class="form-control" ng-model="searchedStatT.to" placeholder="Hasta">
-                    </td>
-                </tr>
-                <tr>
-                    <td><button class="btn btn-info" ng-click="searchStat()" >Buscar:</button></td>
-                    <td>
-                        <input class="form-control" ng-model="searchedStat.country"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="searchedStat.year"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="searchedStat.pollution_tco2"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="searchedStat.pollution_kg1000"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="searchedStat.pollution_perca"/>
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td><button class="btn btn-success" ng-click="addStat()" >Añadir:</button></td>
-                    <td>
-                        <input class="form-control" ng-model="newStat.country"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="newStat.year"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="newStat.pollution_tco2"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="newStat.pollution_kg1000"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="newStat.pollution_perca"
-                    </td>
-                    
-                  <tr>
-                    <td>
-                        <button class="btn btn-primary" ng-click="putStat()" >Editar</button>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="updateStat.country" value="update country"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="updateStat.year" value="update year"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="updateStat.pollution_tco2" value="update pollution_tco2"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="updateStat.pollution_kg1000" value="update pollution_kg1000"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="updateStat.pollution_perca" value="update pollution_perca"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="btn btn-info" ng-click="paged()" >Paginar</button>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="pageded.numero" placeholder="Número de elementos" value="numero"/>
-                    </td>
-                    <td>
-                        <input class="form-control" ng-model="pageded.inicio" placeholder="Primer elemento" value="inicio"/>
-                    </td>
-                    <td>
-                        <button class="btn btn-secondary" ng-click="pagedPrevious()" >Anterior</button>
-                    </td>
-                   
-                    <td>
-                        <button class="btn btn-secondary" ng-click="pagedFollowing()" >Siguiente</button>
-                    </td>
-                </tr>
-                </tr>
-                <tr ng-repeat="stat in pollutionStats">
-                     <td>
-                        <button type="button" class="btn btn-warning" ng-click="deleteStat(stat.country,stat.year)" >-Eliminar-</button>
-                    </td>
-                    <td>{{ stat.country }}</td>
-                    <td>{{ stat.year }}</td>
-                    <td>{{ stat.pollution_tco2 }}</td>
-                    <td>{{ stat.pollution_kg1000 }}</td>
-                    <td>{{ stat.pollution_perca }}</td>
-                </tr>
-            </tablebody>
-        </table>
+<h1 align = "center">  Editar estadisticas sobre la polución</h1>
+<table class="table">
+    <tr>
+        <th>Acciones</th>
+        <th>País</th>
+        <th>Año</th>
+        <th>Emisiones de CO2 totales</th>
+        <th>Emisiones de CO2 por 1000 dólares del PIB</th>
+        <th>Emisiones de CO2 toneladas per capita</th>
+    </tr>
+    <tablebody>
         <tr>
-            <td>Pulse aquí para restaurar:</td>
-            <td align="center"><button class="btn btn-info" ng-click="restoreStats()">Restaurar datos</button></td>
-            <td>Pulse aquí para eliminar:</td>
-            <td align="center"><button class="btn btn-danger" ng-click="deleteAllStats()">Eliminar todo</button></td>
-        </tr>   
-    </body>
-</html>
+            <td>
+                <button type="button" class="btn btn-warning" ng-click="updateStat(stat.country,stat.year)" >-Edit-</button>
+            </td>
+            <td>
+                <input class="form-control" ng-model="updateStat.country" value="update country"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="updateStat.year" value="update year"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="updateStat.pollution_tco2" value="update pollution_tco2"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="updateStat.pollution_kg1000" value="update pollution_kg1000"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="updateStat.pollution_perca" value="update pollution_perca"/>
+            </td>
+        </tr>
+    </tablebody>
+</table>
+<tr>
+    <td>Pulse aquí para restaurar:</td>
+    <td align="center"><button class="btn btn-info" ng-click="restoreStats()">Restaurar datos</button></td>
+    <td>Pulse aquí para eliminar:</td>
+    <td align="center"><button class="btn btn-danger" ng-click="deleteAllStats()">Eliminar todo</button></td>
+</tr>   

@@ -9,9 +9,14 @@
                 controller : "ListCtrl",
                 templateUrl: "list.html"
                 
-            });
+            })
+            
+            .when("/edit",{
+                controller : "EditCtrl",
+                templateUrl: "edit.html"
+            })
+            ;
+
         });
-
-
 
 console.log("PollutionApp iniciada");
