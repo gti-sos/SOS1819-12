@@ -16,7 +16,7 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http","$routePa
     });
     
 
-    $scope.updateStat = function (){
+    $scope.uStat = function (){
         var updateStat = $scope.updateStat;
         if(updateStat){
             
