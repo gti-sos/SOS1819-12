@@ -28,6 +28,21 @@ module.exports = function (app, BASE_PATH, youth_unemployment_stats){
         youth_unemployment_stats.insert({country: "italia", year: 2017, youth_unemployment: 32.4, youth_unemployment_man: 31.2, youth_unemployment_woman: 36.2});
         youth_unemployment_stats.insert({country: "italia", year: 2016, youth_unemployment: 38.2, youth_unemployment_man: 36.5, youth_unemployment_woman: 40.6});
         youth_unemployment_stats.insert({country: "italia", year: 2015, youth_unemployment: 38.3, youth_unemployment_man: 37.9, youth_unemployment_woman: 39.5});
+        youth_unemployment_stats.insert({country: "portugal", year: 2017, youth_unemployment: 22.0, youth_unemployment_man: 21.7, youth_unemployment_woman: 22.4});
+        youth_unemployment_stats.insert({country: "portugal", year: 2016, youth_unemployment: 26.1, youth_unemployment_man: 25.3, youth_unemployment_woman: 26.9});
+        youth_unemployment_stats.insert({country: "portugal", year: 2015, youth_unemployment: 30.1, youth_unemployment_man: 30.4, youth_unemployment_woman: 29.7});
+        youth_unemployment_stats.insert({country: "finlandia", year: 2017, youth_unemployment: 18.5, youth_unemployment_man: 19.6, youth_unemployment_woman: 17.5});
+        youth_unemployment_stats.insert({country: "finlandia", year: 2016, youth_unemployment: 20.3, youth_unemployment_man: 21.2, youth_unemployment_woman: 19.3});
+        youth_unemployment_stats.insert({country: "finlandia", year: 2015, youth_unemployment: 21.7, youth_unemployment_man: 24.3, youth_unemployment_woman: 19.4});
+        youth_unemployment_stats.insert({country: "holanda", year: 2017, youth_unemployment: 8.0, youth_unemployment_man: 8.6, youth_unemployment_woman: 7.5});
+        youth_unemployment_stats.insert({country: "holanda", year: 2016, youth_unemployment: 10.2, youth_unemployment_man: 10.6, youth_unemployment_woman: 9.8});
+        youth_unemployment_stats.insert({country: "holanda", year: 2015, youth_unemployment: 11.2, youth_unemployment_man: 11.5, youth_unemployment_woman: 10.8});
+        youth_unemployment_stats.insert({country: "irlanda", year: 2017, youth_unemployment: 13.2, youth_unemployment_man: 14.4, youth_unemployment_woman: 11.8});
+        youth_unemployment_stats.insert({country: "irlanda", year: 2016, youth_unemployment: 15.6, youth_unemployment_man: 17.3, youth_unemployment_woman: 13.8});
+        youth_unemployment_stats.insert({country: "irlanda", year: 2015, youth_unemployment: 19.1, youth_unemployment_man: 23.0, youth_unemployment_woman: 14.7});
+        youth_unemployment_stats.insert({country: "croacia", year: 2017, youth_unemployment: 25.9, youth_unemployment_man: 23.7, youth_unemployment_woman: 29.0});
+        youth_unemployment_stats.insert({country: "croacia", year: 2016, youth_unemployment: 30.5, youth_unemployment_man: 31.0, youth_unemployment_woman: 29.8});
+        youth_unemployment_stats.insert({country: "croacia", year: 2015, youth_unemployment: 38.3, youth_unemployment_man: 36.8, youth_unemployment_woman: 40.3});
     
             res.sendStatus(201);   
         }
