@@ -41,7 +41,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     app.get(BASE_PATH+"/pollution-stats",(req,res)=>{
     
         var pollutionStats_offset = parseInt(req.query.offset) || 0;
-        var pollutionStats_limit = parseInt(req.query.limit) || 6;
+        var pollutionStats_limit = parseInt(req.query.limit) || 100;
         
         var interval = 0.001;
         var search = {};
