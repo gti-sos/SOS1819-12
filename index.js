@@ -11,7 +11,7 @@ app.use('/', express.static(path.join(__dirname, "public")));
 
 
 app.use("/ui/v1/pollution-stats", express.static(__dirname+"/pollution-stats-api/v1/pollution-stats"));
-app.use("/ui/v1/life-expectancy-stats", express.static(__dirname+"/life-expectancy-stats-api/v1/life-expectancy-stats"));
+
 app.use("/ui/v1/youth-unemployment-stats", express.static(__dirname+"/youth-unemployment-stats-api/v1/youth-unemployment-stats"));
 
 app.use(bodyParser.json());
