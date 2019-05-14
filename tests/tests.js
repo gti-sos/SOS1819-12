@@ -13,6 +13,10 @@ exports.config = {
                 
                 "e2e/TC02-createLifeExpectancyStats.js",
                 
-                "e2e/TC02-removeLifeExpectancyStats.js"]
+                "e2e/TC02-removeLifeExpectancyStats.js",
+                
+                "TC02-createYouthUnemploymentStats.js",
+                
+                "e2e/TC03-removeYouthUnemploymentStats.js"]
                 
 };
