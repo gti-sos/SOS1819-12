@@ -27,9 +27,10 @@ describe("Check if a new stat can be created: ", function(){
                                 element.all(by.repeater("stat in pollutionStats"))
                                     .then(function(finalStats){
                                         expect(finalStats.length).toEqual(initialStats.length+1);
-                                    })};
-                })};
+                                    });
+                                }
+                });
                 
-                
+                } 
         });
 });
