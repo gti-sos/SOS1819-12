@@ -163,7 +163,7 @@ angular.module("PollutionApp").controller("ListCtrl",["$scope","$http", function
     });}
     
     var empezarPor = 0;
-    var numeroAVisualizar = 20;
+    var numeroAVisualizar = 5;
     $scope.paged = function () {
         var paginadoAPI = API;
         var pageded = $scope.pageded;
