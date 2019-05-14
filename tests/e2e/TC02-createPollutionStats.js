@@ -7,11 +7,11 @@ describe("Check if a new stat can be created: ", function(){
                 element.all(by.repeater("stat in pollutionStats"))
                     .then(function(initialStats){
                 
-                        element(by.model("newStat.country")).sendkeys("testprueba");
-                        element(by.model("newStat.year")).sendkeys(8888);
-                        element(by.model("newStat.pollution_tco2")).sendkeys(282.364);
-                        element(by.model("newStat.pollution_kg1000")).sendkeys(0.18);
-                        element(by.model("newStat.pollution_perca")).sendkeys(6.09);
+                        element(by.model("newStat.country")).sendKeys("testprueba");
+                        element(by.model("newStat.year")).sendKeys(8888);
+                        element(by.model("newStat.pollution_tco2")).sendKeys(282.364);
+                        element(by.model("newStat.pollution_kg1000")).sendKeys(0.18);
+                        element(by.model("newStat.pollution_perca")).sendKeys(6.09);
                         element(bs.css('[value="add"]')).click();
                         element.all(by.repeater("stat in pollutionStats"))
                             .then(function(finalStats){
