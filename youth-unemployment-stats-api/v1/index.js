@@ -182,10 +182,10 @@ module.exports = function (app, BASE_PATH, youth_unemployment_stats){
     });
     
       
-    // DELETE /api/v1/youth-unemployment-stats/italia/2018
+    // DELETE /api/v1/pollution-stats/spain/2017
     app.delete(BASE_PATH+"/youth-unemployment-stats/:country/:year", (req,res) => {
         var country = req.params.country;
-        var year = req.params.year;
+        var year =  req.params.year;
         youth_unemployment_stats.find({"country": country, "year": year}).toArray((err, youth_unemployment_stats_a)=>{
             if(err)
                 console.log("Error: "+err);

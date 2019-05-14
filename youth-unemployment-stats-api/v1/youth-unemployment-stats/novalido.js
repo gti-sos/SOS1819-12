@@ -2,24 +2,27 @@
 angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$http", function ($scope,$http){
     console.log("List controller initialized");
     var API = "/api/v1/youth-unemployment-stats";
-    console.log("ok");
     
     var elementosTotales = 0;
-    
+    $scope.status = undefined;
     refresh();
     
-     function refresh(){
+    function refresh(){
         console.log("Requesting youth unemployment stats to <"+API+">...");
         $http.get(API).then(function (response){
             $scope.status = response.status + " " + response.statusText;
+            //console.log("Data received: " + JSON.stringify(response.data,null,2));
             $scope.youth_unemployment_stats = response.data;
             elementosTotales = response.data.length;
         }).catch(function(response2){
             $scope.status = response2.status + " " + response2.statusText;
+            //$scope.youth_unemployment_stats = response2.data;
         });
     }
+    
     $scope.addStat = function (){
         var newStat = $scope.newStat;
+        //if(newStat.country==null||newStat.country==null||newStat.country==null||newStat.country==null||newStat.country==null)
         if(newStat){
             newStat.year = parseInt(newStat.year);
             newStat.youth_unemployment = parseFloat(newStat.youth_unemployment);
@@ -36,6 +39,7 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
                 refresh();
             }).catch(function(response2){
                 $scope.status = response2.status + " " + response2.statusText;
+                //$scope.youth_unemployment_stats = response2.data;
                 if(response2.status==400){
                     alert("Elemento no añadido: Revise el si todos los campos están completados y el formato de estos");
                 }else if(response2.status==409){
@@ -44,34 +48,8 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
             });
         }
     };
-    
-   $scope.putStat = function (){
-        var updateStat = $scope.updateStat;
-        if(updateStat){
-            updateStat.year = parseInt(updateStat.year);
-            updateStat.youth_unemployment = parseFloat(updateStat.youth_unemployment);
-            updateStat.youth_unemployment_man = parseFloat(updateStat.youth_unemployment_man);
-            updateStat.youth_unemployment_woman = parseFloat(updateStat.youth_unemployment_woman);
-            console.log("Updating a stat: "+JSON.stringify(updateStat,null,2));
-            $http.put(API+"/"+updateStat.country+"/"+updateStat.year,updateStat).then(function (response){
-                console.log("POST Response: " + response.status + " " + response.data);
-                $scope.status = response.status + " " + response.statusText;
-                if(response.status==200){
-                    alert("Elemento editado con éxito");
-                }
-                refresh();
-            }).catch(function(response2){
-                $scope.status = response2.status + " " + response2.statusText;
-                if(response2.status==404){
-                    alert("Elemento no editado: El elemento no existe");
-                }else if(response2.status==400){
-                    alert("Elemento no editado: Revise el si todos los campos están completados y el formato de estos");
-                }
-            });
-        }
-    };
-    
-    $scope.deleteStat = function (country,year){
+   
+   $scope.deleteStat = function (country,year){
         console.log("Deleting stat with country: <"+country+"> and year: <"+year+">");
         elementosTotales = elementosTotales - 1;
         $http.delete(API+"/"+country+"/"+year).then(function (response){
@@ -87,7 +65,7 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
             }
         });
     };
-
+    //$scope.putStat = function (country,year,youth_unemployment,youth_unemployment_man,youth_unemployment_woman){};
     $scope.deleteAllStats = function (){
         console.log("Deleting all stats");
         elementosTotales = 0;
@@ -104,10 +82,11 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
             }
         });
     };
-    
     $scope.restoreStats = function (){
         console.log("Restoring stats");
         $http.get(API+"/loadInitialData").then(function (response){
+            //console.log("Data received: " + JSON.stringify(response.data,null,2));
+            //$scope.youth_unemployment_stats = response.data;
             if(response.status==201){
                 alert("Elementos restaurados con éxito");
             }
@@ -134,7 +113,18 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
         console.log("Searching stats: "+searchString);
         $http.get(searchString).then(function (response){
             //console.log("Data received: " + JSON.stringify(response.data,null,2));
-            $scope.youth_unemployment_stats = response.data;
+            if(response.data.length==0){
+                alert("No se encontraro resultados para la siguiente búsqueda: "+
+                "\n País: "+ searchedStat.country+
+                "\n Año: "+ searchedStat.year+
+                "\n Desempleo juvenil: "+ searchedStat.youth_unemployment+
+                "\n Desempleo juvenil masculino: "+ searchedStat.youth_unemployment_man+
+                "\n Desempleo juvenil femenino: "+ searchedStat.youth_unemployment_woman);
+            }else{
+                $scope.youth_unemployment_stats = response.data;
+            }
+        }).catch(function (data){
+            console.log(data.status);
         });
     }
     $scope.searchTimeInterval = function (){
@@ -153,6 +143,7 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
         }}
         console.log("Searching stats: "+searchStringT);
         $http.get(searchStringT).then(function (response){
+            //console.log("Data received: " + JSON.stringify(response.data,null,2));
             if(response.data.length==0){
                 alert("No se encontraro resultados para la siguiente búsqueda: "+
                 "\n Desde el año: "+ searchedStatT.from+
@@ -160,8 +151,8 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
             }else{
                 $scope.youth_unemployment_stats = response.data;
             }
-    });}
-    
+        });
+    }
     var empezarPor = 0;
     var numeroAVisualizar = 10;
     $scope.paged = function () {
@@ -180,11 +171,11 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
         }
         console.log("Paging stats: "+paginadoAPI);
         $http.get(paginadoAPI).then(function (response){
-            $scope.youth_unemployment_stats = response.data;
+            //console.log("Data received: " + JSON.stringify(response.data,null,2));
+            $scope.youth_unemployment_stats= response.data;
         });
     }
-    
-     $scope.pagedPrevious = function () {
+    $scope.pagedPrevious = function () {
         var paginadoAPIP = API;
         if((empezarPor-numeroAVisualizar)<0){
             console.log("Estos son los primeros "+numeroAVisualizar+" elementos");
@@ -198,12 +189,15 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
         paginadoAPIP = paginadoAPIP+"limit="+numeroAVisualizar+"&";
         console.log("Paging stats: "+paginadoAPIP);
         $http.get(paginadoAPIP).then(function (response){
+            //console.log("Data received: " + JSON.stringify(response.data,null,2));
             $scope.youth_unemployment_stats = response.data;
         });
     }
-    
-        $scope.pagedFollowing = function () {
+    $scope.pagedFollowing = function () {
         var paginadoAPIF = API;
+        //console.log(elementosTotales);
+        //console.log(empezarPor);
+        //console.log(numeroAVisualizar);
         if((empezarPor+numeroAVisualizar)>=elementosTotales){
             empezarPor = elementosTotales-numeroAVisualizar;
             console.log("Estos son los últimos "+numeroAVisualizar+" elementos");
@@ -216,6 +210,7 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
         paginadoAPIF = paginadoAPIF+"limit="+numeroAVisualizar+"&";
         console.log("Paging stats: "+paginadoAPIF);
         $http.get(paginadoAPIF).then(function (response){
+            //console.log("Data received: " + JSON.stringify(response.data,null,2));
             $scope.youth_unemployment_stats = response.data;
         });
     }
