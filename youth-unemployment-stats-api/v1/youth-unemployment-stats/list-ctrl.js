@@ -71,7 +71,10 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
         }
     };
     
-    $scope.deleteStat = function (country,year){
+   $scope.deleteStat = function (country,year){
+        console.log(country);
+        console.log(year);
+        console.log("Me cago en la puta del country y el year");
         console.log("Deleting stat with country: <"+country+"> and year: <"+year+">");
         elementosTotales = elementosTotales - 1;
         $http.delete(API+"/"+country+"/"+year).then(function (response){
@@ -87,6 +90,8 @@ angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$ht
             }
         });
     };
+    
+
 
     $scope.deleteAllStats = function (){
         console.log("Deleting all stats");

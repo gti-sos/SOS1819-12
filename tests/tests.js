@@ -14,6 +14,14 @@ exports.config = {
                 
                 //"e2e/TC02-createLifeExpectancyStats.js",
                 
+<<<<<<< HEAD
+                "e2e/TC02-removeLifeExpectancyStats.js",
+                
+                "TC02-createYouthUnemploymentStats.js",
+                
+                "e2e/TC03-removeYouthUnemploymentStats.js"]
+=======
                 //"e2e/TC02-removeLifeExpectancyStats.js"]
+>>>>>>> 89aa58bab9f062c08d944c119b51dfdbc84fb190
                 
 };
