@@ -27,7 +27,7 @@ module.exports = function (app, BASE_PATH, pollutionStats){
                 pollutionStats.insert({country: "francia",year: 2015,pollution_tco2: 327.725,pollution_kg1000: 0.13,pollution_perca: 5.08});
                 pollutionStats.insert({country: "italia",year: 2017,pollution_tco2: 361.193,pollution_kg1000: 0.17,pollution_perca: 6.08});
                 pollutionStats.insert({country: "italia",year: 2016,pollution_tco2: 356.461,pollution_kg1000: 0.17,pollution_perca: 6});
-                pollutionStats.insert({country: "italia",year: 2015,pollution_tco2: 354.355,pollution_kg1000: 0.17,pollution_perca: "5.96"});
+                pollutionStats.insert({country: "italia",year: 2015,pollution_tco2: 354.355,pollution_kg1000: 0.17,pollution_perca: 5.96});
                 
                 res.sendStatus(201);   
             }else{
