@@ -37,7 +37,7 @@
             
         </tr>
         <tr>
-            <td><button class="btn btn-success" ng-click="addStat()" >Añadir:</button></td>
+            <td><button class="btn btn-success" ng-click="addStat()" value="Añadir:">Añadir:</button></td>
             <td>
                 <input class="form-control" ng-model="newStat.country"/>
             </td>
@@ -94,14 +94,14 @@
         </tr>
         </tr>
         <tr ng-repeat="stat in youth_unemployment_stats">
-             <td>
-                <button type="button" class="btn btn-warning" ng-click="deleteStat(stat.country,stat.year)" >-Eliminar-</button>
-            </td>
+            
             <td><a href="#!/edit/{{stat.country}}/{{stat.year}}">{{ stat.country }}</td>
             <td>{{ stat.year }}</td>
             <td>{{ stat.youth_unemployment }}</td>
             <td>{{ stat.youth_unemployment_man }}</td>
             <td>{{ stat.youth_unemployment_woman }}</td>
+            
+            <td> <button class="btn btn-danger" ng-click="deleteStat(stat.country,stat.year)" >Eliminar</button></td>
         </tr>
     </tablebody>
 </table>
