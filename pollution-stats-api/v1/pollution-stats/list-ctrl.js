@@ -3,12 +3,7 @@ angular.module("PollutionApp").controller("ListCtrl",["$scope","$http", function
     console.log("List controller initialized");
     var API = "/api/v1/pollution-stats";
     console.log("ok");
-    
-    
-    var limit = 5;
-    var offset = 0;
-    
-    
+
     var elementosTotales = 0;
     
     refresh();
@@ -168,7 +163,7 @@ angular.module("PollutionApp").controller("ListCtrl",["$scope","$http", function
     });}
     
     var empezarPor = 0;
-    var numeroAVisualizar = 5;
+    var numeroAVisualizar = 15;
     $scope.paged = function () {
         var paginadoAPI = API;
         var pageded = $scope.pageded;
