@@ -4,6 +4,11 @@ angular.module("PollutionApp").controller("ListCtrl",["$scope","$http", function
     var API = "/api/v1/pollution-stats";
     console.log("ok");
     
+    
+    var limit = 5;
+    var offset = 0;
+    
+    
     var elementosTotales = 0;
     
     refresh();
