@@ -2,7 +2,7 @@ describe("Check if a new stat can be created: ", function(){
         
         it("List should grow after the stat creation", function(){
                 
-            browser.get("https://localhost:8080/ui/v1/life-expectancy-stats/#!/");
+            browser.get("https://sos1819-12.herokuapp.com/ui/v1/life-expectancy-stats/#!/");
                 
             element.all(by.repeater("stat in life_expectancy_stats")).then(function(initialStats){
          
