@@ -6,7 +6,7 @@ describe("Check if a stat can be removed: ", function(){
                 
             element.all(by.repeater("stat in youth_unemployment_stats")).then(function(initialStats){
                 
-                element.all(by.css('[value="Eliminar:"]')).last().click();
+                element.all(by.css('[value="remove"]')).last().click();
                 element.all(by.repeater("stat in youth_unemployment_stats")).then(function(finalStats){
                     expect(finalStats.length).toEqual(initialStats.length-1);
                 });
