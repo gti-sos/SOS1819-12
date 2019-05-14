@@ -1,0 +1,31 @@
+<h1>Editor de estadísticas</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>País</th>
+                    <th>Año</th>
+                    <th>Esperanza para la mujer</th>
+                    <th>Esperanza para el hombre</th>
+                    <th>Esperanza media</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr>
+                    <td>{{ stat1.country }}</td>
+                    <td>{{ stat1.year }}</td>
+                    <td>
+                        <input type="form-control" ng-model="stat1.expectancy_woman"/>
+                    </td>
+                    <td>
+                        <input type="form-control" ng-model="stat1.expectancy_man"/>
+                    </td>
+                    <td>
+                        <input type="form-control" ng-model="stat1.expectancy"/>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="put2Stat(stat1.country,stat1.year)" >Modificar</button>
+                    </td>
+                </tr>
+            </tbody>
+            </tbody>
+        </table>

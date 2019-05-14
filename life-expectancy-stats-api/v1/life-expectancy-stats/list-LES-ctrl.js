@@ -1,6 +1,6 @@
 /* global angular */
-angular.module("LifeExpectancyStatsApp").controller("MainCtrl",["$scope","$http", function ($scope,$http){
-    console.log("Main controller initialized");
+angular.module("LifeExpectancyStatsApp").controller("ListLESCtrl",["$scope","$http", function ($scope,$http){
+    console.log("List LES controller initialized");
     var API = "/api/v1/life-expectancy-stats";
     
     var elementosTotales = 0;
