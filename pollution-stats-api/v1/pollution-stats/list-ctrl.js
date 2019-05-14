@@ -74,7 +74,7 @@ angular.module("PollutionApp").controller("ListCtrl",["$scope","$http", function
     $scope.deleteStat = function (country,year){
         console.log("Deleting stat with country: <"+country+"> , year: <"+year+">");
         elementosTotales = elementosTotales - 1;
-        $http.delete(API+"/#!/"+country+"/"+year).then(function (response){
+        $http.delete(API+"/"+country+"/"+year).then(function (response){
             console.log("DELETE Response: " + response.status + " " + response.data);
             if(response.status==200){
                 alert("Elemento eliminado con éxito");
