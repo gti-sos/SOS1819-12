@@ -1,0 +1,32 @@
+<h1 align = "center">  Actualizar datos estadísticos del desempleo juvenil</h1>
+<table class="table">
+    <tr>
+        <th>Acciones</th>
+        <th>País</th>
+        <th>Año</th>
+        <th>Desenmpleo juvenil</th>
+        <th>Desempleo juvenil masculino</th>
+        <th>Desempleo juvenil femenino</th>
+    </tr>
+        <tr>
+            <td>
+                <button type="button" class="btn btn-warning" ng-click="uStat(stat.country,stat.year)" >Editar</button>
+            </td>
+            <td>
+                <input class="form-control" ng-model="youth_unemployment_stats.country" value="update country"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="youth_unemployment_stats.year" value="update year"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="youth_unemployment_stats.youth_unemployment" value="update youth_unemployment_woman"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="youth_unemployment_stats.youth_unemployment_man" value="update youth_unemployment_man"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="youth_unemployment_stats.youth_unemployment_woman" value="update youth_unemployment_woman"/>
+            </td>
+        </tr>
+    </tablebody>
+</table>

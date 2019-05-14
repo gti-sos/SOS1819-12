@@ -1,5 +1,5 @@
 var api = require("./v1");
 
-module.exports = function (app, BASE_PATH, youthUnemploymentStats){
-        api(app, BASE_PATH+"/v1", youthUnemploymentStats);
+module.exports = function (app, BASE_PATH, youth_unemployment_stats){
+        api(app, BASE_PATH+"/v1", youth_unemployment_stats);
 }
