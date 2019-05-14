@@ -13,6 +13,7 @@ describe("Check if a new stat can be created: ", function(){
                         element(by.model("newStat.pollution_kg1000")).sendKeys(0.18);
                         element(by.model("newStat.pollution_perca")).sendKeys(6.09);
                         element(by.css('[value="add"]')).click();
+                        console.log(initialStats);
                         element.all(by.repeater("stat in pollutionStats"))
                             .then(function(finalStats){
                                 expect(finalStats.length).toEqual(initialStats.length+1);

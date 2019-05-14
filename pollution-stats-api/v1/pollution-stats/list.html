@@ -36,26 +36,16 @@
             </td>
             
         </tr>
-        <tr>
-            <td><button class="btn btn-success" ng-click="addStat()" value = "add"/>Añadir:</button></td>
-            <td>
-                <input class="form-control" ng-model="newStat.country"/>
-            </td>
-            <td>
-                <input class="form-control" ng-model="newStat.year"/>
-            </td>
-            <td>
-                <input class="form-control" ng-model="newStat.pollution_tco2"/>
-            </td>
-            <td>
-                <input class="form-control" ng-model="newStat.pollution_kg1000"/>
-            </td>
-            <td>
-                <input class="form-control" ng-model="newStat.pollution_perca"/>
-            </td>
-            
-          <tr>
-            <td>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <td>
                 <button class="btn btn-primary" ng-click="putStat()" >Editar</button>
             </td>
             <td>
@@ -103,6 +93,25 @@
             <td>{{ stat.pollution_kg1000 }}</td>
             <td>{{ stat.pollution_perca }}</td>
         </tr>
+        <tr>
+            <td><button class="btn btn-success" ng-click="addStat()"/>Añadir:</button></td>
+            <td>
+                <input class="form-control" ng-model="newStat.country"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="newStat.year"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="newStat.pollution_tco2"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="newStat.pollution_kg1000"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="newStat.pollution_perca"/>
+            </td>
+            
+          <tr>
     </tablebody>
 </table>
 <tr>
