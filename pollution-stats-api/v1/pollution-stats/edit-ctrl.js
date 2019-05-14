@@ -1,5 +1,5 @@
 /* global angular */
-angular.module("PollutionApp").controller("EditCtrl",["$scope","$http","$routeParams", function ($scope,$http,$routeParams){
+angular.module("PollutionApp").controller("EditCtrl",["$scope","$http","$routeParams","$location", function ($scope,$http,$routeParams,$location){
     console.log("Edit controller initialized");
     var API = "/api/v1/pollution-stats";
     console.log("ok");
@@ -39,6 +39,7 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http","$routePa
                     alert("Elemento no editado: Revise el si todos los campos están completados y el formato de estos");
                 }
             });
+            $location.path("/");
         }
     };
 
