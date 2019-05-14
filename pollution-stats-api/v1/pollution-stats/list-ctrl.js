@@ -1,7 +1,7 @@
 /* global angular */
 angular.module("PollutionApp").controller("ListCtrl",["$scope","$http", function ($scope,$http){
     console.log("List controller initialized");
-    var API = "/api/v1/pollution-stats";
+    var API = "/api/v1/pollution-stats/#!";
     console.log("ok");
 
     var elementosTotales = 0;
