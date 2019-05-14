@@ -4,14 +4,8 @@ describe("Data is Loaded: ", function(){
                 
                 browser.get("https://sos1819-12.herokuapp.com/ui/v1/pollution-stats/#!/");
                 
-                element(by.css('[value="CARGAR DATOS INICIALES"]')).click().then(function(){
-                        
-                                var poStats = element.all(by.repeater("pollutionStats"));
-                                expect(poStats.count()).toBeGreaterThan(0);
-                                
-                        }
-                );
-            }
-        );
-    }
-);
+                var pollution = element.all(by.repeater("stat in pollutionStats"));
+                expect(pollutionStats.count()).toBeGreaterThan;
+                
+        });
+});
