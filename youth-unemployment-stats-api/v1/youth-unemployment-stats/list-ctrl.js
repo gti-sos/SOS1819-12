@@ -1,6 +1,6 @@
 /* global angular */
-angular.module("YouthUnemploymentStatsApp").controller("MainCtrl",["$scope","$http", function ($scope,$http){
-    console.log("Main controller initialized");
+angular.module("YouthUnemploymentStatsApp").controller("ListCtrl",["$scope","$http", function ($scope,$http){
+    console.log("List controller initialized");
     var API = "/api/v1/youth-unemployment-stats";
     
     var elementosTotales = 0;
@@ -48,33 +48,7 @@ angular.module("YouthUnemploymentStatsApp").controller("MainCtrl",["$scope","$ht
             });
         }
     };
-    $scope.putStat = function (){
-        var updateStat = $scope.updateStat;
-        //if(newStat.country==null||newStat.country==null||newStat.country==null||newStat.country==null||newStat.country==null)
-        if(updateStat){
-            updateStat.year = parseInt(updateStat.year);
-            updateStat.youth_unemployment = parseFloat(updateStat.youth_unemployment);
-            updateStat.youth_unemployment_man = parseFloat(updateStat.youth_unemployment_man);
-            updateStat.youth_unemployment_woman = parseFloat(updateStat.youth_unemployment_woman);
-            console.log("Updating a stat: "+JSON.stringify(updateStat,null,2));
-            $http.put(API+"/"+updateStat.country+"/"+updateStat.year,updateStat).then(function (response){
-                console.log("POST Response: " + response.status + " " + response.data);
-                $scope.status = response.status + " " + response.statusText;
-                if(response.status==200){
-                    alert("Elemento editado con éxito");
-                }
-                refresh();
-            }).catch(function(response2){
-                $scope.status = response2.status + " " + response2.statusText;
-                //$scope.youth_unemployment_stats = response2.data;
-                if(response2.status==404){
-                    alert("Elemento no editado: El elemento no existe");
-                }else if(response2.status==400){
-                    alert("Elemento no editado: Revise el si todos los campos están completados y el formato de estos");
-                }
-            });
-        }
-    };
+   
     $scope.deleteStat = function (country,year){
         console.log("Deleting stat with country: <"+country+"> and year: <"+year+">");
         elementosTotales = elementosTotales - 1;
