@@ -1,4 +1,4 @@
-describe("Check if a new stat can be created: ", function(){
+describe("Check if a new stat of life expectancy can be created: ", function(){
         
         it("List should grow after the stat creation", function(){
                 
