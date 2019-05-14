@@ -3,6 +3,10 @@ angular.module("LifeExpectancyStatsApp").controller("MainCtrl",["$scope","$http"
     console.log("Main controller initialized");
     var API = "/api/v1/life-expectancy-stats";
     
+    
+    
+    var limit = 5;
+    var offset = 0;
     var elementosTotales = 0;
     $scope.status = undefined;
     refresh();
@@ -180,7 +184,7 @@ angular.module("LifeExpectancyStatsApp").controller("MainCtrl",["$scope","$http"
         });
     }
     var empezarPor = 0;
-    var numeroAVisualizar = 10;
+    var numeroAVisualizar = 5;
     $scope.paged = function () {
         var paginadoAPI = API;
         var pageded = $scope.pageded;
