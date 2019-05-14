@@ -4,6 +4,6 @@ exports.config = {
     chromeOnly: true,
     specs: [
                 "e2e/TC01-loadPollutionStats.js",
-                "e2e/TC01-createPollutionStats.js"]
+                "e2e/TC02-createPollutionStats.js"]
     
 };
