@@ -84,7 +84,7 @@ module.exports = function (app, BASE_PATH, youth_unemployment_stats){
         });
     });
     
-    /*// GET /api/v1/youth-unemployment-stats/spain
+    // GET /api/v1/youth-unemployment-stats/spain
     app.get(BASE_PATH+"/youth-unemployment-stats/:country", (req,res) => {
         const youth_unemployment_stats_offset = parseInt(req.query.offset) || 0;
         const youth_unemployment_stats_limit = parseInt(req.query.limit) || 100;
@@ -108,7 +108,7 @@ module.exports = function (app, BASE_PATH, youth_unemployment_stats){
             }
         });
     });
-   */
+   
     // GET /api/v1/youth-unemployment-stats/spain/2016
     app.get(BASE_PATH+"/youth-unemployment-stats/:country/:year", (req,res) => {
         var country = req.params.country;
