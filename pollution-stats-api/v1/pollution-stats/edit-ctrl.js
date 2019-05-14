@@ -19,14 +19,13 @@ angular.module("PollutionApp").controller("EditCtrl",["$scope","$http","$routePa
     $scope.uStat = function (){
         var updateStat = $scope.updateStat;
         if(updateStat){
-            
             updateStat.year = parseInt(updateStat.year);
             updateStat.pollution_tco2 = parseFloat(updateStat.pollution_tco2);
             updateStat.pollution_kg1000 = parseFloat(updateStat.pollution_kg1000);
             updateStat.pollution_perca = parseFloat(updateStat.pollution_perca);
             console.log("Updating a stat: "+JSON.stringify(updateStat,null,2));
             $http.put(API+"/"+updateStat.country+"/"+updateStat.year,updateStat).then(function (response){
-                console.log("POST Response: " + response.status + " " + response.data);
+                console.log("PUT Response: " + response.status + " " + response.data);
                 $scope.status = response.status + " " + response.statusText;
                 if(response.status==200){
                     alert("Elemento editado con éxito");
