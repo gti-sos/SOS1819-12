@@ -4,11 +4,11 @@ exports.config = {
     chromeOnly: true,
     specs: [
                 "e2e/TC01-loadPollutionStats.js",
-                "e2e/TC01-loadYouthUnemploymentStats.js",
+//                "e2e/TC01-loadYouthUnemploymentStats.js",
 //                "e2e/TC01-loadLifeExpectaSncyStats.js",
                 
                 
-//                "e2e/TC02-createPollutionStats.js",
+                "e2e/TC02-createPollutionStats.js",
 //                "e2e/TC02-createLifeExpectancyStats.js",
 //                "e2e/TC02-createYouthUnemploymentStats.js",
                 
