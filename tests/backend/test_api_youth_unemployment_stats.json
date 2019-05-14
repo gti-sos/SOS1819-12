@@ -1,0 +1,995 @@
+{
+	"info": {
+		"_postman_id": "478fcce9-9f8e-4830-b130-ad6c847ac5a1",
+		"name": "SOS1819-testing-of-youth-unemployment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Borra todo Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e1ec78f6-d2db-450f-9a2d-74df5b6dee98",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Añadir ciudades",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c810877-271c-49e9-9af8-0c4ff7273ffd",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n\"country\": \"spain\",\r\n\"year\": \"2017\",\r\n\"youth_unemployment\": \"36.8\",\r\n\"youth_unemployment_man\": \"37.8\",\r\n\"youth_unemployment_woman\": \"35.7\"\r\n},\r\n{\r\n\"country\": \"spain\",\r\n\"year\": \"2016\",\r\n\"youth_unemployment\": \"42.1\",\r\n\"youth_unemployment_man\": \"42.5\",\r\n\"youth_unemployment_woman\": \"41.7\"\r\n},\r\n{\r\n\"country\": \"spain\",\r\n\"year\": \"2015\",\r\n\"youth_unemployment\": \"45.8\",\r\n\"youth_unemployment_man\": \"45\",\r\n\"youth_unemployment_woman\": \"46.7\"\r\n},\r\n{\r\n\"country\": \"alemania\",\r\n\"year\": \"2017\",\r\n\"youth_unemployment\": \"6.5\",\r\n\"youth_unemployment_man\": \"7.2\",\r\n\"youth_unemployment_woman\": \"5.6\"\r\n},\r\n{\r\n\"country\": \"alemania\",\r\n\"year\": \"2016\",\r\n\"youth_unemployment\": \"6.7\",\r\n\"youth_unemployment_man\": \"7.5\",\r\n\"youth_unemployment_woman\": \"5.8\"\r\n},\r\n{\r\n\"country\": \"alemania\",\r\n\"year\": \"2015\",\r\n\"youth_unemployment\": \"7.1\",\r\n\"youth_unemployment_man\": \"7.7\",\r\n\"youth_unemployment_woman\": \"6.4\"\r\n},\r\n{\r\n\"country\": \"reino unido\",\r\n\"year\": \"2017\",\r\n\"youth_unemployment\": \"12.5\",\r\n\"youth_unemployment_man\": \"13.5\",\r\n\"youth_unemployment_woman\": \"11.4\"\r\n},\r\n{\r\n\"country\": \"reino unido\",\r\n\"year\": \"2016\",\r\n\"youth_unemployment\": \"12.6\",\r\n\"youth_unemployment_man\": \"14.8\",\r\n\"youth_unemployment_woman\": \"10.1\"\r\n},\r\n{\r\n\"country\": \"reino unido\",\r\n\"year\": \"2015\",\r\n\"youth_unemployment\": \"13.6\",\r\n\"youth_unemployment_man\": \"14.8\",\r\n\"youth_unemployment_woman\": \"12.3\"\r\n},\r\n{\r\n\"country\": \"francia\",\r\n\"year\": \"2017\",\r\n\"youth_unemployment\": \"21.6\",\r\n\"youth_unemployment_man\": \"22.3\",\r\n\"youth_unemployment_woman\": \"20.8\"\r\n},\r\n{\r\n\"country\": \"francia\",\r\n\"year\": \"2016\",\r\n\"youth_unemployment\": \"23.3\",\r\n\"youth_unemployment_man\": \"24.3\",\r\n\"youth_unemployment_woman\": \"22.1\"\r\n},\r\n{\r\n\"country\": \"francia\",\r\n\"year\": \"2015\",\r\n\"youth_unemployment\": \"24.5\",\r\n\"youth_unemployment_man\": \"25.8\",\r\n\"youth_unemployment_woman\": \"22.9\"\r\n},\r\n{\r\n\"country\": \"italia\",\r\n\"year\": \"2017\",\r\n\"youth_unemployment\": \"32.4\",\r\n\"youth_unemployment_man\": \"31.2\",\r\n\"youth_unemployment_woman\": \"36.2\"\r\n},\r\n{\r\n\"country\": \"italia\",\r\n\"year\": \"2016\",\r\n\"youth_unemployment\": \"38.2\",\r\n\"youth_unemployment_man\": \"36.5\",\r\n\"youth_unemployment_woman\": \"40.6\"\r\n},\r\n{\r\n\"country\": \"italia\",\r\n\"year\": \"2015\",\r\n\"youth_unemployment\": \"38.3\",\r\n\"youth_unemployment_man\": \"37.9\",\r\n\"youth_unemployment_woman\": \"39.5\"\r\n}]"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/loadInitialData",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar ciudades",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "716b9b1d-2b24-41ff-b39e-39ef00cbda94",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paginacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "56a1cab3-5014-4eb5-ad39-39c199727e78",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response array is the same size as populate array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats?page=0&limit=3",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fb1502e4-0257-4e3c-aa01-b8e1a61fec27",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats?from=2015&to=2016",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2015"
+						},
+						{
+							"key": "to",
+							"value": "2016"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "755edfd1-74c8-4e35-8229-c2022be50657",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats?country=spain",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "spain"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "48069fa8-bd12-47f9-be37-ed3b3aa39b72",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats?fields=youth_unemployment,youth_unemployment_man,youth_unemployment_woman",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "youth_unemployment,youth_unemployment_man,youth_unemployment_woman"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4a5bc94e-cda9-47ac-b0e3-9ca4c7bd585b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats?year=2017",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2017"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar recurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51e82043-5177-4199-8332-a7a4592c47c7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/spain",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats",
+						"spain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar recurso con dos parametros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/spain/2016",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats",
+						"spain",
+						"2016"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurso inexistente 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d1a75a4c-0841-4f45-83f4-43b73b107046",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/australia/2016",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats",
+						"australia",
+						"2016"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "006d9801-d04d-49df-9fd7-14e69070806f",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"italia\",\n    \"year\": \"2018\",\n    \"youth_unemployment\": \"32.4\",\n    \"youth_unemployment_man\": \"31.2\",\n    \"youth_unemployment_woman\": \"36.2\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurso con menos parametro 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1eb9deaf-65a7-466f-9b9b-1ea174490e85",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"spain\",\r\n\"year\": \"2017\",\r\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "No permitido 405",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d52053e7-0287-42b2-805a-6d6f57ff246d",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"spain\",\n    \"year\": \"2018\",\n    \"youth_unemployment\": \"34.1\",\n    \"youth_unemployment_man\": \"34.5\",\n    \"youth_unemployment_woman\": \"35.2\"\n    }"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/spain/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats",
+						"spain",
+						"2015"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurso ya existente 409",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "357d7551-a45f-49d2-804c-6f6dd420343f",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"country\": \"spain\",\r\n    \"year\": 2017,\r\n    \"youth_unemployment\": 36.8,\r\n    \"youth_unemployment_man\": 37.8,\r\n    \"youth_unemployment_woman\": 35.7\r\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1819-12.herokuapp.com/api/v1/youthUnemploymentStats/2017/alemania",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"alemania\",\n    \"year\": \"2018\",\n    \"youth_unemployment\": \"34.1\",\n    \"youth_unemployment_man\": \"34.5\",\n    \"youth_unemployment_woman\": \"35.2\"\n    }"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/alemania/2018",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats",
+						"alemania",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put no permitido 405",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "80da2a50-a05a-4c51-8ad4-9f94aac733cd",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "country",
+							"value": "Spain",
+							"type": "text"
+						},
+						{
+							"key": "year",
+							"value": "2020",
+							"type": "text"
+						},
+						{
+							"key": "youth_unemployment",
+							"value": "66.3",
+							"type": "text"
+						},
+						{
+							"key": "youth_unemployment_man",
+							"value": "66.4",
+							"type": "text"
+						},
+						{
+							"key": "youth_unemployment_woman",
+							"value": "66.2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurso con menos parametros 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b9ba84e-83df-49b2-801b-c6ccf74625fd",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"spain\",\r\n\"year\": \"2017\",\r\n\r\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/spain",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats",
+						"spain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar recurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bdeaad79-9c60-4c70-95b0-f6af6c8a6ba8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"spain\",\n    \"year\": 2017,\n    \"youth_unemployment\": 42.1,\n    \"youth_unemployment_man\": 42.5,\n    \"youth_unemployment_woman\": 41.7\n    }"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/spain/2017",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats",
+						"spain",
+						"2017"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borra  recurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7319ba7-f560-471a-b039-047561582276",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/italia/2018",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats",
+						"italia",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borra todo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e1ec78f6-d2db-450f-9a2d-74df5b6dee98",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
