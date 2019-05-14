@@ -1,0 +1,1723 @@
+{
+	"info": {
+		"_postman_id": "e3f9e5a8-8463-4218-bdf3-ba5219c55e8c",
+		"name": "SOS1819-12-life-expectancy-stats HEROKU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE /api/v1/life-expectancy-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "11d3926a-9321-40cb-8800-d4301a012417",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "DELETE /api/v1/life-expectancy-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats/loadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "59e71c9b-d79b-4e0d-a460-6013df3a2ce7",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/loadInitialData",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"loadInitialData"
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats/loadInitialData"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats/loadInitialData 2ª vez",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "59e71c9b-d79b-4e0d-a460-6013df3a2ce7",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/loadInitialData",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"loadInitialData"
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats/loadInitialData por 2ª vez"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f88815e4-cb58-43cb-91a3-b91de410c395",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats?limit=3&offset=3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f88815e4-cb58-43cb-91a3-b91de410c395",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats?limit=3&offset=3",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "offset",
+							"value": "3"
+						}
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats?limit=3&offset=3, pagina los elementos de 3 en 3 apartir del 3º elemento"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats?from=2015&to=2016",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f88815e4-cb58-43cb-91a3-b91de410c395",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats?from=2015&to=2016",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2015"
+						},
+						{
+							"key": "to",
+							"value": "2016"
+						}
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats?from=2015&to=2016"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats?country=spain",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f88815e4-cb58-43cb-91a3-b91de410c395",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats?country=spain",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "spain"
+						}
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats?country=spain"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats?year=2017",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f88815e4-cb58-43cb-91a3-b91de410c395",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats?year=2017",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2017"
+						}
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats?year=2017"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats?expectancy_woman=83, E=+-0.5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f88815e4-cb58-43cb-91a3-b91de410c395",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats?expectancy_woman=83",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					],
+					"query": [
+						{
+							"key": "expectancy_woman",
+							"value": "83"
+						}
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats?expectancy_woman=83, devuelve el intervalo[expectancy_woman-0.5,expectancy_woman+0.5]"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats?expectancy_man=81, E=+-0.5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f88815e4-cb58-43cb-91a3-b91de410c395",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats?expectancy_man=81",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					],
+					"query": [
+						{
+							"key": "expectancy_man",
+							"value": "81"
+						}
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats?expectancy_man=81, devuelve el intervalo[expectancy_man-0.5,expectancy_man+0.5]"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats?expectancy=81, E=+-0.5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f88815e4-cb58-43cb-91a3-b91de410c395",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats?expectancy=81",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					],
+					"query": [
+						{
+							"key": "expectancy",
+							"value": "81"
+						}
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats?expectancy=81, devuelve el intervalo[expectancy-0.5,expectancy+0.5]"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats?fields=expectancy_woman,expectancy_man,expectancy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f88815e4-cb58-43cb-91a3-b91de410c395",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats?fields=expectancy_woman,expectancy_man,expectancy",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "expectancy_woman,expectancy_man,expectancy"
+						}
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-statsfields=expectancy_woman,expectancy_man,expectancy, devuelve los campos {expectancy_woman,expectancy_man,expectancy} de los elementos"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/v1/life-expectancy-stats sin country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "70366013-32ec-438f-a9a3-100f12e59005",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"year\": \"2015\",\n\"expectancy_woman\": \"85.7\",\n\"expectancy_man\": \"80.1\",\n\"expectancy\": \"83\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "POST /api/v1/life-expectancy-stats sin el atributo country"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/v1/life-expectancy-stats sin year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "64ab09fd-dfea-46bf-bcc2-2eef95e5e1fc",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"italy\",\n\"expectancy_woman\": \"85.7\",\n\"expectancy_man\": \"80.1\",\n\"expectancy\": \"83\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "POST /api/v1/life-expectancy-stats sin el atributo year"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/v1/life-expectancy-stats sin expectancy_woman",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b4d446c6-3cc6-4390-8d7f-5aedb49975cc",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"italy\",\n\"year\": \"2015\",\n\"expectancy_man\": \"80.1\",\n\"expectancy\": \"83\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "POST /api/v1/life-expectancy-stats sin el atributo expectancy_woman"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/v1/life-expectancy-stats sin expectancy_man",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f296aec-d7e0-46fc-9ad0-5926a7ede18d",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"italy\",\n\"year\": \"2015\",\n\"expectancy_woman\": \"85.7\",\n\"expectancy\": \"83\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "POST /api/v1/life-expectancy-stats sin el atributo expectancy_man"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/v1/life-expectancy-stats sin expectancy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74fd72df-23b8-476e-8215-d7f85dae71b8",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"italy\",\n\"year\": \"2015\",\n\"expectancy_woman\": \"85.7\",\n\"expectancy_man\": \"80.1\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "POST /api/v1/life-expectancy-stats sin el atributo expectancy"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/v1/life-expectancy-stats JSON incorrecto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7e03b500-4908-440a-aa4a-d1fe5a2fa7b2",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"italy\",\n\"year\": \"2015\",\n\"expectancy_woman\": \"85.7\",\n\"expectancy_man\": \"80.1\",\n\"expectancy\": \"83\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "POST /api/v1/life-expectancy-stats con variables de tipos incorrectos"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/v1/life-expectancy-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7e03b500-4908-440a-aa4a-d1fe5a2fa7b2",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"italy\",\n\"year\": 2015,\n\"expectancy_woman\": 85.7,\n\"expectancy_man\": 80.1,\n\"expectancy\": 83\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "POST /api/v1/life-expectancy-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/v1/life-expectancy-stats 2ª vez",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7e03b500-4908-440a-aa4a-d1fe5a2fa7b2",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"italy\",\n\"year\": 2015,\n\"expectancy_woman\": 85.7,\n\"expectancy_man\": 80.1,\n\"expectancy\": 83\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "POST /api/v1/life-expectancy-stats por 2ª vez"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats/italy/2015",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6b3ffbaf-01e6-471d-9a5e-8a8aebe89ec5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/italy/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"italy",
+						"2015"
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats/italy/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/v1/life-expectancy-stats/italy/2015 country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09f69e86-76f9-4321-836b-0f81b26caa31",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"year\": 2015,\n\t\"expectancy_woman\": 105.7,\n\t\"expectancy_man\": 100.1,\n\t\"expectancy\": 103\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/italy/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"italy",
+						"2015"
+					]
+				},
+				"description": "PUT /api/v1/life-expectancy-stats/italy/2015 sin el atributo country"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/v1/life-expectancy-stats/italy/2015 year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09f69e86-76f9-4321-836b-0f81b26caa31",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"italy\",\n\t\"expectancy_woman\": 105.7,\n\t\"expectancy_man\": 100.1,\n\t\"expectancy\": 103\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/italy/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"italy",
+						"2015"
+					]
+				},
+				"description": "PUT /api/v1/life-expectancy-stats/italy/2015 sin el atributo year"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/v1/life-expectancy-stats/italy/2015 sin expectancy_woman",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09f69e86-76f9-4321-836b-0f81b26caa31",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"italy\",\n\t\"year\": 2015,\n\t\"expectancy_man\": 100.1,\n\t\"expectancy\": 103\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/italy/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"italy",
+						"2015"
+					]
+				},
+				"description": "PUT /api/v1/life-expectancy-stats/italy/2015 sin el atributo expectancy_woman"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/v1/life-expectancy-stats/italy/2015 sin expectancy_man",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09f69e86-76f9-4321-836b-0f81b26caa31",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"italy\",\n\"year\": \"2015\",\n\"expectancy_woman\": \"105.7\",\n\"expectancy\": \"103\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/italy/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"italy",
+						"2015"
+					]
+				},
+				"description": "PUT /api/v1/life-expectancy-stats/italy/2015 sin el atributo expectancy_man"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/v1/life-expectancy-stats/italy/2015 sin expectancy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09f69e86-76f9-4321-836b-0f81b26caa31",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"italy\",\n\"year\": \"2015\",\n\"expectancy_woman\": \"105.7\",\n\"expectancy\": \"103\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/italy/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"italy",
+						"2015"
+					]
+				},
+				"description": "PUT /api/v1/life-expectancy-stats/italy/2015 sin el atributo expectancy"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/v1/life-expectancy-stats/italy/2015 JSON incorrecto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "122eefde-355b-47f5-aa2b-6c9259fa72ff",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"italy\",\n\t\"year\": \"2015\",\n\t\"expectancy_woman\": \"105.72\",\n\t\"expectancy_man\": \"100.1\",\n\t\"expectancy\": \"103\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/italy/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"italy",
+						"2015"
+					]
+				},
+				"description": "PUT /api/v1/life-expectancy-stats/italy/2015 con variables de tipos incorrectos"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/v1/life-expectancy-stats/italy/2015 JSON incorrecto II",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "122eefde-355b-47f5-aa2b-6c9259fa72ff",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"italy\",\n\t\"year\": 2015,\n\t\"expectancy_woman\": 105.7,\n\t\"expectancy_man\": 100.1,\n\t\"expectancy\": 103\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/italy/2017",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"italy",
+						"2017"
+					]
+				},
+				"description": "PUT /api/v1/life-expectancy-stats/italy/2015 JSON incorrecto II"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/v1/life-expectancy-stats/italy/2015",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "122eefde-355b-47f5-aa2b-6c9259fa72ff",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"italy\",\n\t\"year\": 2015,\n\t\"expectancy_woman\": 105.7,\n\t\"expectancy_man\": 100.1,\n\t\"expectancy\": 103\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/italy/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"italy",
+						"2015"
+					]
+				},
+				"description": "PUT /api/v1/life-expectancy-stats/italy/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/v1/life-expectancy-stats/italy/2015",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b130be93-fc9a-47eb-baaf-2e5d0b0d7737",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"france\",\n\"year\": \"2015\",\n\"expectancy_woman\": \"105.7\",\n\"expectancy_man\": \"100.1\",\n\"expectancy\": \"103\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/italy/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"italy",
+						"2015"
+					]
+				},
+				"description": "DELETE /api/v1/life-expectancy-stats/italy/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/v1/life-expectancy-stats/spain/2015",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3b6b3dfc-4499-4be4-bb7c-b32c62bd93c2",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"france\",\n\"year\": \"2015\",\n\"expectancy_woman\": \"105.7\",\n\"expectancy_man\": \"100.1\",\n\"expectancy\": \"103\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/spain/2015",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"spain",
+						"2015"
+					]
+				},
+				"description": "POST /api/v1/life-expectancy-stats/spain/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/v1/life-expectancy-stats/spain",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "92cea87d-7cb0-4699-8829-37ac309503c3",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"france\",\n\"year\": \"2015\",\n\"expectancy_woman\": \"105.7\",\n\"expectancy_man\": \"100.1\",\n\"expectancy\": \"103\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/spain",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"spain"
+					]
+				},
+				"description": "POST /api/v1/life-expectancy-stats/spain"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/v1/life-expectancy-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a841241b-3f28-43d6-b967-9388423b202e",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"country\": \"france\",\n\"year\": \"2015\",\n\"expectancy_woman\": \"105.7\",\n\"expectancy_man\": \"100.1\",\n\"expectancy\": \"103\"\n}"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "PUT /api/v1/life-expectancy-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/v1/life-expectancy-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "11d3926a-9321-40cb-8800-d4301a012417",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats"
+					]
+				},
+				"description": "DELETE /api/v1/life-expectancy-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/life-expectancy-stats/loadInitialData End",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "59e71c9b-d79b-4e0d-a460-6013df3a2ce7",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/loadInitialData",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"life-expectancy-stats",
+						"loadInitialData"
+					]
+				},
+				"description": "GET /api/v1/life-expectancy-stats/loadInitialData"
+			},
+			"response": []
+		}
+	]
+}

@@ -3,7 +3,7 @@ angular.module("PollutionApp").controller("ListCtrl",["$scope","$http", function
     console.log("List controller initialized");
     var API = "/api/v1/pollution-stats";
     console.log("ok");
-    
+
     var elementosTotales = 0;
     
     refresh();
@@ -72,7 +72,7 @@ angular.module("PollutionApp").controller("ListCtrl",["$scope","$http", function
     };
     
     $scope.deleteStat = function (country,year){
-        console.log("Deleting stat with country: <"+country+"> and year: <"+year+">");
+        console.log("Deleting stat with country: <"+country+"> , year: <"+year+">");
         elementosTotales = elementosTotales - 1;
         $http.delete(API+"/"+country+"/"+year).then(function (response){
             console.log("DELETE Response: " + response.status + " " + response.data);
@@ -163,7 +163,7 @@ angular.module("PollutionApp").controller("ListCtrl",["$scope","$http", function
     });}
     
     var empezarPor = 0;
-    var numeroAVisualizar = 6;
+    var numeroAVisualizar = 20;
     $scope.paged = function () {
         var paginadoAPI = API;
         var pageded = $scope.pageded;
