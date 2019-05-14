@@ -1,0 +1,1410 @@
+{
+	"info": {
+		"_postman_id": "308730dd-ce16-4565-ba79-7a261c5da7f4",
+		"name": "SOS1819-12-pollutionStats",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE Todo 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19293f8a-0f73-4b1a-aacd-11804d383714",
+						"exec": [
+							"pm.test(\"Status code is 200 \", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET loadInitialData 201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62cb09e8-69de-4cca-b995-63e9f01fff39",
+						"exec": [
+							"pm.test(\"Status code is 201 \", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET loadInitialData 409",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62cb09e8-69de-4cca-b995-63e9f01fff39",
+						"exec": [
+							"pm.test(\"Status code is 409 \", function () {",
+							"    pm.response.to.have.status(409);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recursos 200, DATA and JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ce776863-da92-4f62-9bfb-c48916ce4002",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso 200 and JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a690b59-5a8b-46cb-ac3d-dd67df36c3b3",
+						"exec": [
+							"pm.test(\"Status code is 200 'OK'\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats/spain/2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats",
+						"spain",
+						"2017"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso 200 , JSON and PAG",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a690b59-5a8b-46cb-ac3d-dd67df36c3b3",
+						"exec": [
+							"pm.test(\"Status code is 200 'OK'\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats?limit=5&offset=0",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso 200 , JSON and SEARCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a690b59-5a8b-46cb-ac3d-dd67df36c3b3",
+						"exec": [
+							"pm.test(\"Status code is 200 'OK'\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats?from=2015&to=2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2015"
+						},
+						{
+							"key": "to",
+							"value": "2017"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso 200 , SEARCH COUNTRY",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a690b59-5a8b-46cb-ac3d-dd67df36c3b3",
+						"exec": [
+							"pm.test(\"Status code is 200 'OK'\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats?country=spain",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "spain"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso 200 , SEARCH YEAR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a690b59-5a8b-46cb-ac3d-dd67df36c3b3",
+						"exec": [
+							"pm.test(\"Status code is 200 'OK'\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats?year=2015",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2015"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso 200 , SEARCH pollution_tco2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a690b59-5a8b-46cb-ac3d-dd67df36c3b3",
+						"exec": [
+							"pm.test(\"Status code is 200 'OK'\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats?pollution_tco2=798.582",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					],
+					"query": [
+						{
+							"key": "pollution_tco2",
+							"value": "798.582"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso 200 , SEARCH pollution_kg1000",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a690b59-5a8b-46cb-ac3d-dd67df36c3b3",
+						"exec": [
+							"pm.test(\"Status code is 200 'OK'\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Value",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "Value",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats?pollution_kg1000=0.17",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					],
+					"query": [
+						{
+							"key": "pollution_kg1000",
+							"value": "0.17"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso 200 , SEARCH pollution_perca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a690b59-5a8b-46cb-ac3d-dd67df36c3b3",
+						"exec": [
+							"pm.test(\"Status code is 200 'OK'\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Value",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "Value",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats?pollution_perca=9.67",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					],
+					"query": [
+						{
+							"key": "pollution_perca",
+							"value": "9.67"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso 200 , SEARCH field",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a690b59-5a8b-46cb-ac3d-dd67df36c3b3",
+						"exec": [
+							"pm.test(\"Status code is 200 'OK'\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response must be JSON.\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"pm.test(\"API have data\", function () {",
+							"var jsonData = pm.response.json();",
+							"pm.expect(jsonData.length > 0).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Value",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "Value",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats?fields=pollution_tco2,pollution_kg1000,pollution_perca",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "pollution_tco2,pollution_kg1000,pollution_perca"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Recurso 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c28bfc06-d84f-4903-af89-eed8b49c750c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"country\": \"spain\",\n        \"year\": 2017,\n        \"pollution_tco2\": 338.193,\n        \"pollution_kg1000\": 0.13,\n        \"pollution_perca\": 5.2\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats/spain/2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats",
+						"spain",
+						"2017"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Recurso 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8cbc7037-6960-4176-b21f-2a008bab82f2",
+						"exec": [
+							"pm.test(\"Status code is 404 'Not Found'\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"country\": \"spain\",\n        \"year\": 2017,\n        \"pollution_tco2\": 338.193,\n        \"pollution_kg1000\": 0.13,\n        \"pollution_perca\": 5.2\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats/spain/2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats",
+						"spain",
+						"2017"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a690b59-5a8b-46cb-ac3d-dd67df36c3b3",
+						"exec": [
+							"pm.test(\"Status code is 404 'OK'\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats/spain/2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats",
+						"spain",
+						"2017"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Recursos  201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "70c4c4ec-73a0-40d3-84d8-1aefb42fc829",
+						"exec": [
+							"pm.test(\"Status code is 201 'Created'\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2018,\n        \"pollution_tco2\": 100000,\n        \"pollution_kg1000\": 0.18,\n        \"pollution_perca\": 6.09\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Recursos  409",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a9c70ff-2b16-4ad2-a404-72e51defaf41",
+						"exec": [
+							"pm.test(\"Status code is 409 'Conflict'\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2018,\n        \"pollution_tco2\": 100000,\n        \"pollution_kg1000\": 0.18,\n        \"pollution_perca\": 6.09\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Recursos  400 sin country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1aa7f7fb-edb3-4dcd-850d-2dfe35b919fc",
+						"exec": [
+							"pm.test(\"Status code is 400 'Bad request'\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \n        \"year\": 2018,\n        \"pollution_tco2\": 100000,\n        \"pollution_kg1000\": 0.18,\n        \"pollution_perca\": 6.09\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Recursos  400  \"u\" != \"country\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1aa7f7fb-edb3-4dcd-850d-2dfe35b919fc",
+						"exec": [
+							"pm.test(\"Status code is 400 'Bad request'\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"u\": \"spain\",\n        \"year\": 2018,\n        \"pollution_tco2\": 100000,\n        \"pollution_kg1000\": 0.18,\n        \"pollution_perca\": 6.09\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Recurso 405",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6dbc6c51-1fa9-4c56-b747-7b5c6631a050",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\":\"spain\",\n        \"year\": 2018,\n        \"pollution_tco2\": 25.000,\n        \"pollution_kg1000\": 0.18,\n        \"pollution_perca\": 6.09\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats/spain",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats",
+						"spain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Recurso 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5d6610d1-bbc6-4bbb-84af-0042511de7fa",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2015,\n        \"pollution_tco2\": 100.0,\n        \"pollution_kg1000\": 100.0,\n        \"pollution_perca\": 100.0\n}    "
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats/spain/2015",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats",
+						"spain",
+						"2015"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Recursos 405",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51236c7b-54ba-430d-b52a-b9b75f4145cd",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": \"2017\",\n        \"pollution_tco2\": \"000000\",\n        \"pollution_kg1000\": \"0.18\",\n        \"pollution_perca\": \"6.09\"\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Todo 200 Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19293f8a-0f73-4b1a-aacd-11804d383714",
+						"exec": [
+							"pm.test(\"Status code is 200 \", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET loadInitialData 201 Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62cb09e8-69de-4cca-b995-63e9f01fff39",
+						"exec": [
+							"pm.test(\"Status code is 201 \", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-12.herokuapp.com/api/v1/pollution-stats/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pollution-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

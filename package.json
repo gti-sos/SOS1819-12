@@ -14,6 +14,7 @@
     "pretest": "tests/runPhantom.sh",
     "test": "newman run tests/backend/test_api_life_expectancy_stats.json && protractor tests/tests.js",
     "test": "newman run tests/backend/test_api_youth_unemployment_stats.json && protractor tests/tests.js",
+    "test": "newman run tests/backend/test_api_pollution-stats.json && protractor tests/tests.js",
     "posttest": "killall phantomjs",
     "test-pollution-stats": "newman run https://www.getpostman.com/collections/e44012f7ef25613b3d95",
     "test-life-expectancy-stats": "newman run https://www.getpostman.com/collections/5f1891ab333bc1a0f947",
