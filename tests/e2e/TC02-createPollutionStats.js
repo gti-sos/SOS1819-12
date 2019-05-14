@@ -4,7 +4,7 @@ describe("Check if a new stat can be created: ", function(){
                 
                 browser.get("https://sos1819-12.herokuapp.com/ui/v1/pollution-stats/#!/");
                 
-          
+                
                 
                 element.all(by.repeater("stat in pollutionStats"))
                     .then(function(initialStats){
