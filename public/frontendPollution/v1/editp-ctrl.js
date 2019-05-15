@@ -16,7 +16,7 @@ angular.module("SOS181912App").controller("EditpCtrl",["$scope","$http","$routeP
     });
     
 
-    $scope.uStat = function (){
+    $scope.uS2tat = function (){
         var updateStat = $scope.updateStat;
         if(updateStat){
             updateStat.year = parseInt(updateStat.year);
