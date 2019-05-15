@@ -17,7 +17,7 @@ angular.module("SOS181912App").controller("EditpCtrl",["$scope","$http","$routeP
     
 
     $scope.uS2tat = function (){
-        var updateStat2 = $scope.updateStat221;
+        var updateStat2 = $scope.updateStat2;
         if(updateStat2){
             updateStat2.year = parseInt(updateStat2.year);
             updateStat2.pollution_tco2 = parseFloat(updateStat2.pollution_tco2);
