@@ -21,11 +21,11 @@ angular.module("SOS181912App",["ngRoute"])
                 templateUrl: "youthApp/v1/edity.html"
            
             }).when("/ui/v1/pollution-stats",{
-                controller: "ListCtrl",
-                templateUrl: "frontendPollution/v1/list.html"
+                controller: "ListpCtrl",
+                templateUrl: "frontendPollution/v1/listp.html"
             }).when("/ui/v1/pollution-stats/edit/:country/:year",{
-                controller: "EditCtrl",
-                templateUrl: "frontendPollution/v1/edit.html"
+                controller: "EditpCtrl",
+                templateUrl: "frontendPollution/v1/editp.html"
             });
 
     });

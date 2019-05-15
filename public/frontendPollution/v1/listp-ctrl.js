@@ -1,5 +1,5 @@
 /* global angular */
-angular.module("SOS181912App").controller("ListCtrl",["$scope","$http", function ($scope,$http){
+angular.module("SOS181912App").controller("ListpCtrl",["$scope","$http", function ($scope,$http){
     console.log("List controller initialized");
     var API = "/api/v1/pollution-stats";
     console.log("ok");
