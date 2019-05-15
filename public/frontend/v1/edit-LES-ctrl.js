@@ -25,7 +25,7 @@ angular.module("SOS181912App").controller("EditLESCtrl",["$scope","$http","$rout
             $scope.status = response.status + " " + response.statusText;
             if(response.status==200){
                 alert("Elemento editado con éxito");
-                $location.path("/");
+                $location.path("/ui/v1/life-expectancy-stats");
             }
         }).catch(function(response2){
                 $scope.status = response2.status + " " + response2.statusText;

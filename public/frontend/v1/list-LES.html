@@ -57,7 +57,7 @@
                     </td>
                     <td><button class="btn btn-success" ng-click="addStat()" value="add" >Añadir</button></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td>
                         <input class="form-control" ng-model="updateStat.country" value="update country"/>
                     </td>
@@ -76,7 +76,7 @@
                     <td>
                         <button class="btn btn-primary" ng-click="putStat()" >Editar</button>
                     </td>
-                </tr>
+                </tr> -->
                 <tr ng-repeat="stat in life_expectancy_stats">
                     <td><a href="#!/ui/v1/life-expectancy-stats/edit/{{stat.country}}/{{stat.year}}">{{ stat.country }}</a></td>
                     <td>{{ stat.year }}</td>
