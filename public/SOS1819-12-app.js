@@ -4,12 +4,26 @@ angular.module("SOS181912App",["ngRoute"])
         $routeProvider
             .when("/", {
                 templateUrl: "index.html"
-            }).when("/ui/v1/life-expectancy-stats",{
+            })
+            .when("/ui/v1/life-expectancy-stats",{
                 controller: "ListLESCtrl",
                 templateUrl: "frontend/v1/list-LES.html"
-            }).when("/ui/v1/life-expectancy-stats/edit/:country/:year",{
+            })
+            .when("/ui/v1/life-expectancy-stats/edit/:country/:year",{
                 controller: "EditLESCtrl",
                 templateUrl: "frontend/v1/edit-LES.html"
-            });
+            })
+              .when("/ui/v1/pollution-stats",{
+                controller: "ListCtrl",
+                templateUrl: "frontendPollution/v1/list.html"
+            })
+            .when("/ui/v1/pollution-stats/edit/:country/:year",{
+                controller: "EditCtrl",
+                templateUrl: "frontend/v1/edit.html"
+            }) 
+            
+            
+            
+            ;
     });
 console.log("SOS1819-12 App initialized!");
