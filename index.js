@@ -10,7 +10,7 @@ const BASE_PATH = "/api";
 app.use('/', express.static(path.join(__dirname, "public")));
 
 
-//app.use("/ui/v1/pollution-stats", express.static(__dirname+"/pollution-stats-api/v1/pollution-stats"));
+app.use("/ui/v1/pollution-stats", express.static(__dirname+"/pollution-stats-api/v1/pollution-stats"));
 
 app.use("/ui/v1/youth-unemployment-stats", express.static(__dirname+"/youth-unemployment-stats-api/v1/youth-unemployment-stats"));
 
