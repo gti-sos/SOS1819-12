@@ -10,7 +10,7 @@ exports.config = {
                 
                 "e2e/TC01-loadPollutionStats.js",
                 
-                "e2e/TC01-loadYouthUnemploymentStats.js",
+                //"e2e/TC01-loadYouthUnemploymentStats.js",
                 
  
                 "e2e/TC02-createPollutionStats.js",
