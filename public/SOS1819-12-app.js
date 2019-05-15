@@ -35,6 +35,6 @@ angular.module("SOS181912App",["ngRoute"])
             
             
             ;
->>>>>>> f29d1d5e6f8364cb56c97bc559664db457436ec3
+
     });
 console.log("SOS1819-12 App initialized!");
