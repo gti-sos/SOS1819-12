@@ -93,11 +93,11 @@
             </td>
         </tr>
         </tr>
-        <tr ng-repeat="stat in pollutionStats">
+        <tr ng-repeat="stat in pollutionStat">
              <td>
                 <button type="button" class="btn btn-warning" ng-click="deleteStat(stat.country,stat.year)" value = "remove" >-Eliminar-</button>
             </td>
-            <td><a href="#!/ui/pollution-stats/edit/{{stat.country}}/{{stat.year}}">{{ stat.country }}</td>
+            <td><a href="#!/ui/pollution-stats3/edit/{{stat.country}}/{{stat.year}}">{{ stat.country }}</td>
             <td>{{ stat.year }}</td>
             <td>{{ stat.pollution_tco2 }}</td>
             <td>{{ stat.pollution_kg1000 }}</td>
