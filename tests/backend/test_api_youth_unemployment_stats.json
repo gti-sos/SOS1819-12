@@ -933,7 +933,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/italia/2018",
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/italia/2017",
 					"protocol": "http",
 					"host": [
 						"sos1819-12",
@@ -945,7 +945,7 @@
 						"v1",
 						"youth-unemployment-stats",
 						"italia",
-						"2018"
+						"2017"
 					]
 				}
 			},
@@ -986,6 +986,57 @@
 						"api",
 						"v1",
 						"youth-unemployment-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Añadir ciudades 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f065031f-5ccf-4236-9b63-3027ad82e511",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n\"country\": \"spain\",\r\n\"year\": \"2017\",\r\n\"youth_unemployment\": \"36.8\",\r\n\"youth_unemployment_man\": \"37.8\",\r\n\"youth_unemployment_woman\": \"35.7\"\r\n},\r\n{\r\n\"country\": \"spain\",\r\n\"year\": \"2016\",\r\n\"youth_unemployment\": \"42.1\",\r\n\"youth_unemployment_man\": \"42.5\",\r\n\"youth_unemployment_woman\": \"41.7\"\r\n},\r\n{\r\n\"country\": \"spain\",\r\n\"year\": \"2015\",\r\n\"youth_unemployment\": \"45.8\",\r\n\"youth_unemployment_man\": \"45\",\r\n\"youth_unemployment_woman\": \"46.7\"\r\n},\r\n{\r\n\"country\": \"alemania\",\r\n\"year\": \"2017\",\r\n\"youth_unemployment\": \"6.5\",\r\n\"youth_unemployment_man\": \"7.2\",\r\n\"youth_unemployment_woman\": \"5.6\"\r\n},\r\n{\r\n\"country\": \"alemania\",\r\n\"year\": \"2016\",\r\n\"youth_unemployment\": \"6.7\",\r\n\"youth_unemployment_man\": \"7.5\",\r\n\"youth_unemployment_woman\": \"5.8\"\r\n},\r\n{\r\n\"country\": \"alemania\",\r\n\"year\": \"2015\",\r\n\"youth_unemployment\": \"7.1\",\r\n\"youth_unemployment_man\": \"7.7\",\r\n\"youth_unemployment_woman\": \"6.4\"\r\n},\r\n{\r\n\"country\": \"reino unido\",\r\n\"year\": \"2017\",\r\n\"youth_unemployment\": \"12.5\",\r\n\"youth_unemployment_man\": \"13.5\",\r\n\"youth_unemployment_woman\": \"11.4\"\r\n},\r\n{\r\n\"country\": \"reino unido\",\r\n\"year\": \"2016\",\r\n\"youth_unemployment\": \"12.6\",\r\n\"youth_unemployment_man\": \"14.8\",\r\n\"youth_unemployment_woman\": \"10.1\"\r\n},\r\n{\r\n\"country\": \"reino unido\",\r\n\"year\": \"2015\",\r\n\"youth_unemployment\": \"13.6\",\r\n\"youth_unemployment_man\": \"14.8\",\r\n\"youth_unemployment_woman\": \"12.3\"\r\n},\r\n{\r\n\"country\": \"francia\",\r\n\"year\": \"2017\",\r\n\"youth_unemployment\": \"21.6\",\r\n\"youth_unemployment_man\": \"22.3\",\r\n\"youth_unemployment_woman\": \"20.8\"\r\n},\r\n{\r\n\"country\": \"francia\",\r\n\"year\": \"2016\",\r\n\"youth_unemployment\": \"23.3\",\r\n\"youth_unemployment_man\": \"24.3\",\r\n\"youth_unemployment_woman\": \"22.1\"\r\n},\r\n{\r\n\"country\": \"francia\",\r\n\"year\": \"2015\",\r\n\"youth_unemployment\": \"24.5\",\r\n\"youth_unemployment_man\": \"25.8\",\r\n\"youth_unemployment_woman\": \"22.9\"\r\n},\r\n{\r\n\"country\": \"italia\",\r\n\"year\": \"2017\",\r\n\"youth_unemployment\": \"32.4\",\r\n\"youth_unemployment_man\": \"31.2\",\r\n\"youth_unemployment_woman\": \"36.2\"\r\n},\r\n{\r\n\"country\": \"italia\",\r\n\"year\": \"2016\",\r\n\"youth_unemployment\": \"38.2\",\r\n\"youth_unemployment_man\": \"36.5\",\r\n\"youth_unemployment_woman\": \"40.6\"\r\n},\r\n{\r\n\"country\": \"italia\",\r\n\"year\": \"2015\",\r\n\"youth_unemployment\": \"38.3\",\r\n\"youth_unemployment_man\": \"37.9\",\r\n\"youth_unemployment_woman\": \"39.5\"\r\n}]"
+				},
+				"url": {
+					"raw": "http://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats/loadInitialData",
+					"protocol": "http",
+					"host": [
+						"sos1819-12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"youth-unemployment-stats",
+						"loadInitialData"
 					]
 				}
 			},

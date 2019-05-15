@@ -2,7 +2,7 @@ describe("Check if a new stat can be created: ", function(){
         
         it("List should grow after the contact creation", function(){
                 
-                browser.get("https://sos1819-12.herokuapp.com/ui/v1/youth-unemployment-stats/#!/");
+                browser.get("https://sos1819-12.herokuapp.com/#!/ui/v1/youth-unemployment-stats");
                 
           
                 
