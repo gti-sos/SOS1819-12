@@ -17,7 +17,7 @@ angular.module("SOS181912App").controller("EdityCtrl",["$scope","$http","$routeP
     });
     
 
-    $scope.uStat = function (){
+    $scope.u2Stat = function (){
         var youth_unemployment_stats = $scope.youth_unemployment_stats;
         if(youth_unemployment_stats){
             
