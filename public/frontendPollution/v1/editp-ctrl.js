@@ -11,7 +11,7 @@ angular.module("SOS181912App").controller("EditpCtrl",["$scope","$http","$routeP
     console.log("Parece que va bien");
     $http.get(API+"/"+country+"/"+year).then(function(res){
     console.log("parece que va bien definitivamente");
-    $scope.updateStat1 = res.data;
+    $scope.updateStat = res.data;
         
     });
     
