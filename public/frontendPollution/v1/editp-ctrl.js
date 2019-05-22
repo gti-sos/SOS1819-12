@@ -29,6 +29,7 @@ angular.module("SOS181912App").controller("EditpCtrl",["$scope","$http","$routeP
                 $scope.status = response.status + " " + response.statusText;
                 if(response.status==200){
                     alert("Elemento editado con éxito");
+                    $location.path("/ui/v1/pollution-stats");
                 }
             }).catch(function(response2){
                 $scope.status = response2.status + " " + response2.statusText;
@@ -38,7 +39,6 @@ angular.module("SOS181912App").controller("EditpCtrl",["$scope","$http","$routeP
                     alert("Elemento no editado: Revise el si todos los campos están completados y el formato de estos");
                 }
             });
-            $location.path("/");
         }
     };
 
