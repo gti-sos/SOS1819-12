@@ -11,20 +11,20 @@ angular.module("SOS181912App").controller("EditpCtrl",["$scope","$http","$routeP
     console.log("Parece que va bien");
     $http.get(API+"/"+country+"/"+year).then(function(res){
     console.log("parece que va bien definitivamente");
-    $scope.updateStat21 = res.data;
+    $scope.updateStat1 = res.data;
         
     });
     
 
     $scope.uS2tat = function (){
-        var updateStat2 = $scope.updateStat2;
-        if(updateStat2){
-            updateStat2.year = parseInt(updateStat2.year);
-            updateStat2.pollution_tco2 = parseFloat(updateStat2.pollution_tco2);
-            updateStat2.pollution_kg1000 = parseFloat(updateStat2.pollution_kg1000);
-            updateStat2.pollution_perca = parseFloat(updateStat2.pollution_perca);
-            console.log("Updating a stat: "+JSON.stringify(updateStat2,null,2));
-            $http.put(API+"/"+updateStat2.country+"/"+updateStat2.year,updateStat2).then(function (response){
+        var updateStat = $scope.updateStat;
+        if(updateStat){
+            updateStat.year = parseInt(updateStat.year);
+            updateStat.pollution_tco2 = parseFloat(updateStat.pollution_tco2);
+            updateStat.pollution_kg1000 = parseFloat(updateStat.pollution_kg1000);
+            updateStat.pollution_perca = parseFloat(updateStat.pollution_perca);
+            console.log("Updating a stat: "+JSON.stringify(updateStat,null,2));
+            $http.put(API+"/"+updateStat.country+"/"+updateStat.year,updateStat).then(function (response){
                 console.log("PUT Response: " + response.status + " " + response.data);
                 $scope.status = response.status + " " + response.statusText;
                 if(response.status==200){
