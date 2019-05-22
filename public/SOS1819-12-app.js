@@ -15,8 +15,7 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/youth-unemployment-stats",{               
                 controller: "ListyCtrl",
                 templateUrl: "youthApp/v1/listy.html"
-            })
-            .when("/ui/v1/youth-unemployment-stats/edit/:country/:year",{
+            }).when("/ui/v1/youth-unemployment-stats/edit/:country/:year",{
                 controller: "EdityCtrl",
                 templateUrl: "youthApp/v1/edity.html"
            
