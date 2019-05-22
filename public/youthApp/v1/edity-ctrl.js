@@ -41,7 +41,6 @@ angular.module("SOS181912App").controller("EdityCtrl",["$scope","$http","$routeP
                     alert("Elemento no editado: Revise el si todos los campos están completados y el formato de estos");
                 }
             });
-            
         }
         
     };
