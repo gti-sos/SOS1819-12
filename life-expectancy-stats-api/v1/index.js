@@ -132,7 +132,9 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats){
     // POST /api/v1/life-expectancy-stats
     app.post(BASE_PATH+"/life-expectancy-stats", (req,res) => {
         var newStat = req.body;
-        life_expectancy_stats.find(newStat).toArray((err, life_expectancy_stats_array)=>{
+        var country = newStat.country;
+        var year = newStat.year;
+        life_expectancy_stats.find({"country": country, "year": year}).toArray((err, life_expectancy_stats_array)=>{
             if(err)
                 console.log("Error: "+err);
             if(Object.keys(req.body).length!=5 || req.body.country==undefined || req.body.year==undefined || req.body.expectancy_man==undefined || req.body.expectancy_woman==undefined || req.body.expectancy==undefined || typeof(req.body.country)!= "string" || typeof(req.body.year)!= "number" || typeof(req.body.expectancy_woman)!= "number" || typeof(req.body.expectancy_man)!= "number" || typeof(req.body.expectancy)!= "number"){
