@@ -2,7 +2,7 @@ describe("Check if a stat can be removed: ", function(){
         
         it("List should grow after the stat deletion", function(){
                 
-            browser.get("https://sos1819-12.herokuapp.com/ui/v1/pollution-stats/#!/");
+            browser.get("https://sos1819-12.herokuapp.com//#!/ui/v1/pollution-stats/#!/");
                 
             element.all(by.repeater("stat in pollutionStats")).then(function(initialStats){
                 
