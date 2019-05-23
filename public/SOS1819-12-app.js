@@ -11,12 +11,10 @@ angular.module("SOS181912App",["ngRoute"])
                 controller: "EditLESCtrl",
                 templateUrl: "frontend/v1/edit-LES.html"
 
-
             }).when("/ui/v1/youth-unemployment-stats",{               
                 controller: "ListyCtrl",
                 templateUrl: "youthApp/v1/listy.html"
-            })
-            .when("/ui/v1/youth-unemployment-stats/edit/:country/:year",{
+            }).when("/ui/v1/youth-unemployment-stats/edit/:country/:year",{
                 controller: "EdityCtrl",
                 templateUrl: "youthApp/v1/edity.html"
            

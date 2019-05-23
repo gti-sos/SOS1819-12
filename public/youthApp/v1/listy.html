@@ -1,43 +1,54 @@
 <h1 align = "center">Estadísticas del desempleo juvenil</h1>
 <table class="table">
     <tr>
-        <th>Acciones</th>
         <th>País</th>
         <th>Año</th>
         <th>Desempleo juvenil</th>
         <th>Desempleo juvenil masculino</th>
         <th>Desempleo juvenil femenino</th>
+        <th>Acciones</th>
     </tr>
     <tablebody>
+        <tr ng-repeat="stat1 in youth_unemployment_stats">
+            
+            <td><a href="#!/ui/v1/youth-unemployment-stats/edit/{{stat1.country}}/{{stat1.year}}">{{ stat1.country }}</td>
+            <td>{{ stat1.year }}</td>
+            <td>{{ stat1.youth_unemployment }}</td>
+            <td>{{ stat1.youth_unemployment_man }}</td>
+            <td>{{ stat1.youth_unemployment_woman }}</td>
+            
+            <td> <button class="btn btn-danger" ng-click="deleteStat(stat1.country,stat1.year)"  value = "remove" >Eliminar</button></td>
+        </tr>
+         <tr>
+              <td>
+                <button class="btn btn-secondary" ng-click="pagedPrevious()" >Anterior</button>
+            </td>
+           
+            <td>
+                <button class="btn btn-secondary" ng-click="pagedFollowing()" >Siguiente</button>
+            </td>
+            <td>
+                <input class="form-control" ng-model="pageded.numero" placeholder="Número de elementos" value="numero"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="pageded.inicio" placeholder="Primer elemento" value="inicio"/>
+            </td>
+           
+             <td>
+                <button class="btn btn-info" ng-click="paged()" >Paginar</button>
+            </td>
+        </tr>
         <tr>
-            <td><button type="button" class="btn btn-info" ng-click="searchTimeInterval()" >Busqueda por año</button></td>
+            
             <td></td>
             <td>
                 <input class="form-control" ng-model="searchedStatT.from" placeholder="Desde"/>
                 <input class="form-control" ng-model="searchedStatT.to" placeholder="Hasta">
             </td>
+            <td><button type="button" class="btn btn-info" ng-click="searchTimeInterval()" >Busqueda por año</button></td>
         </tr>
+        
         <tr>
-            <td><button class="btn btn-info" ng-click="searchStat()" >Buscar:</button></td>
-            <td>
-                <input class="form-control" ng-model="searchedStat.country"/>
-            </td>
-            <td>
-                <input class="form-control" ng-model="searchedStat.year"/>
-            </td>
-            <td>
-                <input class="form-control" ng-model="searchedStat.youth_unemployment"/>
-            </td>
-            <td>
-                <input class="form-control" ng-model="searchedStat.youth_unemployment_man"/>
-            </td>
-            <td>
-                <input class="form-control" ng-model="searchedStat.youth_unemployment_woman"/>
-            </td>
-            
-        </tr>
-        <tr>
-            <td><button class="btn btn-success" ng-click="addStat()" value="Añadir:">Añadir:</button></td>
             <td>
                 <input class="form-control" ng-model="newStat.country"/>
             </td>
@@ -53,11 +64,9 @@
             <td>
                 <input class="form-control" ng-model="newStat.youth_unemployment_woman"
             </td>
+            <td><button class="btn btn-success" ng-click="addStat()" value="Añadir:">Añadir</button></td>
             
           <tr>
-            <td>
-                <button class="btn btn-primary" ng-click="putStat()" >Editar</button>
-            </td>
             <td>
                 <input class="form-control" ng-model="updateStat.country" value="update country"/>
             </td>
@@ -73,41 +82,36 @@
             <td>
                 <input class="form-control" ng-model="updateStat.youth_unemployment_woman" value="update youth_unemployment_woman"/>
             </td>
+            <td>
+                <button class="btn btn-primary" ng-click="putStat()" >Editar</button>
+            </td>
         </tr>
         <tr>
             <td>
-                <button class="btn btn-info" ng-click="paged()" >Paginar</button>
+                <input class="form-control" ng-model="searchedStat.country"/>
             </td>
             <td>
-                <input class="form-control" ng-model="pageded.numero" placeholder="Número de elementos" value="numero"/>
+                <input class="form-control" ng-model="searchedStat.year"/>
             </td>
             <td>
-                <input class="form-control" ng-model="pageded.inicio" placeholder="Primer elemento" value="inicio"/>
+                <input class="form-control" ng-model="searchedStat.youth_unemployment"/>
             </td>
             <td>
-                <button class="btn btn-secondary" ng-click="pagedPrevious()" >Anterior</button>
+                <input class="form-control" ng-model="searchedStat.youth_unemployment_man"/>
             </td>
-           
             <td>
-                <button class="btn btn-secondary" ng-click="pagedFollowing()" >Siguiente</button>
+                <input class="form-control" ng-model="searchedStat.youth_unemployment_woman"/>
             </td>
+             <td><button class="btn btn-info" ng-click="searchStat()" >Buscar</button></td>
         </tr>
+       
         </tr>
-        <tr ng-repeat="stat in youth_unemployment_stats">
-            
-            <td><a href="#!/edit/{{stat.country}}/{{stat.year}}">{{ stat.country }}</td>
-            <td>{{ stat.year }}</td>
-            <td>{{ stat.youth_unemployment }}</td>
-            <td>{{ stat.youth_unemployment_man }}</td>
-            <td>{{ stat.youth_unemployment_woman }}</td>
-            
-            <td> <button class="btn btn-danger" ng-click="deleteStat(stat.country,stat.year)"  value = "remove" >Eliminar</button></td>
-        </tr>
+        
     </tablebody>
 </table>
 <tr>
     <td>Pulse aquí para restaurar:</td>
-    <td align="center"><button class="btn btn-info" ng-click="restoreStats()">Restaurar datos</button></td>
+    <td align="center" float="right"><button class="btn btn-info" ng-click="restoreStats()">Restaurar datos</button></td>
     <td>Pulse aquí para eliminar:</td>
     <td align="center"><button class="btn btn-danger" ng-click="deleteAllStats()">Eliminar todo</button></td>
 </tr>   
