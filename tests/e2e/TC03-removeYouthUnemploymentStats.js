@@ -2,8 +2,7 @@ describe("Check if a stat can be removed: ", function(){
         
         it("List should grow after the stat deletion", function(){
                 
-                //browser.get("https://sos1819-12.herokuapp.com/#!/ui/v1/youth-unemployment-stats");
-                browser.get("https://sos1819afg-12-sos1819afgz.c9users.io/#!/ui/v1/youth-unemployment-stats");
+                browser.get("https://sos1819-12.herokuapp.com/#!/ui/v1/youth-unemployment-stats");
 
                 
             element.all(by.repeater("stat1 in youth_unemployment_stats")).then(function(initialStats){
