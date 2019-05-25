@@ -1,6 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+var request = require("request");
+var cors = require("cors");
 
 var app = express();
 var port = process.env.PORT || 8080;
@@ -15,6 +17,7 @@ app.use('/', express.static(path.join(__dirname, "public")));
 //app.use("/ui/v1/youth-unemployment-stats", express.static(__dirname+"/youth-unemployment-stats-api/v1/youth-unemployment-stats"));
 
 app.use(bodyParser.json());
+app.use(cors());
 
 //===========================================================================================> life-expectancy-stats
 var life_expectancy_stats_api = require("./life-expectancy-stats-api")
@@ -30,7 +33,7 @@ clientA.connect(err => {
   life_expectancy_stats = clientA.db("sos1819-ajm").collection("life-expectancy-stats");
   // perform actions on the collection object
   console.log("Connetion of life-expectancy-stats in MongoDB actived");
-  life_expectancy_stats_api(app, BASE_PATH, life_expectancy_stats);
+  life_expectancy_stats_api(app, BASE_PATH, life_expectancy_stats, request);
   //app.listen(port);
   //client.close();
 });

@@ -2,6 +2,7 @@
 angular.module("SOS181912App").controller("ListLESCtrl",["$scope","$http", function ($scope,$http){
     console.log("List LES controller initialized");
     var API = "/api/v1/life-expectancy-stats";
+    //var API = "/proxy/api/suicide-rates";
     
     var elementosTotales = 0;
     $scope.status = undefined;

@@ -1,6 +1,27 @@
 const life_expectancy_stats_URL = "https://documenter.getpostman.com/view/6998737/S17tS8JC";
 
-module.exports = function (app, BASE_PATH, life_expectancy_stats){
+module.exports = function (app, BASE_PATH, life_expectancy_stats, request){
+    //INTEGRACIÓN
+    var API_SR = "https://sos1819-04.herokuapp.com/api/v1/suicide-rates";
+    app.use("/proxy/api/suicide-rates", function(req, res){
+        console.log("Piped: "+ API_SR);
+        req.pipe(request(API_SR)).pipe(res);
+    });
+    var API_GPE = "https://sos1819-11.herokuapp.com/api/v1/general-public-expenses";
+    app.use("/proxy/api/general-public-expenses", function(req, res){
+        console.log("Piped: "+ API_GPE);
+        req.pipe(request(API_GPE)).pipe(res);
+    });
+    var API_ECS = "https://sos1819-10.herokuapp.com/api/v1/e-car-statics";
+    app.use("/proxy/api/e-car-statics", function(req, res){
+        console.log("Piped: "+ API_ECS);
+        req.pipe(request(API_ECS)).pipe(res);
+    });
+    var API_EBC = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
+    app.use("/proxy/api/emigrations-by-countries", function(req, res){
+        console.log("Piped: "+ API_EBC);
+        req.pipe(request(API_EBC)).pipe(res);
+    });
     // POSTMAN
     app.get(BASE_PATH+"/life-expectancy-stats/docs", (req, res) => {
         res.redirect(life_expectancy_stats_URL);
