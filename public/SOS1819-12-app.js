@@ -10,6 +10,9 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/life-expectancy-stats/edit/:country/:year",{
                 controller: "EditLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/edit-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/analytics",{
+                controller: "ViewLESCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
 
             }).when("/ui/v1/youth-unemployment-stats",{               
                 controller: "ListyCtrl",
