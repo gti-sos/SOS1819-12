@@ -2,149 +2,100 @@
 /*global Highcharts*/
 /*global google*/
 
-angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http", function ($scope,$http){
+angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routeParams", "$location", function ($scope, $http,$routeParams,$location){
         console.log("View Controller initialized");
         var API = "/api/v1/youth-unemployment-stats";
         
+        var countries = [];
+        var years = [];
+        var youth_unemployment = [];
+        var youth_unemployment_man = [];
+        var youth_unemployment_woman = [];
+        
+     
+        var data=[];
+    
+    
+        $http.get(API).then(function(response){
+            countries = response.data.map(function(d) { return d.country });
+            years = response.data.map(function(d) { return parseInt(d.year) });
+            youth_unemployment = response.data.map(function(d) { return parseFloat(d.youth_unemployment) });
+            youth_unemployment_man = response.data.map(function(d) { return parseFloat(d.youth_unemployment_man) });
+            youth_unemployment_woman = response.data.map(function(d) { return parseFloat(d.youth_unemployment_woman) });
+
+            data= response.data;
+            console.log(data);
+
+ 
+    
+        
         //HighCharts
         
-        $http.get(API).then(function(response){
-            
-            Highcharts.chart('stadistics1', {
+        
+        Highcharts.chart('container', {
 
-            title: {
-                text: 'My Data Graphic'
-            },
-        
-        
-            xAxis: {
+    title: {
+        text: 'My data'
+    },
+
+    subtitle: {
+        text: 'Source: thesolarfoundation.com'
+    },
+    xAxis: {
                 
-                categories:  response.data.map(function(d){return (parseInt(d.year))})
+                categories:  years
                
+   },
+    yAxis: {
+        title: {
+            text: 'Hola'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
             },
-            yAxis: {
-                title: {
-                    text: 'pass rate'
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle'
-            },
-        
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: true
-                    }
-                }
-            },
-        
-            series: [{
+            pointStart: 2010
+        }
+    },
+
+     series: [{
                 
                 name: 'YOUTH UNEMPLOYMENT WOMAN',
-                data: response.data.map(function(d){return d["youth_unemployment_woman"]})
+                data: youth_unemployment_woman
             }, {
                 name: 'YOUTH UNEMPLOYMENT',
-                data:  response.data.map(function(d){return d["youth_unemployment"]})
+                data:  youth_unemployment
             }, {
                 name: 'YOUTH UNEMPLOYMENT MAN',
-                data: response.data.map(function(d){return d["youth_unemployment_man"]})
+                data: youth_unemployment_man
             }],
-            
-        
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
-                        legend: {
-                            layout: 'horizontal',
-                            align: 'center',
-                            verticalAlign: 'bottom'
-                        }
-                    }
-                }]
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
             }
-        
-        });
-    });
+        }]
+    }
+
+});
     
-    /*  //GeoCharts
-            google.charts.load('current', {
-        'packages':['geochart'],
-        // Note: you will need to get a mapsApiKey for your project.
-        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-      });
-      google.charts.setOnLoadCallback(drawRegionsMap);
+    
+});
 
-      function drawRegionsMap() {
-        var data = google.visualization.arrayToDataTable([
-           
-          ['Country', 'Popularity'],
-          ['Spain', parseInt(response.data.filter(d=>d.country=="spain").
-                        map(function(d){return (parseFloat(d["youth_unemployment_woman"])+
-                                            parseFloat(d["youth_unemployment"])+
-                                            parseFloat(d["youth_unemployment_man"]))
-                                             /response.data.filter(d=>d.country=="spain").length
-                        }))],
-          ['Alemania', parseInt(response.data.filter(d=>d.province=="alemania").
-                        map(function(d){return (parseFloat(d["youth_unemployment_woman"])+
-                                            parseFloat(d["youth_unemployment"])+
-                                            parseFloat(d["youth_unemployment_man"]))
-                                             /response.data.filter(d=>d.province=="alemania").length
-                        }))],
-          ['Italia', parseInt(response.data.filter(d=>d.province=="italia").
-                        map(function(d){return (parseFloat(d["youth_unemployment_woman"])+
-                                            parseFloat(d["youth_unemployment"])+
-                                            parseFloat(d["youth_unemployment_man"]))
-                                             /response.data.filter(d=>d.province=="italia").length
-                                            
-                        }))],
-          ['Holanda', parseInt(response.data.filter(d=>d.province=="granada").
-                        map(function(d){return (parseFloat(d["public-school"])+
-                                            parseFloat(d["private-school"])+
-                                            parseFloat(d["charter-school"]))
-                                             /response.data.filter(d=>d.province=="granada").length
-                        }))],
-          ['Almería', parseInt(response.data.filter(d=>d.province=="almeria").
-                        map(function(d){return (parseFloat(d["public-school"])+
-                                            parseFloat(d["private-school"])+
-                                            parseFloat(d["charter-school"]))
-                                             /response.data.filter(d=>d.province=="almeria").length
-                        }))],
-          ['Cadiz', parseInt(response.data.filter(d=>d.province=="cadiz").
-                        map(function(d){return (parseFloat(d["public-school"])+
-                                            parseFloat(d["private-school"])+
-                                            parseFloat(d["charter-school"]))
-                                             /response.data.filter(d=>d.province=="cadiz").length
-                        }))],
-          ['Jaen', parseInt(response.data.filter(d=>d.province=="jaen").
-                        map(function(d){return (parseFloat(d["public-school"])+
-                                            parseFloat(d["private-school"])+
-                                            parseFloat(d["charter-school"]))
-                                             /response.data.filter(d=>d.province=="jaen").length
-                        }))],
-          ['Cordoba', parseInt(response.data.filter(d=>d.province=="cordoba").
-                        map(function(d){return (parseFloat(d["public-school"])+
-                                            parseFloat(d["private-school"])+
-                                            parseFloat(d["charter-school"]))
-                                             /response.data.filter(d=>d.province=="cordoba").length
-                        }))],
-        ]);
-
-        var options = {};
-
-        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-        chart.draw(data, options);
-      }*/
-      
-      // amCharts
-      
-      
-      
 }]);
