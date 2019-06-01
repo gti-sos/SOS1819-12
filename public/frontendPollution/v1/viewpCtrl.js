@@ -1,7 +1,7 @@
 /* global angular*/
 /*global Highcharts*/
 
-angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routeParams", "$location", function ($scope, $http,$routeParams,$location){
+angular.module("SOS181912App").controller("viewpCtrl",["$scope","$http","$routeParams", "$location", function ($scope, $http,$routeParams,$location){
         console.log("View Controller initialized");
         var API = "/api/v1/pollution-stats";
         
@@ -80,7 +80,7 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
           series: [
             {
               name: 'españa',
-              data: [23,25,36]
+              data: pollution_tco3
               
             }, 
           ],
