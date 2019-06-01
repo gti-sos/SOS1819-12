@@ -19,7 +19,7 @@ angular.module("SOS181912App").controller("ViewLESCtrl",["$scope","$http", funct
                     text: 'Source: datosmacro.expansion.com'
                 },
                 xAxis: {
-                    categories: response.data.map(function(d){return d.country+","+d.year}),
+                    categories: response.data.map(function(d){return d.country+"-"+d.year}),
                     crosshair: true
                 },
                 yAxis: {
