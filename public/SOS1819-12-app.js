@@ -33,7 +33,18 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/pollution-stats/edit/:country/:year",{
                 controller: "EditpCtrl",
                 templateUrl: "frontendPollution/v1/editp.html"
-            }).when("/ui/v1/youth-unemployment-stats/analytics",{
+            }).when("/ui/v1/pollution-stats/analytics",{
+                controller: "viewpCtrl.js",
+                templateUrl: "frontendPollution/v1/viewp.html"
+            })
+            
+            
+            
+            
+            
+            
+            
+            .when("/ui/v1/youth-unemployment-stats/analytics",{
                 controller: "ViewCtrl",
                 templateUrl: "youthApp/v1/youthView.html"
             });
