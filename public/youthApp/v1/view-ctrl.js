@@ -1,6 +1,9 @@
 /* global angular */
 /*global Highcharts*/
 /*global google*/
+/*global am4core*/
+/*global am4themes_animated*/
+/*global am4charts*/
 
 angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routeParams", "$location", function ($scope, $http,$routeParams,$location){
         console.log("View Controller initialized");
@@ -15,7 +18,6 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
      
         var data=[];
     
-    
         $http.get(API).then(function(response){
             countries = response.data.map(function(d) { return d.country });
             years = response.data.map(function(d) { return parseInt(d.year) });
@@ -26,6 +28,79 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
             data= response.data;
             console.log(data);
 
+        //amCharts
+      
+            
+        am4core.ready(function() {
+        
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+        
+        // Create chart instance
+        var chart = am4core.create("chartdiv", am4charts.PieChart);
+        
+        // Add and configure Series
+        var pieSeries = chart.series.push(new am4charts.PieSeries());
+        pieSeries.dataFields.value = "youth_unemployment";
+        pieSeries.dataFields.category = "country";
+        
+        // Let's cut a hole in our Pie chart the size of 30% the radius
+        chart.innerRadius = am4core.percent(30);
+        
+        // Put a thick white border around each Slice
+        pieSeries.slices.template.stroke = am4core.color("#fff");
+        pieSeries.slices.template.strokeWidth = 2;
+        pieSeries.slices.template.strokeOpacity = 1;
+        pieSeries.slices.template
+          // change the cursor on hover to make it apparent the object can be interacted with
+          .cursorOverStyle = [
+            {
+              "property": "cursor",
+              "value": "pointer"
+            }
+          ];
+        
+        pieSeries.alignLabels = false;
+        pieSeries.labels.template.bent = true;
+        pieSeries.labels.template.radius = 3;
+        pieSeries.labels.template.padding(0,0,0,0);
+        
+        pieSeries.ticks.template.disabled = true;
+        
+        // Create a base filter effect (as if it's not there) for the hover to return to
+        var shadow = pieSeries.slices.template.filters.push(new am4core.DropShadowFilter);
+        shadow.opacity = 0;
+        
+        // Create hover state
+        var hoverState = pieSeries.slices.template.states.getKey("hover"); // normally we have to create the hover state, in this case it already exists
+        
+        // Slightly shift the shadow and make it more prominent on hover
+        var hoverShadow = hoverState.filters.push(new am4core.DropShadowFilter);
+        hoverShadow.opacity = 0.7;
+        hoverShadow.blur = 5;
+        
+        // Add a legend
+        chart.legend = new am4charts.Legend();
+        
+        chart.data = [{
+          "country": countries[3],
+          "youth_unemployment": youth_unemployment[3]
+        }, {
+          "country": countries[6],
+          "youth_unemployment": youth_unemployment[6]
+        }, {
+          "country": countries[9],
+          "youth_unemployment": youth_unemployment[9]
+        }, {
+          "country": countries[12],
+          "youth_unemployment": youth_unemployment[12]
+        }, {
+          "country": countries[15],
+          "youth_unemployment": youth_unemployment[15]
+        }];
+        
+        });
  
     
         
@@ -43,12 +118,12 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
     },
     xAxis: {
                 
-                categories:  years
+                categories:  countries
                
    },
     yAxis: {
         title: {
-            text: 'Hola'
+            text: 'Datos estadísticos'
         }
     },
     legend: {
@@ -62,7 +137,7 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
             label: {
                 connectorAllowed: false
             },
-            pointStart: 2010
+            pointStart: years[0]
         }
     },
 
