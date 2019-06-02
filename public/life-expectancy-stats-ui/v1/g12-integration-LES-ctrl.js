@@ -43,13 +43,13 @@ angular.module("SOS181912App").controller("G12IntegrationLESCtrl",["$scope","$ht
                     
                     /* Create and configure series */
                     var series = chart.series.push(new am4charts.RadarSeries());
-                    series.name = "Life expectancy";
+                    series.name = "Life expectancy (Years)";
                     series.dataFields.valueY = "y";
                     series.dataFields.categoryX = "c";
                     series.strokeWidth = 3;
                     /* Create and configure series */
                     var series2 = chart.series.push(new am4charts.RadarSeries());
-                    series2.name = "Youth unemployment";
+                    series2.name = "Youth unemployment (%)";
                     series2.dataFields.valueY = "e";
                     series2.dataFields.categoryX = "c";
                     series2.strokeWidth = 3;

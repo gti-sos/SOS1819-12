@@ -31,7 +31,7 @@ angular.module("SOS181912App").controller("G09IntegrationLESCtrl",["$scope","$ht
                     // Create chart instance
                     var chart = am4core.create("container-LES", am4charts.XYChart3D);
                     
-                    chart.titles.create().text = "% Expectancy life in front of % population with access to electricity";
+                    chart.titles.create().text = "Life expectancy in front of % population with access to electricity";
                     
                     // Add data
                     chart.data = mezcla2;
