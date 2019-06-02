@@ -51,6 +51,22 @@ angular.module("SOS181912App",["ngRoute"])
                 controller: "LifeCtrl",
                 templateUrl: "youthApp/v1/integrations/integrationAPI3.html"
             
+           }).when("/ui/v1/youth-unemployment-stats/integrations/api4", {
+                controller: "ClimaCtrl",
+                templateUrl: "youthApp/v1/integrations/integrationAPI4.html"
+            
+           }).when("/ui/v1/youth-unemployment-stats/integrations/api5", {
+                controller: "ScorersCtrl",
+                templateUrl: "youthApp/v1/integrations/integrationAPI5.html"
+            
+           }).when("/ui/v1/youth-unemployment-stats/integrations/api6", {
+                controller: "LifeCtrl",
+                templateUrl: "youthApp/v1/integrations/integrationAPI6.html"
+            
+           }).when("/ui/v1/youth-unemployment-stats/integrations/api7", {
+                controller: "LifeCtrl",
+                templateUrl: "youthApp/v1/integrations/integrationAPI7.html"
+            
            });
 
     });
