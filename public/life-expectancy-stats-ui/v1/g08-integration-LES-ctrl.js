@@ -58,7 +58,7 @@ angular.module("SOS181912App").controller("G08IntegrationLESCtrl",["$scope","$ht
                         enabled: false
                     },
                     series: [{
-                        name: 'Life expectancy for man',
+                        name: 'Life expectancy for woman',
                         data: response.data.slice(0,5).map(function(d){return d["expectancy_woman"]})
                     }, {
                         name: 'Emigration for woman',
