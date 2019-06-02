@@ -1,0 +1,25 @@
+<h1>major disasters</h1>
+    <table class="table">
+            <thead>
+            <tr>
+                <th>Pais</th>
+                <th>Tipo</th>
+                <th>no-inflation</th>
+                <th>inflation</th>
+                <th>Evento</th>
+                <th>Año</th>
+                <th>Muertes</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="dis in disasters">
+            <tr>
+                <td>{{comp.country}}</td>
+                <td>{{comp.type}}</td>
+                <td>{{comp.no-inflation}}</td>
+                <td>{{comp.inflation}}</td>
+                <td>{{comp.event}}</td>
+                <td>{{comp.year}}</td>
+                <td>{{comp.death}}</td>
+            </tr>
+            </tbody>
+</table>

@@ -1,33 +1,43 @@
+/*global request*/
+
 const pollutionStats_URL = "https://documenter.getpostman.com/view/6902825/S17ozAgF";
 
-module.exports = function (app, BASE_PATH, pollutionStats){
+module.exports = function (app, BASE_PATH, pollutionStats, request){
     // POSTMAN
     app.get(BASE_PATH+"/pollution-stats/docs", (req, res) => {
         res.redirect(pollutionStats_URL);
         res.sendStatus(301);
     });
-
+    var G01 = "https://sos1819-01.herokuapp.com/api/v1/major-disasters";
+    app.use("/proxyD/api/major-disasters", function(req, res){
+        console.log("Piped: "+ G01);
+        req.pipe(request(G01)).pipe(res);
+    });
+    
+    
     //GET /api/v1/pollution-stats/loadInitialData
     app.get(BASE_PATH+"/pollution-stats/loadInitialData", (req, res) => {
         pollutionStats.find({}).toArray((err, pollutionStats_a)=>{
             if(err)
                 console.log("Error: "+ err);
             if(pollutionStats_a.length == 0) {
-                pollutionStats.insert({country: "spain",year: 2017,pollution_tco2: 282.364,pollution_kg1000: 0.18,pollution_perca: 6.09});
-                pollutionStats.insert({country: "spain",year: 2016,pollution_tco2: 263.908,pollution_kg1000: 0.17,pollution_perca: 5.69});
                 pollutionStats.insert({country: "spain",year: 2015,pollution_tco2: 271.171,pollution_kg1000: 0.18,pollution_perca: 5.84});
-                pollutionStats.insert({country: "alemania",year: 2017,pollution_tco2: 796.0529,pollution_kg1000: 0.21,pollution_perca: 9.71});
-                pollutionStats.insert({country: "alemania",year: 2016,pollution_tco2: 798.582,pollution_kg1000: 0.22,pollution_perca: 9.75});
+                pollutionStats.insert({country: "spain",year: 2016,pollution_tco2: 263.908,pollution_kg1000: 0.17,pollution_perca: 5.69});
+                pollutionStats.insert({country: "spain",year: 2017,pollution_tco2: 282.364,pollution_kg1000: 0.18,pollution_perca: 6.09});
                 pollutionStats.insert({country: "alemania",year: 2015,pollution_tco2: 789.898,pollution_kg1000: 0.22,pollution_perca: 9.67});
-                pollutionStats.insert({country: "reino unido",year: 2017,pollution_tco2: 379.15,pollution_kg1000: 0.22,pollution_perca: 9.67});
-                pollutionStats.insert({country: "reino unido",year: 2016,pollution_tco2: 391.472,pollution_kg1000: 0.15,pollution_perca: 5.95});
+                pollutionStats.insert({country: "alemania",year: 2016,pollution_tco2: 798.582,pollution_kg1000: 0.22,pollution_perca: 9.75});
+                pollutionStats.insert({country: "alemania",year: 2017,pollution_tco2: 796.0529,pollution_kg1000: 0.21,pollution_perca: 9.71});
                 pollutionStats.insert({country: "reino unido",year: 2015,pollution_tco2: 416.749,pollution_kg1000: 0.16,pollution_perca: 6.37});
-                pollutionStats.insert({country: "francia",year: 2017,pollution_tco2: 338.193,pollution_kg1000: 0.13,pollution_perca: 5.2});
-                pollutionStats.insert({country: "francia",year: 2016,pollution_tco2: 332.034,pollution_kg1000: 0.13,pollution_perca: 5.13});
+                pollutionStats.insert({country: "reino unido",year: 2016,pollution_tco2: 391.472,pollution_kg1000: 0.15,pollution_perca: 5.95});
+                pollutionStats.insert({country: "reino unido",year: 2017,pollution_tco2: 379.15,pollution_kg1000: 0.22,pollution_perca: 9.67});
                 pollutionStats.insert({country: "francia",year: 2015,pollution_tco2: 327.725,pollution_kg1000: 0.13,pollution_perca: 5.08});
-                pollutionStats.insert({country: "italia",year: 2017,pollution_tco2: 361.193,pollution_kg1000: 0.17,pollution_perca: 6.08});
-                pollutionStats.insert({country: "italia",year: 2016,pollution_tco2: 356.461,pollution_kg1000: 0.17,pollution_perca: 6});
+                pollutionStats.insert({country: "francia",year: 2016,pollution_tco2: 332.034,pollution_kg1000: 0.13,pollution_perca: 5.13});
+                pollutionStats.insert({country: "francia",year: 2017,pollution_tco2: 338.193,pollution_kg1000: 0.13,pollution_perca: 5.2});
                 pollutionStats.insert({country: "italia",year: 2015,pollution_tco2: 354.355,pollution_kg1000: 0.17,pollution_perca: 5.96});
+                pollutionStats.insert({country: "italia",year: 2016,pollution_tco2: 356.461,pollution_kg1000: 0.17,pollution_perca: 6});
+                pollutionStats.insert({country: "italia",year: 2017,pollution_tco2: 361.193,pollution_kg1000: 0.17,pollution_perca: 6.08});
+                
+               
                 
                 res.sendStatus(201);   
             }else{
