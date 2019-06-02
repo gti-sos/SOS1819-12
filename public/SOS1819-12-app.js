@@ -13,6 +13,8 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/life-expectancy-stats/analytics",{
                 controller: "ViewLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integrations",{
+                templateUrl: "life-expectancy-stats-ui/integrations.html"
             }).when("/ui/v1/life-expectancy-stats/integration-g04",{
                 controller: "G04IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
@@ -24,6 +26,9 @@ angular.module("SOS181912App",["ngRoute"])
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
             }).when("/ui/v1/life-expectancy-stats/integration-g12",{
                 controller: "G12IntegrationLESCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integration-g10",{
+                controller: "G10IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
                 
             }).when("/ui/v1/youth-unemployment-stats",{               
