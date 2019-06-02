@@ -7,7 +7,7 @@ angular.module("SOS181912App")
 
     console.log("disasters Controller initialized.");
 
-    var API = "proxyD/api/v1/major-disasters";
+    var API = "proxy/api/v1/major-disasters";
     refresh();
 
     function refresh() {

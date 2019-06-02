@@ -3,17 +3,17 @@
 const pollutionStats_URL = "https://documenter.getpostman.com/view/6902825/S17ozAgF";
 
 module.exports = function (app, BASE_PATH, pollutionStats, request){
+    
+    var G01 = "https://sos1819-01.herokuapp.com/api/v1/major-disasters";
+    app.use("/proxy/api/major-disasters", function(req, res){
+        console.log("Piped: "+ G01);
+        req.pipe(request(G01)).pipe(res);
+    });
     // POSTMAN
     app.get(BASE_PATH+"/pollution-stats/docs", (req, res) => {
         res.redirect(pollutionStats_URL);
         res.sendStatus(301);
     });
-    var G01 = "https://sos1819-01.herokuapp.com/api/v1/major-disasters";
-    app.use("/proxyD/api/major-disasters", function(req, res){
-        console.log("Piped: "+ G01);
-        req.pipe(request(G01)).pipe(res);
-    });
-    
     
     //GET /api/v1/pollution-stats/loadInitialData
     app.get(BASE_PATH+"/pollution-stats/loadInitialData", (req, res) => {
