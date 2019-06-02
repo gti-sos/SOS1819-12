@@ -2,22 +2,24 @@
     <table class="table">
             <thead>
             <tr>
-                <th>nombre</th>
-                <th>Año</th>
                 <th>Pais</th>
-                <th>velocidad</th>
-                <th>daños</th>
-                <th>mbar</th>
+                <th>Tipo</th>
+                <th>no-inflation</th>
+                <th>inflation</th>
+                <th>Evento</th>
+                <th>Año</th>
+                <th>Muertes</th>
             </tr>
             </thead>
             <tbody ng-repeat="dis in disasters">
             <tr>
-                <td>{{comp.name}}</td>
-                <td>{{comp.year}}</td>
                 <td>{{comp.country}}</td>
-                <td>{{comp.speed}}</td>
-                <td>{{comp.damagesuntil2008}}</td>
-                <td>{{comp.mbar}}</td>
+                <td>{{comp.type}}</td>
+                <td>{{comp.no-inflation}}</td>
+                <td>{{comp.inflation}}</td>
+                <td>{{comp.event}}</td>
+                <td>{{comp.year}}</td>
+                <td>{{comp.death}}</td>
             </tr>
             </tbody>
 </table>
