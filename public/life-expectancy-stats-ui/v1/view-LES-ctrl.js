@@ -15,9 +15,6 @@ angular.module("SOS181912App").controller("ViewLESCtrl",["$scope","$http", funct
                 title: {
                     text: 'Life expectancy stats'
                 },
-                subtitle: {
-                    text: 'Source: datosmacro.expansion.com'
-                },
                 xAxis: {
                     categories: response.data.map(function(d){return d.country+"-"+d.year}),
                     crosshair: true

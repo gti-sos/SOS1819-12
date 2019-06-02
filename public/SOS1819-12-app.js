@@ -19,6 +19,9 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/life-expectancy-stats/integration-g08",{
                 controller: "G08IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integration-g12",{
+                controller: "G12IntegrationLESCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
                 
             }).when("/ui/v1/youth-unemployment-stats",{               
                 controller: "ListyCtrl",
