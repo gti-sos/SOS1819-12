@@ -34,7 +34,7 @@ angular.module("SOS181912App",["ngRoute"])
                 controller: "EditpCtrl",
                 templateUrl: "frontendPollution/v1/editp.html"
             }).when("/ui/v1/pollution-stats/analytics",{
-                controller: "viewpCtrl.js",
+                controller: "viewpCtrl",
                 templateUrl: "frontendPollution/v1/viewp.html"
             })
             

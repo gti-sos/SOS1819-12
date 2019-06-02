@@ -7,18 +7,18 @@ angular.module("SOS181912App").controller("viewpCtrl",["$scope","$http","$routeP
         
         var countries = [];
         var years = [];
-        var pollution_tco3 = [];
-        var pollution_kg1000_3 = [];
-        var pollution_perca3 = [];
+        var pollution_tco = [];
+        var pollution_kg1000 = [];
+        var pollution_perca = [];
      
         var data=[];
         
         $http.get(API).then(function(response){
             countries = response.data.map(function(d) { return d.country });
             years = response.data.map(function(d) { return parseInt(d.year) });
-            pollution_tco3 = response.data.map(function(d) { return parseFloat(d.pollution_tco3) });
-            pollution_kg1000_3 = response.data.map(function(d) { return parseFloat(d.pollution_kg1000) });
-            pollution_perca3 = response.data.map(function(d) { return parseFloat(d.pollution_perca) });
+            pollution_tco = response.data.map(function(d) { return parseFloat(d.pollution_tco2) });
+            pollution_kg1000 = response.data.map(function(d) { return parseFloat(d.pollution_kg1000) });
+            pollution_perca = response.data.map(function(d) { return parseFloat(d.pollution_perca) });
 
             data= response.data;
             console.log(data);
@@ -37,7 +37,7 @@ angular.module("SOS181912App").controller("viewpCtrl",["$scope","$http","$routeP
           },
         
           title: {
-            text: 'from 2016 to 2017'
+            text: 'from 2015 to 2017'
           },
         
           subtitle: {
@@ -57,7 +57,9 @@ angular.module("SOS181912App").controller("viewpCtrl",["$scope","$http","$routeP
             accessibility: {
               description: 'Time from 2015 to 2017'
             },
-            categories: ['2015', '2016', '2017']
+            categories: ['españa 2015', 'españa 2016', 'españa 2017','alemania 2015','alemania 2016','alemania 2017'
+                        ,'reino unido 2015','reino unido 2016','reino unido 2017','francia 2015','francia 2016','francia 2017'
+                        ,'italia 2015','italia 2016','italia 2017']
           },
         
           tooltip: {
@@ -79,10 +81,19 @@ angular.module("SOS181912App").controller("viewpCtrl",["$scope","$http","$routeP
         
           series: [
             {
-              name: 'españa',
-              data: pollution_tco3
+              name: 'pollution_tco',
+              data: pollution_tco
+              
+            }, {
+              name: 'pollution_kg1000',
+              data: pollution_kg1000
+              
+            }, {
+              name: 'pollution_perca',
+              data: pollution_perca
               
             }, 
+            
           ],
         
           responsive: {
