@@ -1,0 +1,23 @@
+<h1>major disasters</h1>
+    <table class="table">
+            <thead>
+            <tr>
+                <th>nombre</th>
+                <th>Año</th>
+                <th>Pais</th>
+                <th>velocidad</th>
+                <th>daños</th>
+                <th>mbar</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="dis in disasters">
+            <tr>
+                <td>{{comp.name}}</td>
+                <td>{{comp.year}}</td>
+                <td>{{comp.country}}</td>
+                <td>{{comp.speed}}</td>
+                <td>{{comp.damagesuntil2008}}</td>
+                <td>{{comp.mbar}}</td>
+            </tr>
+            </tbody>
+</table>

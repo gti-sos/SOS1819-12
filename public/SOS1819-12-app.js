@@ -29,8 +29,11 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/youth-unemployment-stats/edit/:country/:year",{
                 controller: "EdityCtrl",
                 templateUrl: "youthApp/v1/edity.html"
+           })
+            
+           //Parte de Escobar
            
-            }).when("/ui/v1/pollution-stats",{
+            .when("/ui/v1/pollution-stats",{
                 controller: "ListpCtrl",
                 templateUrl: "frontendPollution/v1/listp.html"
             }).when("/ui/v1/pollution-stats/edit/:country/:year",{
@@ -39,6 +42,12 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/pollution-stats/analytics",{
                 controller: "viewpCtrl",
                 templateUrl: "frontendPollution/v1/viewp.html"
+            })
+            
+            .when("/ui/v1/pollution-stats/int/G01", {
+                controller: "disastersCtrl",
+                templateUrl: "frontendPollution/v1/int/G01.html"
+                
             })
             
             
