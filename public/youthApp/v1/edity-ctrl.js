@@ -1,5 +1,6 @@
 /* global angular */
-angular.module("SOS181912App").controller("EdityCtrl",["$scope","$http","$routeParams","$location", function ($scope,$http,$routeParams,$location){
+angular.module("SOS181912App")
+    .controller("EdityCtrl",["$scope","$http","$routeParams","$location", function ($scope,$http,$routeParams,$location){
 
     console.log("Edit controller initialized");
     var API = "/api/v1/youth-unemployment-stats";

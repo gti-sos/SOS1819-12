@@ -24,7 +24,6 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
             youth_unemployment = response.data.map(function(d) { return parseFloat(d.youth_unemployment) });
             youth_unemployment_man = response.data.map(function(d) { return parseFloat(d.youth_unemployment_man) });
             youth_unemployment_woman = response.data.map(function(d) { return parseFloat(d.youth_unemployment_woman) });
-
             data= response.data;
             console.log(data);
 
@@ -102,7 +101,32 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
         
         });
  
-    
+        //GeoChart
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var aux = [];
+        aux.push(["Country","Número de goles"]);
+        aux.push([countries[5],youth_unemployment[5]]);
+        aux.push([countries[6],youth_unemployment[6]]);
+        
+        console.log(aux);
+        var plot = google.visualization.arrayToDataTable(aux);
+        
+
+        var options = {};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(plot, options);
+      }
+
         
         //HighCharts
         
@@ -118,7 +142,8 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
     },
     xAxis: {
                 
-                categories:  countries
+             categories: response.data.map(function(d){return d.country+"-"+d.year}),
+             crosshair: true
                
    },
     yAxis: {
@@ -134,10 +159,7 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
 
     plotOptions: {
         series: {
-            label: {
-                connectorAllowed: false
-            },
-            pointStart: years[0]
+            allowPointSelect: true
         }
     },
 
@@ -170,6 +192,8 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
 
 });
     
+    
+
     
 });
 

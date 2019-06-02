@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var request = require("request");
 var cors = require("cors");
-
+var vis = require("vis");
 var app = express();
 var port = process.env.PORT || 8080;
 
