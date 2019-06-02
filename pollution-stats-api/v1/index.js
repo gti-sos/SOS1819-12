@@ -1,13 +1,15 @@
-/*global request*/
+
 
 const pollutionStats_URL = "https://documenter.getpostman.com/view/6902825/S17ozAgF";
 
 module.exports = function (app, BASE_PATH, pollutionStats, request){
     
-    var G01 = "https://sos1819-01.herokuapp.com/api/v1/major-disasters";
-    app.use("/proxy/api/major-disasters", function(req, res){
-        console.log("Piped: "+ G01);
-        req.pipe(request(G01)).pipe(res);
+    
+    var request = require("request");
+    var G01 = "http://sos1819-01.herokuapp.com";
+    app.use("/proxy", function(req,res){
+        var url = G01 + req.url;
+        req.pipe(request(url)).pipe(res);
     });
     // POSTMAN
     app.get(BASE_PATH+"/pollution-stats/docs", (req, res) => {
