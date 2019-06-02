@@ -6,6 +6,14 @@ module.exports = function (app, BASE_PATH, youth_unemployment_stats){
         res.redirect(youth_unemployment_stats_URL);
         res.sendStatus(301);
     });
+    
+    //INTEGRACIONES
+    var request = require("request");
+    var Api1 = "http://sos1819-15.herokuapp.com";
+    app.use("/proxySR", function(req,res){
+        var url = Api1 + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
 
     //GET /api/v1/youth-unemployment-stats/loadInitialData
      app.get(BASE_PATH+"/youth-unemployment-stats/loadInitialData", (req, res) => {
