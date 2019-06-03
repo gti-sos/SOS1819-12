@@ -7,6 +7,11 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats, request){
         console.log("Piped: "+ API_04);
         req.pipe(request(API_04)).pipe(res);
     });
+    var API_06 = "https://sos1819-06.herokuapp.com/api/v1/uefa-club-rankings";
+    app.use("/proxy/api/uefa-club-rankings", function(req, res){
+        console.log("Piped: "+ API_06);
+        req.pipe(request(API_06)).pipe(res);
+    });
     var API_08 = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
     app.use("/proxy/api/emigrations-by-countries", function(req, res){
         console.log("Piped: "+ API_08);
