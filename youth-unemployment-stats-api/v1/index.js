@@ -1,6 +1,16 @@
 const youth_unemployment_stats_URL = "https://documenter.getpostman.com/view/7067069/S17usSLN";
 
 module.exports = function (app, BASE_PATH, youth_unemployment_stats){
+    
+   // Proxy API 4
+     var request = require("request");
+    var Api4 = "https://sos1819-09.herokuapp.com/api/v2/climate-stats";
+    app.use("/proxyC", function(req, res){
+        console.log("Piped: "+ Api4);
+        var re = request(Api4);
+        req.pipe(re).pipe(res);
+    });
+    
     // POSTMAN
     app.get(BASE_PATH+"/youth-unemployment-stats/docs", (req, res) => {
         res.redirect(youth_unemployment_stats_URL);

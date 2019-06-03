@@ -106,7 +106,7 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
         'packages':['geochart'],
         // Note: you will need to get a mapsApiKey for your project.
         // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+        'mapsApiKey': 'AIzaSyBmXeFRiQTl1zmGDYdX_NZj64JkMdXH12k'
       });
       google.charts.setOnLoadCallback(drawRegionsMap);
 
