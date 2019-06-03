@@ -113,12 +113,12 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
       function drawRegionsMap() {
         var data = google.visualization.arrayToDataTable([
           ['Country', 'Popularity'],
-          ['Germany', 200],
-          ['United States', 300],
-          ['Brazil', 400],
-          ['Canada', 500],
-          ['France', 600],
-          ['RU', 700]
+          [countries[0], youth_unemployment[0]],
+          [countries[3], youth_unemployment[3]],
+          [countries[6], youth_unemployment[6]],
+          [countries[9], youth_unemployment[9]],
+          [countries[12], youth_unemployment[12]],
+          [countries[15], youth_unemployment[15]]
         ]);
 
         var options = {};
