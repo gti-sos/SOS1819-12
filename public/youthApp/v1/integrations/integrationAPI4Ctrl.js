@@ -8,7 +8,7 @@ angular.module("SOS181912App")
     console.log("Clima Controller initialized.");
     
     var API1 = "/api/v1/youth-unemployment-stats";
-    var API2= "proxyC/api/v2/climate-stats";
+    var API2 = "/proxy/api/climate-stats";
     
     var countries1 = [];
     var countries2 = [];
