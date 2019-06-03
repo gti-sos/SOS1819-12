@@ -7,7 +7,7 @@ angular.module("SOS181912App")
 
     console.log("disasters Controller initialized.");
 
-    var API = "/api/v1/major-disasters";
+    var API = "https://sos1819-01.herokuapp.com/api/v1/major-disasters";
     refresh();
 
     function refresh() {

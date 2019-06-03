@@ -32,5 +32,9 @@
   "bugs": {
     "url": "https://github.com/gti-sos/SOS1819-12/issues"
   },
-  "homepage": "https://github.com/gti-sos/SOS1819-12#readme"
+  "homepage": "https://github.com/gti-sos/SOS1819-12#readme",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": []
 }
