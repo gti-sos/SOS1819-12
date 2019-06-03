@@ -8,7 +8,7 @@ angular.module("SOS181912App")
     console.log("Clima Controller initialized.");
     
     var API1 = "/api/v1/youth-unemployment-stats";
-    var API2= "https://sos1819-09.herokuapp.com/api/v2/climate-stats";
+    var API2= "proxyC/api/v2/climate-stats";
     
     var countries1 = [];
     var countries2 = [];
