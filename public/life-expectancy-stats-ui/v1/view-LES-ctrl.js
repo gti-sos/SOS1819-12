@@ -124,6 +124,7 @@ angular.module("SOS181912App").controller("ViewLESCtrl",["$scope","$http", funct
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "11px")
 			   .attr("fill", "white");
+			   
             
         });
 }]);
