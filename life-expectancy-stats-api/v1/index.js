@@ -7,6 +7,16 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats, request){
         console.log("Piped: "+ API_04);
         req.pipe(request(API_04)).pipe(res);
     });
+    var API_08 = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
+    app.use("/proxy/api/emigrations-by-countries", function(req, res){
+        console.log("Piped: "+ API_08);
+        req.pipe(request(API_08)).pipe(res);
+    });
+    var API_09 = "https://sos1819-09.herokuapp.com/api/v1/populationstats";
+    app.use("/proxy/api/populationstats", function(req, res){
+        console.log("Piped: "+ API_09);
+        req.pipe(request(API_09)).pipe(res);
+    });
     var API_11 = "https://sos1819-11.herokuapp.com/api/v1/general-public-expenses";
     app.use("/proxy/api/general-public-expenses", function(req, res){
         console.log("Piped: "+ API_11);
@@ -16,11 +26,6 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats, request){
     app.use("/proxy/api/e-car-statics", function(req, res){
         console.log("Piped: "+ API_10);
         req.pipe(request(API_10)).pipe(res);
-    });
-    var API_08 = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
-    app.use("/proxy/api/emigrations-by-countries", function(req, res){
-        console.log("Piped: "+ API_08);
-        req.pipe(request(API_08)).pipe(res);
     });
     // POSTMAN
     app.get(BASE_PATH+"/life-expectancy-stats/docs", (req, res) => {

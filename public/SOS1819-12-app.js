@@ -13,14 +13,22 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/life-expectancy-stats/analytics",{
                 controller: "ViewLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integrations",{
+                templateUrl: "life-expectancy-stats-ui/integrations.html"
             }).when("/ui/v1/life-expectancy-stats/integration-g04",{
                 controller: "G04IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
             }).when("/ui/v1/life-expectancy-stats/integration-g08",{
                 controller: "G08IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integration-g09",{
+                controller: "G09IntegrationLESCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
             }).when("/ui/v1/life-expectancy-stats/integration-g12",{
                 controller: "G12IntegrationLESCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integration-g10",{
+                controller: "G10IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
                 
             }).when("/ui/v1/youth-unemployment-stats",{               
@@ -29,14 +37,34 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/youth-unemployment-stats/edit/:country/:year",{
                 controller: "EdityCtrl",
                 templateUrl: "youthApp/v1/edity.html"
+           })
+            
+           //Parte de Escobar
            
-            }).when("/ui/v1/pollution-stats",{
+            .when("/ui/v1/pollution-stats",{
                 controller: "ListpCtrl",
                 templateUrl: "frontendPollution/v1/listp.html"
             }).when("/ui/v1/pollution-stats/edit/:country/:year",{
                 controller: "EditpCtrl",
                 templateUrl: "frontendPollution/v1/editp.html"
-            }).when("/ui/v1/youth-unemployment-stats/analytics",{
+            }).when("/ui/v1/pollution-stats/analytics",{
+                controller: "viewpCtrl",
+                templateUrl: "frontendPollution/v1/viewp.html"
+            })
+            
+            .when("/ui/v1/pollution-stats/int/G01", {
+                controller: "disastersCtrl",
+                templateUrl: "frontendPollution/v1/int/G01.html"
+                
+            })
+            
+            
+            
+            
+            
+            
+            
+            .when("/ui/v1/youth-unemployment-stats/analytics",{
                 controller: "ViewCtrl",
                 templateUrl: "youthApp/v1/youthView.html"
             }).when("/ui/v1/youth-unemployment-stats/integrations/api1", {
