@@ -11,7 +11,7 @@ angular.module("SOS181912App").controller("G10IntegrationLESCtrl",["$scope","$ht
                 
                 var dat1 = [];
                 var dat2 = [];
-                for(var i=0; i<5;i++){
+                for(var i=0; i<7;i++){
                     var e = response.data.slice(i,i+1).map(function(d){return d["expectancy"]});
                     e = e[0];
                     var y = response2.data.slice(i,i+1).map(function(d){return d["existsVehicles"]/1000});
@@ -19,8 +19,7 @@ angular.module("SOS181912App").controller("G10IntegrationLESCtrl",["$scope","$ht
                     dat1.push(e);
                     dat2.push(y);
                 }
-                
-                var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+
                 //Ancho y Altura
                 var w = 970;
                 var h = 200;
@@ -42,7 +41,7 @@ angular.module("SOS181912App").controller("G10IntegrationLESCtrl",["$scope","$ht
                     .attr("height", function(d) {
                         return d*4;  //Solo el dato
                     }).attr("fill", function(d) {
-                        return "rgb(0, 0, " + (d * 10) + ")";
+                        return "rgb(0, 123, " + (d * 10) + ")";
                     });
                 svg.selectAll("text").data(dat1).enter().append("text")
                     .text(function(d){
@@ -56,10 +55,10 @@ angular.module("SOS181912App").controller("G10IntegrationLESCtrl",["$scope","$ht
     			   })
     			   .attr("font-family", "sans-serif")
     			   .attr("font-size", "11px")
-    			   .attr("fill", "white");
+    			   .attr("fill", "black");
                 
                 //-------
-                var svg2 = d3.select(".barras1")
+                var svg2 = d3.select(".barras")
                         .append("svg")
                         .attr("width", w)
                         .attr("height", h);
@@ -75,7 +74,7 @@ angular.module("SOS181912App").controller("G10IntegrationLESCtrl",["$scope","$ht
                     .attr("height", function(d) {
                         return d*4;  //Solo el dato
                     }).attr("fill", function(d) {
-                        return "rgb(0, 0, " + (d * 10) + ")";
+                        return "rgb(0, 123, " + (d * 10) + ")";
                     });
                 svg2.selectAll("text").data(dat2).enter().append("text")
                     .text(function(d){
@@ -89,7 +88,7 @@ angular.module("SOS181912App").controller("G10IntegrationLESCtrl",["$scope","$ht
     			   })
     			   .attr("font-family", "sans-serif")
     			   .attr("font-size", "11px")
-    			   .attr("fill", "white");
+    			   .attr("fill", "black");
             });
 			   
         });
