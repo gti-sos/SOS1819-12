@@ -60,11 +60,11 @@ angular.module("SOS181912App",["ngRoute"])
                 templateUrl: "youthApp/v1/integrations/integrationAPI5.html"
             
            }).when("/ui/v1/youth-unemployment-stats/integrations/api6", {
-                controller: "LifeCtrl",
+                controller: "ElementsCtrl",
                 templateUrl: "youthApp/v1/integrations/integrationAPI6.html"
             
            }).when("/ui/v1/youth-unemployment-stats/integrations/api7", {
-                controller: "LifeCtrl",
+                controller: "CompaniesCtrl",
                 templateUrl: "youthApp/v1/integrations/integrationAPI7.html"
             
            });
