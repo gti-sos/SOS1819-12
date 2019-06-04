@@ -36,7 +36,7 @@ angular.module("SOS181912App")
                 co2_stats = response.data.map(function(d) { return parseFloat(d.co2_stats) });
                 data = response.data;
                 console.log("Data received:" + JSON.stringify(response.data, null, 2));
-
+                console.log(years2)
            Highcharts.chart('container', {
     chart: {
         type: 'column'
@@ -47,7 +47,7 @@ angular.module("SOS181912App")
     },
     xAxis: {
         categories: [
-            years1[1],years1[2],years1[0],years2[2],years2[7],years2[13]
+            years1[1],years1[2],years1[0],years2[0],years2[1],years2[2]
         ],
         crosshair: true
     },
