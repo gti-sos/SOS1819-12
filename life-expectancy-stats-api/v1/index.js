@@ -43,9 +43,9 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats, request, unire
     });
     app.get('/externa2',(req,res)=>{
         unirest.get("https://free-nba.p.rapidapi.com/stats?page=0&per_page=25")
-.header("X-RapidAPI-Host", "free-nba.p.rapidapi.com")
-.header("X-RapidAPI-Key", "1505ad8e30msha9665b349d5bba0p130853jsn0d04595275e9")
-.end(function (result) {
+        .header("X-RapidAPI-Host", "free-nba.p.rapidapi.com")
+        .header("X-RapidAPI-Key", "1505ad8e30msha9665b349d5bba0p130853jsn0d04595275e9")
+        .end(function (result) {
               res.send(result.body);
         });
     });
