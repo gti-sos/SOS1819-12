@@ -1,11 +1,16 @@
 const life_expectancy_stats_URL = "https://documenter.getpostman.com/view/6998737/S17tS8JC";
 
-module.exports = function (app, BASE_PATH, life_expectancy_stats, request){
+module.exports = function (app, BASE_PATH, life_expectancy_stats, request, unirest){
     //INTEGRACIÓN
     var API_04 = "https://sos1819-04.herokuapp.com/api/v1/suicide-rates";
     app.use("/proxy/api/suicide-rates", function(req, res){
         console.log("Piped: "+ API_04);
         req.pipe(request(API_04)).pipe(res);
+    });
+    var API_06 = "https://sos1819-06.herokuapp.com/api/v1/uefa-club-rankings";
+    app.use("/proxy/api/uefa-club-rankings", function(req, res){
+        console.log("Piped: "+ API_06);
+        req.pipe(request(API_06)).pipe(res);
     });
     var API_08 = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
     app.use("/proxy/api/emigrations-by-countries", function(req, res){
@@ -17,15 +22,32 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats, request){
         console.log("Piped: "+ API_09);
         req.pipe(request(API_09)).pipe(res);
     });
+    var API_10 = "https://sos1819-10.herokuapp.com/api/v1/e-car-statics";
+    app.use("/proxy/api/e-car-statics", function(req, res){
+        console.log("Piped: "+ API_10);
+        req.pipe(request(API_10)).pipe(res);
+    });
     var API_11 = "https://sos1819-11.herokuapp.com/api/v1/general-public-expenses";
     app.use("/proxy/api/general-public-expenses", function(req, res){
         console.log("Piped: "+ API_11);
         req.pipe(request(API_11)).pipe(res);
     });
-    var API_10 = "https://sos1819-10.herokuapp.com/api/v1/e-car-statics";
-    app.use("/proxy/api/e-car-statics", function(req, res){
-        console.log("Piped: "+ API_10);
-        req.pipe(request(API_10)).pipe(res);
+    //EXTERNAS
+    app.get('/externa1',(req,res)=>{
+        unirest.get("https://restcountries-v1.p.rapidapi.com/all")
+        .header("X-RapidAPI-Host", "restcountries-v1.p.rapidapi.com")
+        .header("X-RapidAPI-Key", "1505ad8e30msha9665b349d5bba0p130853jsn0d04595275e9")
+        .end(function (result) {
+              res.send(result.body);
+        });
+    });
+    app.get('/externa2',(req,res)=>{
+        unirest.get("https://free-nba.p.rapidapi.com/stats?page=0&per_page=25")
+        .header("X-RapidAPI-Host", "free-nba.p.rapidapi.com")
+        .header("X-RapidAPI-Key", "1505ad8e30msha9665b349d5bba0p130853jsn0d04595275e9")
+        .end(function (result) {
+              res.send(result.body);
+        });
     });
     // POSTMAN
     app.get(BASE_PATH+"/life-expectancy-stats/docs", (req, res) => {
@@ -38,36 +60,36 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats, request){
             if(err)
                 console.log("Error: "+ err);
             if(life_expectancy_stats_array.length == 0) {
-                life_expectancy_stats.insert({country: "spain", year: 2015, expectancy_woman: 85.7, expectancy_man: 80.1, expectancy: 83});
-                life_expectancy_stats.insert({country: "germany", year: 2015, expectancy_woman: 83.1, expectancy_man: 78.3, expectancy: 80.7});
-                life_expectancy_stats.insert({country: "uk", year: 2015, expectancy_woman: 82.8, expectancy_man: 79.2, expectancy: 81});
-                life_expectancy_stats.insert({country: "portugal", year: 2015, expectancy_woman: 84.3, expectancy_man: 78.1, expectancy: 81.3});
-                life_expectancy_stats.insert({country: "eeuu", year: 2015, expectancy_woman: 81.2, expectancy_man: 76.3, expectancy: 78.69});
-                life_expectancy_stats.insert({country: "japan", year: 2015, expectancy_woman: 86.99, expectancy_man: 80.75, expectancy: 83.79});
-                life_expectancy_stats.insert({country: "china", year: 2015, expectancy_woman: 77.67, expectancy_man: 74.64, expectancy: 76.09});
-                life_expectancy_stats.insert({country: "albania", year: 2015, expectancy_woman: 79.7, expectancy_man: 76.2, expectancy: 77.9});
-                life_expectancy_stats.insert({country: "armenia", year: 2015, expectancy_woman: 78.2, expectancy_man: 71.7, expectancy: 75.1});
-                life_expectancy_stats.insert({country: "finland", year: 2015, expectancy_woman: 84.4, expectancy_man: 78.7, expectancy: 81.6});
-                life_expectancy_stats.insert({country: "spain", year: 2016, expectancy_woman: 86.3, expectancy_man: 80.5, expectancy: 83.5});
-                life_expectancy_stats.insert({country: "germany", year: 2016, expectancy_woman: 83.5, expectancy_man: 78.6, expectancy: 81});
-                life_expectancy_stats.insert({country: "uk", year: 2016, expectancy_woman: 83, expectancy_man: 79.4, expectancy: 81.2});
-                life_expectancy_stats.insert({country: "portugal", year: 2016, expectancy_woman: 84.3, expectancy_man: 78.1, expectancy: 81.3});
-                life_expectancy_stats.insert({country: "eeuu", year: 2016, expectancy_woman: 81.2, expectancy_man: 76.3, expectancy: 78.69});
-                life_expectancy_stats.insert({country: "japan", year: 2016, expectancy_woman: 87.14, expectancy_man: 80.98, expectancy: 83.98});
-                life_expectancy_stats.insert({country: "china", year: 2016, expectancy_woman: 77.83, expectancy_man: 74.8, expectancy: 76.25});
-                life_expectancy_stats.insert({country: "albania", year: 2016, expectancy_woman: 80.1, expectancy_man: 77.1, expectancy: 78.5});
-                life_expectancy_stats.insert({country: "armenia", year: 2016, expectancy_woman: 78.4, expectancy_man: 71.5, expectancy: 75.1});
-                life_expectancy_stats.insert({country: "finland", year: 2016, expectancy_woman: 84.4, expectancy_man: 78.6, expectancy: 81.5});
-                life_expectancy_stats.insert({country: "spain", year: 2017, expectancy_woman: 86.1, expectancy_man: 80.6, expectancy: 83.4});
-                life_expectancy_stats.insert({country: "germany", year: 2017, expectancy_woman: 83.4, expectancy_man: 78.7, expectancy: 81.1});
-                life_expectancy_stats.insert({country: "uk", year: 2017, expectancy_woman: 83.1, expectancy_man: 79.5, expectancy: 81.3});
-                life_expectancy_stats.insert({country: "portugal", year: 2017, expectancy_woman: 84.6, expectancy_man: 78.4, expectancy: 81.6});
-                life_expectancy_stats.insert({country: "eeuu", year: 2017, expectancy_woman: 81.2, expectancy_man: 76.3, expectancy: 78.69});
-                life_expectancy_stats.insert({country: "japan", year: 2017, expectancy_woman: 87.14, expectancy_man: 80.98, expectancy: 83.98});
-                life_expectancy_stats.insert({country: "china", year: 2017, expectancy_woman: 77.83, expectancy_man: 74.8, expectancy: 76.25});
-                life_expectancy_stats.insert({country: "albania", year: 2017, expectancy_woman: 80.1, expectancy_man: 77.1, expectancy: 78.5});
-                life_expectancy_stats.insert({country: "armenia", year: 2017, expectancy_woman: 78.9, expectancy_man: 72.5, expectancy: 75.8});
-                life_expectancy_stats.insert({country: "finland", year: 2017, expectancy_woman: 84.5, expectancy_man: 78.9, expectancy: 81.7});
+                life_expectancy_stats.insert({country: "Spain", year: 2015, expectancy_woman: 85.7, expectancy_man: 80.1, expectancy: 83});
+                life_expectancy_stats.insert({country: "Germany", year: 2015, expectancy_woman: 83.1, expectancy_man: 78.3, expectancy: 80.7});
+                life_expectancy_stats.insert({country: "RU", year: 2015, expectancy_woman: 82.8, expectancy_man: 79.2, expectancy: 81});
+                life_expectancy_stats.insert({country: "Portugal", year: 2015, expectancy_woman: 84.3, expectancy_man: 78.1, expectancy: 81.3});
+                life_expectancy_stats.insert({country: "United States", year: 2015, expectancy_woman: 81.2, expectancy_man: 76.3, expectancy: 78.69});
+                life_expectancy_stats.insert({country: "Japan", year: 2015, expectancy_woman: 86.99, expectancy_man: 80.75, expectancy: 83.79});
+                life_expectancy_stats.insert({country: "China", year: 2015, expectancy_woman: 77.67, expectancy_man: 74.64, expectancy: 76.09});
+                life_expectancy_stats.insert({country: "Albania", year: 2015, expectancy_woman: 79.7, expectancy_man: 76.2, expectancy: 77.9});
+                life_expectancy_stats.insert({country: "Armenia", year: 2015, expectancy_woman: 78.2, expectancy_man: 71.7, expectancy: 75.1});
+                life_expectancy_stats.insert({country: "Finland", year: 2015, expectancy_woman: 84.4, expectancy_man: 78.7, expectancy: 81.6});
+                life_expectancy_stats.insert({country: "Spain", year: 2016, expectancy_woman: 86.3, expectancy_man: 80.5, expectancy: 83.5});
+                life_expectancy_stats.insert({country: "Germany", year: 2016, expectancy_woman: 83.5, expectancy_man: 78.6, expectancy: 81});
+                life_expectancy_stats.insert({country: "RU", year: 2016, expectancy_woman: 83, expectancy_man: 79.4, expectancy: 81.2});
+                life_expectancy_stats.insert({country: "Portugal", year: 2016, expectancy_woman: 84.3, expectancy_man: 78.1, expectancy: 81.3});
+                life_expectancy_stats.insert({country: "United States", year: 2016, expectancy_woman: 81.2, expectancy_man: 76.3, expectancy: 78.69});
+                life_expectancy_stats.insert({country: "Japan", year: 2016, expectancy_woman: 87.14, expectancy_man: 80.98, expectancy: 83.98});
+                life_expectancy_stats.insert({country: "China", year: 2016, expectancy_woman: 77.83, expectancy_man: 74.8, expectancy: 76.25});
+                life_expectancy_stats.insert({country: "Albania", year: 2016, expectancy_woman: 80.1, expectancy_man: 77.1, expectancy: 78.5});
+                life_expectancy_stats.insert({country: "Armenia", year: 2016, expectancy_woman: 78.4, expectancy_man: 71.5, expectancy: 75.1});
+                life_expectancy_stats.insert({country: "Finland", year: 2016, expectancy_woman: 84.4, expectancy_man: 78.6, expectancy: 81.5});
+                life_expectancy_stats.insert({country: "Spain", year: 2017, expectancy_woman: 86.1, expectancy_man: 80.6, expectancy: 83.4});
+                life_expectancy_stats.insert({country: "Germany", year: 2017, expectancy_woman: 83.4, expectancy_man: 78.7, expectancy: 81.1});
+                life_expectancy_stats.insert({country: "RU", year: 2017, expectancy_woman: 83.1, expectancy_man: 79.5, expectancy: 81.3});
+                life_expectancy_stats.insert({country: "Portugal", year: 2017, expectancy_woman: 84.6, expectancy_man: 78.4, expectancy: 81.6});
+                life_expectancy_stats.insert({country: "United States", year: 2017, expectancy_woman: 81.2, expectancy_man: 76.3, expectancy: 78.69});
+                life_expectancy_stats.insert({country: "Japan", year: 2017, expectancy_woman: 87.14, expectancy_man: 80.98, expectancy: 83.98});
+                life_expectancy_stats.insert({country: "China", year: 2017, expectancy_woman: 77.83, expectancy_man: 74.8, expectancy: 76.25});
+                life_expectancy_stats.insert({country: "Albania", year: 2017, expectancy_woman: 80.1, expectancy_man: 77.1, expectancy: 78.5});
+                life_expectancy_stats.insert({country: "Armenia", year: 2017, expectancy_woman: 78.9, expectancy_man: 72.5, expectancy: 75.8});
+                life_expectancy_stats.insert({country: "Finland", year: 2017, expectancy_woman: 84.5, expectancy_man: 78.9, expectancy: 81.7});
                 res.sendStatus(201);
             } else {
                 res.sendStatus(409);

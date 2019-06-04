@@ -106,27 +106,27 @@ angular.module("SOS181912App").controller("ViewCtrl",["$scope","$http","$routePa
         'packages':['geochart'],
         // Note: you will need to get a mapsApiKey for your project.
         // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-        'mapsApiKey': 'AIzaSyBmXeFRiQTl1zmGDYdX_NZj64JkMdXH12k'
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
       });
       google.charts.setOnLoadCallback(drawRegionsMap);
 
       function drawRegionsMap() {
-        var aux = [];
-        aux.push(["Country","Número de goles"]);
-        aux.push([countries[5],youth_unemployment[5]]);
-        aux.push([countries[6],youth_unemployment[6]]);
-        
-        console.log(aux);
-        var plot = google.visualization.arrayToDataTable(aux);
-        
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Popularity'],
+          [countries[0], youth_unemployment[0]],
+          [countries[3], youth_unemployment[3]],
+          [countries[6], youth_unemployment[6]],
+          [countries[9], youth_unemployment[9]],
+          [countries[12], youth_unemployment[12]],
+          [countries[15], youth_unemployment[15]]
+        ]);
 
         var options = {};
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
-        chart.draw(plot, options);
+        chart.draw(data, options);
       }
-
         
         //HighCharts
         
