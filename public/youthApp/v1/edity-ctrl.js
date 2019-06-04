@@ -13,13 +13,13 @@ angular.module("SOS181912App")
     console.log("Requesting contact <"+API+"/"+country+"/"+year+">...");
     $http.get(API+"/"+country+"/"+year).then(function(res){
     console.log("parece que va bien definitivamente");
-    $scope.youth_unemployment_stats = res.data;
+    $scope.stat1 = res.data;
         
     });
     
 
     $scope.u2Stat = function (){
-        var youth_unemployment_stats = $scope.youth_unemployment_stats;
+        var youth_unemployment_stats = $scope.stat1;
         if(youth_unemployment_stats){
             
             youth_unemployment_stats.year = parseInt(youth_unemployment_stats.year);
