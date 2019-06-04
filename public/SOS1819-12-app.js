@@ -95,6 +95,14 @@ angular.module("SOS181912App",["ngRoute"])
                 controller: "CompaniesCtrl",
                 templateUrl: "youthApp/v1/integrations/integrationAPI7.html"
             
+           }).when("/ui/v1/youth-unemployment-stats/integrations/api8", {
+                controller: "ApiExt1Ctrl",
+                templateUrl: "youthApp/v1/integrations/integrationAPI8.html"
+            
+           }).when("/ui/v1/youth-unemployment-stats/integrations/api9", {
+                controller: "ApiExt2Ctrl",
+                templateUrl: "youthApp/v1/integrations/integrationAPI9.html"
+            
            });
 
     });
