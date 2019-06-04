@@ -11,7 +11,7 @@ angular.module("SOS181912App").controller("G10IntegrationLESCtrl",["$scope","$ht
                 
                 var dat1 = [];
                 var dat2 = [];
-                for(var i=0; i<7;i++){
+                for(var i=0; i<5;i++){
                     var e = response.data.slice(i,i+1).map(function(d){return d["expectancy"]});
                     e = e[0];
                     var y = response2.data.slice(i,i+1).map(function(d){return d["existsVehicles"]/1000});

@@ -10,7 +10,6 @@ angular.module("SOS181912App").controller("AnalyticsCtrl",["$scope","$http", fun
         $http.get(API).then(function(response){
             $http.get(API_2).then(function(response2){
                 $http.get(API_3).then(function(response3){
-                    console.log(response2.data);
                     var com = [];
                     com.push(['Country-Year', 'Life expectancy (years)', 'Pollution (kg/co2)', 'Unemployment (*1000)'])
                     for(var i=0; i<10;i++){
