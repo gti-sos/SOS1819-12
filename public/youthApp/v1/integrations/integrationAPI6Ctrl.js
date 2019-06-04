@@ -24,8 +24,7 @@ angular.module("SOS181912App")
         countries = response.data.map(function(d) { return d.country });
         youth_unemployments = response.data.map(function(d) { return parseFloat(d.youth_unemployment) });
         data= response.data;
-        console.log(data);
-    
+
     
     $http
             .get(API2)
@@ -33,8 +32,7 @@ angular.module("SOS181912App")
                 provinces = response.data.map(function(d) { return d.province });
                 victims = response.data.map(function(d) { return d.victims });
                 data = response.data;
-                console.log("Data received:" + JSON.stringify(response.data, null, 2));
-
+                console.log(victims);
            //GoogleCharts
        google.charts.load('current', {packages: ['corechart', 'bar']});
         google.charts.setOnLoadCallback(drawBasic);
@@ -44,7 +42,7 @@ angular.module("SOS181912App")
               var data = google.visualization.arrayToDataTable([
                 ['Site', 'Datos',],
                 [countries[3],youth_unemployments[0]],
-                [provinces[0], victims[0]],
+                [provinces[5], victims[5]],
                 [countries[12], youth_unemployments[12]],
                 [provinces[6], victims[6]],
                 [countries[24], youth_unemployments[24]]
