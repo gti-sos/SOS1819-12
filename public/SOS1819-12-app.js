@@ -50,12 +50,30 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/pollution-stats/analytics",{
                 controller: "viewpCtrl",
                 templateUrl: "frontendPollution/v1/viewp.html"
-            })
-            
-            .when("/ui/v1/pollution-stats/int/G01", {
+            }).when("/ui/v1/pollution-stats/int/G01", {
                 controller: "disastersCtrl",
                 templateUrl: "frontendPollution/v1/int/G01.html"
-                
+            }).when("/ui/v1/pollution-stats/int/G02", {
+                controller: "moviesCtrl",
+                templateUrl: "frontendPollution/v1/int/G02.html"
+            }).when("/ui/v1/pollution-stats/int/G06", {
+                controller: "transCtrl",
+                templateUrl: "frontendPollution/v1/int/G06.html"
+            }).when("/ui/v1/pollution-stats/int/G07", {
+                controller: "subsCtrl",
+                templateUrl: "frontendPollution/v1/int/G07.html"
+            }).when("/ui/v1/pollution-stats/int/G08", {
+                controller: "countriesCtrl",
+                templateUrl: "frontendPollution/v1/int/G08.html"
+            }).when("/ui/v1/pollution-stats/int/G10", {
+                controller: "bioCtrl",
+                templateUrl: "frontendPollution/v1/int/G10.html"
+            }).when("/ui/v1/pollution-stats/int/G12", {
+                controller: "youthCtrl",
+                templateUrl: "frontendPollution/v1/int/G12.html"
+            }).when("/ui/v1/pollution-stats/int/G15", {
+                controller: "eduCtrl",
+                templateUrl: "frontendPollution/v1/int/G15.html"
             })
             
             
