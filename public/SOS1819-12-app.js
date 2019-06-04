@@ -13,8 +13,8 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/life-expectancy-stats/analytics",{
                 controller: "ViewLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
-            }).when("/ui/v1/life-expectancy-stats/integrations",{
-                templateUrl: "life-expectancy-stats-ui/integrations.html"
+            }).when("/integrations",{
+                templateUrl: "integrations.html"
             }).when("/ui/v1/life-expectancy-stats/integration-g04",{
                 controller: "G04IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
@@ -42,7 +42,11 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/life-expectancy-stats/integration-ex2",{
                 controller: "EX2IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view2-LES.html"
-            
+            }).when("/analytics",{
+                controller: "AnalyticsCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view2-LES.html"
+            }).when("/about",{
+                templateUrl: "about.html"
                 
                 
                 

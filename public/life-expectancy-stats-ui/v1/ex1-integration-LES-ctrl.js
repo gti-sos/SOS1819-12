@@ -23,7 +23,6 @@ angular.module("SOS181912App").controller("EX1IntegrationLESCtrl",["$scope","$ht
                     s = s[0];
                     mezclaGO2.push([c,e,y,r,s]);
                 }
-                console.log(mezclaGO2);
                     
                 google.charts.load("current", {packages:["corechart"]});
                 google.charts.setOnLoadCallback(drawChart);
