@@ -1,6 +1,6 @@
 const life_expectancy_stats_URL = "https://documenter.getpostman.com/view/6998737/S17tS8JC";
 
-module.exports = function (app, BASE_PATH, life_expectancy_stats, request){
+module.exports = function (app, BASE_PATH, life_expectancy_stats, request, unirest){
     //INTEGRACIÓN
     var API_04 = "https://sos1819-04.herokuapp.com/api/v1/suicide-rates";
     app.use("/proxy/api/suicide-rates", function(req, res){
@@ -31,6 +31,23 @@ module.exports = function (app, BASE_PATH, life_expectancy_stats, request){
     app.use("/proxy/api/general-public-expenses", function(req, res){
         console.log("Piped: "+ API_11);
         req.pipe(request(API_11)).pipe(res);
+    });
+    //EXTERNAS
+    app.get('/externa1',(req,res)=>{
+        unirest.get("https://restcountries-v1.p.rapidapi.com/all")
+        .header("X-RapidAPI-Host", "restcountries-v1.p.rapidapi.com")
+        .header("X-RapidAPI-Key", "1505ad8e30msha9665b349d5bba0p130853jsn0d04595275e9")
+        .end(function (result) {
+              res.send(result.body);
+        });
+    });
+    app.get('/externa2',(req,res)=>{
+        unirest.get("https://free-nba.p.rapidapi.com/stats?page=0&per_page=25")
+.header("X-RapidAPI-Host", "free-nba.p.rapidapi.com")
+.header("X-RapidAPI-Key", "1505ad8e30msha9665b349d5bba0p130853jsn0d04595275e9")
+.end(function (result) {
+              res.send(result.body);
+        });
     });
     // POSTMAN
     app.get(BASE_PATH+"/life-expectancy-stats/docs", (req, res) => {
