@@ -3,24 +3,48 @@
 angular.module("SOS181912App")
 
     .controller("disastersCtrl", ["$scope", "$http", function($scope, $http) {
-
+/*global Morris*/
 
     console.log("disasters Controller initialized.");
 
-    var API = "https://sos1819-01.herokuapp.com/api/v1/major-disasters";
-    refresh();
+    var API = "/api/v1/pollution-stats";
+    var G01 = "proxyG01";
 
-    function refresh() {
+    var years = [];
+    var deaths = [];
+   
+     
+    var data=[];
 
-        console.log("Requesting to <" + API + ">...");
-        $http
-            .get(API)
-            .then(function(response) {
+    $http.get(API).then(function(response){
+        years = response.data.map(function(d) { return d.year });
+        data= response.data;
+        console.log(data);
+    
+    
+    $http
+        .get(G01)
+        .then(function(response) {
+            deaths = response.data.map(function(d) { return d.death });
+            data = response.data;
+        //console.log("Data received:" + JSON.stringify(response.data, null, 2));
+            
+    
+    new Morris.Line({
+    
+    element: 'G01',
+ 
+        data: [
+        { year: years[1].toString(), value: deaths[29]},
+        { year: years[2].toString(), value: deaths[8]},
+        { year: years[0].toString(), value: deaths[0]}
+    ],
+    xkey: 'year',
+    ykeys: ['value'],
+    labels: ['Numero de muertes']
+    
+});
 
-                console.log("Data received:" + JSON.stringify(response.data, null, 2));
-
-                $scope.competitions = response.data;
-            });
-    }
-
+        });
+    });
 }]);

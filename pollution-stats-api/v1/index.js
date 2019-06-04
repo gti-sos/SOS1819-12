@@ -7,9 +7,46 @@ module.exports = function (app, BASE_PATH, pollutionStats){
     var G01 = "https://sos1819-01.herokuapp.com/api/v1/major-disasters";
     app.use("/proxyG01", function(req, res){
         console.log("Piped: "+ G01);
-        var re = request(G01);
-        req.pipe(re).pipe(res);
+        req.pipe(request(G01)).pipe(res);
     });
+    
+    var G02 = "https://sos1819-02.herokuapp.com/api/v1/movies-stats";
+    app.use("/proxyG02", function(req, res){
+        console.log("Piped: "+ G02);
+        req.pipe(request(G02)).pipe(res);
+    });
+    
+    var G06 = "https://sos1819-06.herokuapp.com/api/v1/transfer-stats";
+    app.use("/proxyG06", function(req, res){
+        console.log("Piped: "+ G06);
+        req.pipe(request(G06)).pipe(res);
+    });
+    var G07 = "https://sos1819-07.herokuapp.com/api/v2/subsidies-stats";
+    app.use("/proxyG07", function(req, res){
+        console.log("Piped: "+ G07);
+        req.pipe(request(G07)).pipe(res);
+    });
+    var G08 = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
+    app.use("/proxyG08", function(req, res){
+        console.log("Piped: "+ G08);
+        req.pipe(request(G08)).pipe(res);
+    });
+     var G10 = "https://sos1819-10.herokuapp.com/api/v1/biofuels-production";
+    app.use("/proxyG10", function(req, res){
+        console.log("Piped: "+ G10);
+        req.pipe(request(G10)).pipe(res);
+    });
+    var G12 = "https://sos1819-12.herokuapp.com/api/v1/youth-unemployment-stats";
+    app.use("/proxyG12", function(req, res){
+        console.log("Piped: "+ G12);
+        req.pipe(request(G12)).pipe(res);
+    });
+    var G15 = "https://sos1819-15.herokuapp.com/api/v2/educations-centers";
+    app.use("/proxyG15", function(req, res){
+        console.log("Piped: "+ G15);
+        req.pipe(request(G15)).pipe(res);
+    });
+    
  
     // POSTMAN
     app.get(BASE_PATH+"/pollution-stats/docs", (req, res) => {
