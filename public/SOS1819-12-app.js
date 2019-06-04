@@ -18,18 +18,33 @@ angular.module("SOS181912App",["ngRoute"])
             }).when("/ui/v1/life-expectancy-stats/integration-g04",{
                 controller: "G04IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integration-g06",{
+                controller: "G06IntegrationLESCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
             }).when("/ui/v1/life-expectancy-stats/integration-g08",{
                 controller: "G08IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
             }).when("/ui/v1/life-expectancy-stats/integration-g09",{
                 controller: "G09IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
-            }).when("/ui/v1/life-expectancy-stats/integration-g12",{
-                controller: "G12IntegrationLESCtrl",
-                templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
             }).when("/ui/v1/life-expectancy-stats/integration-g10",{
                 controller: "G10IntegrationLESCtrl",
                 templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integration-g11",{
+                controller: "G11IntegrationLESCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integration-g12",{
+                controller: "G12IntegrationLESCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integration-ex1",{
+                controller: "EX1IntegrationLESCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view2-LES.html"
+            }).when("/ui/v1/life-expectancy-stats/integration-ex2",{
+                controller: "EX2IntegrationLESCtrl",
+                templateUrl: "life-expectancy-stats-ui/v1/view2-LES.html"
+            
+                
+                
                 
             }).when("/ui/v1/youth-unemployment-stats",{               
                 controller: "ListyCtrl",

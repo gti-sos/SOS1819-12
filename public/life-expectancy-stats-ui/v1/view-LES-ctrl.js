@@ -1,6 +1,7 @@
 /* global angular */
 /*global Highcharts*/
 /*global d3*/
+/*global google*/
 
 angular.module("SOS181912App").controller("ViewLESCtrl",["$scope","$http", function ($scope,$http){
         console.log("View LES Controller initialized");
@@ -8,6 +9,31 @@ angular.module("SOS181912App").controller("ViewLESCtrl",["$scope","$http", funct
         
         
         $http.get(API).then(function(response){
+        
+            
+            //GeoChart
+            google.charts.load('current', {
+              'packages':['geochart'],
+              // Note: you will need to get a mapsApiKey for your project.
+              // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+              'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+            });
+            google.charts.setOnLoadCallback(drawRegionsMap);
+            var mezclaGO = [];
+            mezclaGO.push(["Country","Expectancy"]);
+            for(var i=0; i<10;i++){
+                var c = response.data.slice(i,i+1).map(function(d){return d["country"]});
+                c = c[0];
+                var e = response.data.slice(i,i+1).map(function(d){return d["expectancy"]});
+                e = e[0];
+                mezclaGO.push([c,e]);
+            }
+            function drawRegionsMap() {
+              var data = google.visualization.arrayToDataTable(mezclaGO);
+              var options = {colors: ['yellow', 'green']};
+              var chart = new google.visualization.GeoChart(document.getElementById('go_div'));
+              chart.draw(data, options);
+            }
             
             Highcharts.chart('container-LES', {
                 chart: {
@@ -56,14 +82,14 @@ angular.module("SOS181912App").controller("ViewLESCtrl",["$scope","$http", funct
             });
             
             var dat1 = [];
-            for(var i=0; i<15;i++){
+            for(var i=0; i<23;i++){
                 var e = response.data.slice(i,i+1).map(function(d){return d["expectancy"]});
                 e = e[0];
                 dat1.push(e);
             }
             
             //Ancho y Altura
-            var w = 970;
+            var w = 1340;
             var h = 200;
             var barPadding = 1;
             //Creará un elemento SVG 
@@ -83,7 +109,7 @@ angular.module("SOS181912App").controller("ViewLESCtrl",["$scope","$http", funct
                 .attr("height", function(d) {
                     return d*4;  //Solo el dato
                 }).attr("fill", function(d) {
-                    return "rgb(0, 0, " + (d * 10) + ")";
+                    return "rgb(0,123, " + (d * 10) + ")";
                 });
             svg.selectAll("text").data(dat1).enter().append("text")
                 .text(function(d){
@@ -98,6 +124,7 @@ angular.module("SOS181912App").controller("ViewLESCtrl",["$scope","$http", funct
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "11px")
 			   .attr("fill", "white");
+			   
             
         });
 }]);

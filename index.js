@@ -4,6 +4,7 @@ var path = require("path");
 var request = require("request");
 var cors = require("cors");
 var app = express();
+var unirest = require('unirest');
 var port = process.env.PORT || 8080;
 
 const BASE_PATH = "/api";
@@ -32,7 +33,7 @@ clientA.connect(err => {
   life_expectancy_stats = clientA.db("sos1819-ajm").collection("life-expectancy-stats");
   // perform actions on the collection object
   console.log("Connetion of life-expectancy-stats in MongoDB actived");
-  life_expectancy_stats_api(app, BASE_PATH, life_expectancy_stats, request);
+  life_expectancy_stats_api(app, BASE_PATH, life_expectancy_stats, request, unirest);
   //app.listen(port);
   //client.close();
 });
